@@ -52,6 +52,26 @@
     return _sprite;
 }
 
+- (void)setSprite:(LEOSprite *)sprite{
+    _sprite = sprite;
+    self.nameTextField.stringValue = sprite.spriteName;
+    [self.spriteType selectItemAtIndex:sprite.spriteType];
+    self.pos_x.stringValue = [NSString stringWithFormat:@"%.2f",sprite.pos_x];
+    self.pos_y.stringValue = [NSString stringWithFormat:@"%.2f",sprite.pos_y];
+    self.width.stringValue = [NSString stringWithFormat:@"%.2f",sprite.width];
+    self.height.stringValue = [NSString stringWithFormat:@"%.2f",sprite.height];
+    self.animationCount.stringValue = [NSString stringWithFormat:@"%ld",sprite.animationCount];
+    self.isAnimationLoopYes.state = sprite.recycle;
+    self.isAnimationLoopNo.state = !self.isAnimationLoopYes.state;
+    self.order.stringValue = [NSString stringWithFormat:@"%ld",sprite.order];
+    
+    self.hasBgMusicYes.state = sprite.hasBgMusic;
+    self.hasBgMusicNo.state = !self.hasBgMusicYes.state;
+    
+    self.isBgMusicLoopYes.state = sprite.isBgMusicLoop;
+    self.isBgMusicLoopNo.state = !self.isBgMusicLoopYes;
+}
+
 - (void)setUpData{
     
     self.anchorType.enabled = NO;
@@ -105,6 +125,8 @@
         [self.anchorSubType addItemsWithTitles:self.anchorTypeDict[title]];
     }
 }
+
+
 
 - (void)checkValue{
 }

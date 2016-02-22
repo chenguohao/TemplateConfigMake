@@ -768,9 +768,9 @@
                             </customView>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5SY-yD-FI7">
                                 <rect key="frame" x="6" y="6" width="98" height="19"/>
-                                <buttonCell key="cell" type="roundRect" title="New" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Wag-f6-yf6">
+                                <buttonCell key="cell" type="roundRect" title="添加新控件" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Wag-f6-yf6">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="cellTitle"/>
+                                    <font key="font" size="12" name="STHeitiSC-Light"/>
                                 </buttonCell>
                                 <connections>
                                     <action selector="onAction:" target="XfG-lQ-9wD" id="qLA-ca-2ad"/>

@@ -82,4 +82,5 @@ typedef NS_ENUM(NSUInteger, SpriteAnchorType) {
 - (instancetype)initDynimicWithDict:(NSDictionary*)dict;
 - (instancetype)initStaticWithDict:(NSDictionary*)dict
                               Size:(CGSize)size;
+- (instancetype)initWithName:(NSString*)spriteName;
 @end

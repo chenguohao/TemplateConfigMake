@@ -97,4 +97,22 @@
     return self;
 }
 
+- (instancetype)initWithName:(NSString*)spriteName{
+    self = [super init];
+    self.spriteName = spriteName;
+    self.spriteType = SpriteTypeStatic;
+    self.pos_x = 0.5;
+    self.pos_y = 0.5;
+    self.width = 0.5;
+    self.height = 0.5;
+    self.animationCount = 1;
+    self.recycle = YES;
+    self.duration = 1;
+    self.order = 0;
+    self.anchorType = SpriteAnchorTypeStatic;
+    self.hasBgMusic = YES;
+    self.isBgMusicLoop = YES;
+    return self;
+}
+
 @end

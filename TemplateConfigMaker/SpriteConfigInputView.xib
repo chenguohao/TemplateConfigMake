@@ -49,17 +49,17 @@
                     </connections>
                 </popUpButton>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1AH-om-rm3">
-                    <rect key="frame" x="19" y="376" width="75" height="17"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="spriteName" id="7iJ-Sz-YdZ">
-                        <font key="font" metaFont="system"/>
+                    <rect key="frame" x="19" y="376" width="82" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="控件名（英）" id="7iJ-Sz-YdZ">
+                        <font key="font" size="13" name="STHeitiSC-Light"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="511-1i-Qa2">
-                    <rect key="frame" x="19" y="340" width="68" height="17"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="spriteType" id="nvQ-4Z-ZLv">
-                        <font key="font" metaFont="system"/>
+                    <rect key="frame" x="19" y="340" width="56" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="控件类型" id="nvQ-4Z-ZLv">
+                        <font key="font" size="13" name="STHeitiSC-Light"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -135,9 +135,9 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yob-gl-SFf">
-                    <rect key="frame" x="19" y="100" width="37" height="17"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="order" id="0XX-nf-fVh">
-                        <font key="font" metaFont="system"/>
+                    <rect key="frame" x="19" y="100" width="30" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="层级" id="0XX-nf-fVh">
+                        <font key="font" size="13" name="STHeitiSC-Light"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -151,9 +151,9 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="P7L-jW-yfA">
-                    <rect key="frame" x="19" y="167" width="102" height="17"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="animationCount" id="nWD-h8-Qeq">
-                        <font key="font" metaFont="system"/>
+                    <rect key="frame" x="19" y="167" width="56" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="动画帧数" id="nWD-h8-Qeq">
+                        <font key="font" size="13" name="STHeitiSC-Light"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -166,9 +166,9 @@
                     </buttonCell>
                 </button>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9se-ug-cjA">
-                    <rect key="frame" x="19" y="133" width="103" height="17"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="isAnimationloop" id="PSn-95-Jbb">
-                        <font key="font" metaFont="system"/>
+                    <rect key="frame" x="19" y="133" width="82" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="是否动画循环" id="PSn-95-Jbb">
+                        <font key="font" size="13" name="STHeitiSC-Light"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -197,9 +197,9 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f13-9F-Gvo">
-                    <rect key="frame" x="18" y="3" width="100" height="17"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="isBgMusicLoop" id="a8J-dc-RFr">
-                        <font key="font" metaFont="system"/>
+                    <rect key="frame" x="18" y="3" width="108" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="是否背景音乐循环" id="a8J-dc-RFr">
+                        <font key="font" size="13" name="STHeitiSC-Light"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -220,17 +220,17 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="urc-MC-ds5">
-                    <rect key="frame" x="19" y="66" width="76" height="17"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="anchorType" id="Y0J-LG-w8b">
-                        <font key="font" metaFont="system"/>
+                    <rect key="frame" x="19" y="66" width="56" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="定位类型" id="Y0J-LG-w8b">
+                        <font key="font" size="13" name="STHeitiSC-Light"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bN7-Tb-ySw">
-                    <rect key="frame" x="18" y="28" width="80" height="17"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="hasBgMusic" id="8nc-Nu-gJu">
-                        <font key="font" metaFont="system"/>
+                    <rect key="frame" x="18" y="28" width="95" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="是否有背景音乐" id="8nc-Nu-gJu">
+                        <font key="font" size="13" name="STHeitiSC-Light"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -247,7 +247,7 @@
                     <stepperCell key="cell" continuous="YES" alignment="left" maxValue="100" id="uEJ-7b-rs1"/>
                 </stepper>
                 <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bqq-Vf-1ns">
-                    <rect key="frame" x="200" y="61" width="64" height="26"/>
+                    <rect key="frame" x="200" y="61" width="81" height="26"/>
                     <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="XVb-1e-u9r" id="egR-oW-bSb">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="menu"/>

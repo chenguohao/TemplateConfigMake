@@ -29,7 +29,7 @@ NSString* cellID = @"CellID";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-   
+    self.tableView.allowsEmptySelection = NO;
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
 }
@@ -47,9 +47,32 @@ NSString* cellID = @"CellID";
     return _spritesArray;
 }
 
+
+- (BOOL)isSpriteArrayContainName:(NSString*)name{
+    for(LEOSprite * sprite in self.spritesArray){
+        if([sprite.spriteName isEqualToString:name])
+            return YES;
+    }
+    return NO;
+}
+
+- (NSString*)getNewNameOfSprite{
+    NSString* newName = @"NewSpite";
+    if ([self isSpriteArrayContainName:newName]) {
+        
+        int n = 0;
+        
+        while ([self isSpriteArrayContainName:newName]) {
+            newName = [NSString stringWithFormat:@"NewSprite%d",++n];
+        }
+    }
+     return newName;
+}
+
 - (IBAction)onAction:(id)sender{
    
-    LEOSprite* sprite = self.configInputView.sprite;
+    LEOSprite* sprite = [[LEOSprite alloc] initWithName:[self getNewNameOfSprite]];
+    self.configInputView.sprite = sprite;
     [self.spritesArray addObject:sprite];
     [self.tableView reloadData];
    
@@ -72,4 +95,13 @@ NSString* cellID = @"CellID";
     return result;
     
 }
+
+- (BOOL)tableView:(NSTableView *)tableView shouldSelectRow:(NSInteger)row{
+    NSLog(@"ROW:%ld",row);
+    LEOSprite *sprite = [self.spritesArray objectAtIndex:row];
+    self.configInputView.sprite = sprite;
+    return YES;
+}
+
+
 @end

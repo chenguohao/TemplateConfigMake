@@ -8,7 +8,9 @@
 
 #import <Cocoa/Cocoa.h>
 @class LEOSprite;
-@interface SpriteConfigInputView : NSView
+@interface SpriteConfigInputView : NSView{
+    LEOSprite* _sprite;
+}
 @property (strong) IBOutlet NSView *view;
-@property (strong,nonatomic) LEOSprite* sprite;
+@property (strong, nonatomic) LEOSprite* sprite;
 @end
