@@ -9,15 +9,13 @@
                 <outlet property="anchorSubType" destination="Bqq-Vf-1ns" id="o35-yY-8O8"/>
                 <outlet property="anchorType" destination="Jee-B9-W9N" id="9Um-T6-LOf"/>
                 <outlet property="animationCount" destination="JXq-kD-Y2d" id="vfk-mc-Uwz"/>
-                <outlet property="hasBgMusicNo" destination="sYP-hQ-55c" id="cth-oF-EyY"/>
-                <outlet property="hasBgMusicYes" destination="x4N-5e-RwV" id="rE7-L6-J5m"/>
+                <outlet property="hasBgMusic" destination="Y79-jS-Wky" id="4nK-Zr-5gY"/>
                 <outlet property="height" destination="4PI-CP-ywe" id="wUU-Ax-vyc"/>
-                <outlet property="isAnimationLoopNo" destination="b9z-jk-YDF" id="XB2-cY-t3R"/>
-                <outlet property="isAnimationLoopYes" destination="fRF-nG-NhC" id="8Ze-gi-Ocp"/>
-                <outlet property="isBgMusicLoopNo" destination="NLl-Mh-zCM" id="Q1K-Qy-EDn"/>
-                <outlet property="isBgMusicLoopYes" destination="Plw-Fz-9Gz" id="wkx-Pe-nwh"/>
+                <outlet property="isAnimationLoop" destination="rGA-RB-Fo7" id="4r2-oe-G4a"/>
+                <outlet property="isBgMusicLoop" destination="XVC-me-5eP" id="Xpg-Vp-0JA"/>
                 <outlet property="nameTextField" destination="c8w-to-Xrg" id="vzD-ah-4sP"/>
                 <outlet property="order" destination="F49-UO-1UG" id="51D-Yy-5j6"/>
+                <outlet property="orderPlus" destination="qz8-rX-yXd" id="x0c-vJ-iFd"/>
                 <outlet property="pos_x" destination="U7t-mi-L5J" id="fth-wM-Kwn"/>
                 <outlet property="pos_y" destination="Tjl-KG-C8J" id="02S-bC-9yI"/>
                 <outlet property="spriteType" destination="8xl-nM-bKO" id="OFk-9x-iGi"/>
@@ -104,20 +102,6 @@
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sYP-hQ-55c">
-                    <rect key="frame" x="210" y="27" width="40" height="18"/>
-                    <buttonCell key="cell" type="radio" title="No" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="Y8I-1g-NqC">
-                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                </button>
-                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x4N-5e-RwV">
-                    <rect key="frame" x="138" y="27" width="44" height="18"/>
-                    <buttonCell key="cell" type="radio" title="Yes" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="c5w-AZ-EnV">
-                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                </button>
                 <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JXq-kD-Y2d">
                     <rect key="frame" x="139" y="164" width="96" height="22"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="8BR-4c-lEN">
@@ -158,28 +142,14 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b9z-jk-YDF">
-                    <rect key="frame" x="211" y="132" width="40" height="18"/>
-                    <buttonCell key="cell" type="radio" title="No" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="xpQ-gS-Itu">
-                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                </button>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9se-ug-cjA">
-                    <rect key="frame" x="19" y="133" width="82" height="17"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="是否动画循环" id="PSn-95-Jbb">
+                    <rect key="frame" x="19" y="133" width="56" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="动画循环" id="PSn-95-Jbb">
                         <font key="font" size="13" name="STHeitiSC-Light"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Plw-Fz-9Gz">
-                    <rect key="frame" x="138" y="3" width="44" height="18"/>
-                    <buttonCell key="cell" type="radio" title="Yes" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="6wp-hU-GRO">
-                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                </button>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Ix-00-0IK">
                     <rect key="frame" x="19" y="232" width="68" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="width" id="YDH-Zq-lwd">
@@ -197,20 +167,13 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f13-9F-Gvo">
-                    <rect key="frame" x="18" y="3" width="108" height="17"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="是否背景音乐循环" id="a8J-dc-RFr">
+                    <rect key="frame" x="18" y="5" width="82" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="背景音乐循环" id="a8J-dc-RFr">
                         <font key="font" size="13" name="STHeitiSC-Light"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fRF-nG-NhC">
-                    <rect key="frame" x="139" y="132" width="44" height="18"/>
-                    <buttonCell key="cell" type="radio" title="Yes" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="toW-8w-hLI">
-                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                </button>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kOn-yA-RWX">
                     <rect key="frame" x="19" y="200" width="68" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="height" id="0h4-q5-UNx">
@@ -228,23 +191,19 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bN7-Tb-ySw">
-                    <rect key="frame" x="18" y="28" width="95" height="17"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="是否有背景音乐" id="8nc-Nu-gJu">
+                    <rect key="frame" x="18" y="30" width="82" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="单独背景音乐" id="8nc-Nu-gJu">
                         <font key="font" size="13" name="STHeitiSC-Light"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NLl-Mh-zCM">
-                    <rect key="frame" x="210" y="3" width="40" height="18"/>
-                    <buttonCell key="cell" type="radio" title="No" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="wue-F6-4o7">
-                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                </button>
                 <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qz8-rX-yXd">
                     <rect key="frame" x="141" y="96" width="19" height="27"/>
                     <stepperCell key="cell" continuous="YES" alignment="left" maxValue="100" id="uEJ-7b-rs1"/>
+                    <connections>
+                        <action selector="onOrderPlus:" target="-2" id="3Ze-vc-waP"/>
+                    </connections>
                 </stepper>
                 <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bqq-Vf-1ns">
                     <rect key="frame" x="200" y="61" width="81" height="26"/>
@@ -259,6 +218,9 @@
                             </items>
                         </menu>
                     </popUpButtonCell>
+                    <connections>
+                        <action selector="onSpriteAnchorSubtype:" target="-2" id="hpx-gv-m2n"/>
+                    </connections>
                 </popUpButton>
                 <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jee-B9-W9N">
                     <rect key="frame" x="137" y="61" width="60" height="26"/>
@@ -277,6 +239,36 @@
                         <action selector="onSelect:" target="-2" id="njE-wY-2VL"/>
                     </connections>
                 </popUpButton>
+                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Y79-jS-Wky">
+                    <rect key="frame" x="137" y="28" width="22" height="18"/>
+                    <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="0Z3-0b-Ndh">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="onCheckBox:" target="-2" id="pTs-Lr-6Tp"/>
+                    </connections>
+                </button>
+                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XVC-me-5eP">
+                    <rect key="frame" x="137" y="4" width="22" height="18"/>
+                    <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="BeG-nn-2je">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="onCheckBox:" target="-2" id="5kt-e8-lyZ"/>
+                    </connections>
+                </button>
+                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rGA-RB-Fo7">
+                    <rect key="frame" x="138" y="131" width="22" height="18"/>
+                    <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="tsf-ga-Mvo">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="onCheckBox:" target="-2" id="mmZ-6f-7G2"/>
+                    </connections>
+                </button>
             </subviews>
             <connections>
                 <outlet property="nextKeyView" destination="-2" id="7O7-Or-Pk5"/>

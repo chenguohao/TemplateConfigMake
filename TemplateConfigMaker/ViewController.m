@@ -13,11 +13,15 @@
 @interface ViewController()<NSTableViewDataSource,NSTableViewDelegate>
 @property (strong) NSString* str1;
 @property (weak) IBOutlet NSTableView *tableView;
-
+@property (weak) IBOutlet NSButton *btDelete;
+@property (weak) IBOutlet NSButton *bgMusic;
+@property (assign) BOOL hasBgMusic;
 @property (unsafe_unretained) IBOutlet NSTextView *textView;
 @property (weak) IBOutlet SpriteConfigInputView *configInputView;
-
+@property (weak) LEOSprite* curEditSprite;
 @property (strong) NSString* str0;
+@property (weak) IBOutlet NSButton *btSave;
+
 @property (nonatomic, strong) NSMutableArray* spritesArray;
 @end
 
@@ -25,13 +29,51 @@ NSString* cellID = @"CellID";
 
 @implementation ViewController
 
-
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.tableView.allowsEmptySelection = NO;
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
+    self.curEditSprite = nil;
+    self.hasBgMusic = NO;
+    [self.configInputView setRefreshBlock:^(LEOSprite *sprite) {
+        self.curEditSprite = sprite;
+        if (self.spritesArray.count) {
+            NSInteger selectRow = self.tableView.selectedRow;
+            [self.spritesArray replaceObjectAtIndex:self.tableView.selectedRow withObject:self.curEditSprite];
+            [self.tableView reloadData];
+            NSIndexSet *indexSet = [NSIndexSet indexSetWithIndex:selectRow];
+            [self.tableView selectRowIndexes:indexSet byExtendingSelection:NO];
+            [self selectRow:selectRow];
+        }
+        [self produceSpriteConfig];
+    }];
+}
+
+-(NSArray*)getDicArrayFromSpriteArray:(NSArray*)array{
+    NSMutableArray* resultArray = [NSMutableArray new];
+    
+    for (LEOSprite* sprite in array) {
+        NSDictionary* dict = [sprite getDictFromSprite];
+        [resultArray addObject:dict];
+    }
+    
+    return resultArray;
+}
+
+-(NSString*)DataTOjsonString:(id)object
+{
+    NSString *jsonString = nil;
+    NSError *error;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:object
+                                                       options:NSJSONWritingPrettyPrinted // Pass 0 if you don't care about the readability of the generated string
+                                                         error:&error];
+    if (! jsonData) {
+        NSLog(@"Got an error: %@", error);
+    } else {
+        jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    }
+    return jsonString;
 }
 
 - (void)setRepresentedObject:(id)representedObject {
@@ -69,15 +111,48 @@ NSString* cellID = @"CellID";
      return newName;
 }
 
-- (IBAction)onAction:(id)sender{
+#pragma mark - action
+- (IBAction)onDeleteCurrentSprite:(NSButton *)sender {
+    if (self.curEditSprite) {
+        [self.spritesArray removeObject:self.curEditSprite];
+        [self.tableView reloadData];
+        if (self.spritesArray.count) {
+            self.curEditSprite = self.spritesArray[0];
+        }else{
+            self.curEditSprite = nil;
+        }
+    }
+    [self produceSpriteConfig];
+}
+
+
+- (IBAction)onNewSprite:(id)sender{
    
     LEOSprite* sprite = [[LEOSprite alloc] initWithName:[self getNewNameOfSprite]];
     self.configInputView.sprite = sprite;
     [self.spritesArray addObject:sprite];
     [self.tableView reloadData];
-   
+    [self produceSpriteConfig];
 }
 
+- (void)setCurEditSprite:(LEOSprite *)curEditSprite{
+    _curEditSprite = curEditSprite;
+    if (_curEditSprite == nil) {
+        self.configInputView.hidden = YES;
+        self.btDelete.enabled = NO;
+        self.btSave.enabled = NO;
+        
+    }else{
+        self.configInputView.hidden = NO;
+        self.btDelete.enabled = YES;
+        self.btSave.enabled = YES;
+    }
+}
+
+- (IBAction)onBgMusic:(id)sender {
+    self.hasBgMusic = self.bgMusic.state;
+    [self produceSpriteConfig];
+}
 
 #pragma mark - delegate
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView{
@@ -98,10 +173,53 @@ NSString* cellID = @"CellID";
 
 - (BOOL)tableView:(NSTableView *)tableView shouldSelectRow:(NSInteger)row{
     NSLog(@"ROW:%ld",row);
-    LEOSprite *sprite = [self.spritesArray objectAtIndex:row];
-    self.configInputView.sprite = sprite;
+    [self selectRow:row];
     return YES;
 }
 
+- (void)selectRow:(NSInteger)row{
+    LEOSprite *sprite = [self.spritesArray objectAtIndex:row];
+    self.configInputView.sprite = sprite;
+    self.curEditSprite = sprite;
+}
+
+- (IBAction)onSave:(id)sender {
+    NSSavePanel* panel = [NSSavePanel savePanel];
+    
+    // This method displays the panel and returns immediately.
+    // The completion handler is called when the user selects an
+    // item or cancels the panel.
+   
+    [panel beginWithCompletionHandler:^(NSInteger result){
+        if (result == NSFileHandlingPanelOKButton) {
+            NSURL*  theDoc = panel.URL;
+            theDoc =[theDoc URLByAppendingPathExtension:[NSString stringWithFormat:@".config"]];
+            NSString* content = self.textView.string;
+            BOOL result = [content writeToURL:theDoc atomically:YES encoding:NSUTF8StringEncoding error:nil];
+            if (result) {
+                NSAlert *alert = [[NSAlert alloc] init];
+                
+                [alert addButtonWithTitle:@"确定"];
+                
+                [alert setMessageText:@"保存完毕"];
+                
+                [alert setInformativeText:[NSString stringWithFormat:@"保存在%@",theDoc.path]];
+                
+                [alert setAlertStyle:NSWarningAlertStyle];
+                [alert beginSheetModalForWindow:[[[NSApplication sharedApplication] windows] firstObject] modalDelegate:self didEndSelector:nil contextInfo:nil];
+            }
+        }
+        
+    }];
+    
+    
+   
+}
+
+
+#pragma mark - sprite data
+- (void)produceSpriteConfig{
+    self.textView.string = [self DataTOjsonString:@{@"sprites":[self getDicArrayFromSpriteArray:self.spritesArray],@"hasBgMusic":@(self.hasBgMusic)}];
+}
 
 @end

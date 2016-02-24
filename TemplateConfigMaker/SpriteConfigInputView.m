@@ -8,7 +8,8 @@
 
 #import "SpriteConfigInputView.h"
 #import "LEOSprite.h"
-@interface SpriteConfigInputView ()
+#import <AppKit/NSTextField.h>
+@interface SpriteConfigInputView ()<NSTextFieldDelegate>
 @property (weak) IBOutlet NSTextField *nameTextField;
 @property (weak) IBOutlet NSPopUpButton *spriteType;
 @property (weak) IBOutlet NSTextField *pos_x;
@@ -16,20 +17,19 @@
 @property (weak) IBOutlet NSTextField *width;
 @property (weak) IBOutlet NSTextField *height;
 @property (weak) IBOutlet NSTextField *animationCount;
-@property (weak) IBOutlet NSButton *isAnimationLoopYes;
-@property (weak) IBOutlet NSButton *isAnimationLoopNo;
+@property (weak) IBOutlet NSButton *isAnimationLoop;
 @property (weak) IBOutlet NSTextField *order;
 @property (weak) IBOutlet NSPopUpButton *anchorType;
 @property (weak) IBOutlet NSPopUpButton *anchorSubType;
-@property (weak) IBOutlet NSButton *hasBgMusicYes;
-@property (weak) IBOutlet NSButton *hasBgMusicNo;
-@property (weak) IBOutlet NSButton *isBgMusicLoopYes;
-@property (weak) IBOutlet NSButton *isBgMusicLoopNo;
+@property (weak) IBOutlet NSButton *hasBgMusic;
+@property (weak) IBOutlet NSButton *isBgMusicLoop;
+@property (weak) IBOutlet NSStepper *orderPlus;
 
 
 @property (strong) NSArray* spriteTypeArray;
 @property (strong) NSArray* anchorTypeArray;
 @property (strong) NSDictionary* anchorTypeDict;
+@property (copy,nonatomic) void (^RefreshBlock) (LEOSprite* sprite);
 @end
 
 @implementation SpriteConfigInputView
@@ -39,6 +39,14 @@
     if (self) {
         [[NSBundle mainBundle] loadNibNamed:@"SpriteConfigInputView" owner:self topLevelObjects:nil];
         [self addSubview:self.view];
+        
+        self.nameTextField.delegate = self;
+        self.pos_x.delegate = self;
+        self.pos_y.delegate = self;
+        self.width.delegate = self;
+        self.height.delegate = self;
+        self.animationCount.delegate = self;
+        self.order.delegate = self;
         
         [self setUpData];
     }
@@ -61,15 +69,13 @@
     self.width.stringValue = [NSString stringWithFormat:@"%.2f",sprite.width];
     self.height.stringValue = [NSString stringWithFormat:@"%.2f",sprite.height];
     self.animationCount.stringValue = [NSString stringWithFormat:@"%ld",sprite.animationCount];
-    self.isAnimationLoopYes.state = sprite.recycle;
-    self.isAnimationLoopNo.state = !self.isAnimationLoopYes.state;
+    self.isAnimationLoop.state = sprite.recycle;
     self.order.stringValue = [NSString stringWithFormat:@"%ld",sprite.order];
     
-    self.hasBgMusicYes.state = sprite.hasBgMusic;
-    self.hasBgMusicNo.state = !self.hasBgMusicYes.state;
+    self.hasBgMusic.state = sprite.hasBgMusic;
     
-    self.isBgMusicLoopYes.state = sprite.isBgMusicLoop;
-    self.isBgMusicLoopNo.state = !self.isBgMusicLoopYes;
+    self.isBgMusicLoop.state = sprite.isBgMusicLoop;
+    [self.orderPlus setIntegerValue:sprite.order];
 }
 
 - (void)setUpData{
@@ -83,7 +89,7 @@
                             @"眉毛":@[@"双眉",@"左眉",@"右眉"],
                             @"👀":@[@"双眼",@"左眼",@"右眼"],
                             @"👃":@[@"全鼻",@"鼻梁",@"鼻尖",@"鼻孔"],
-                            @"👄":@[@"全嘴",@"上嘴唇",@"下嘴唇",@"嘴角",@"左嘴角",@"右嘴角"]};
+                            @"👄":@[@"全嘴",@"上嘴唇",@"下嘴唇",@"左嘴角",@"右嘴角"]};
     
     self.spriteTypeArray = @[@"静态",@"伴随面部"];
     self.anchorTypeArray = @[@"静态",
@@ -110,12 +116,25 @@
     }
 }
 
+#pragma mark - action
+- (IBAction)onOrderPlus:(NSStepper *)sender {
+    NSStepper* ss = sender;
+    
+    self.order.stringValue = [NSString stringWithFormat:@"%ld",ss.integerValue];
+    
+    [self checkValue];
+}
+
  
 - (IBAction)onSpriteTypeSelect:(NSPopUpButton *)sender {
     NSInteger n = sender.indexOfSelectedItem;
     
     self.anchorType.enabled = (n != 0);
     self.anchorSubType.enabled = self.anchorType.enabled;
+    [self checkValue];
+}
+- (IBAction)onSpriteAnchorSubtype:(NSPopUpButton *)sender {
+    [self checkValue];
 }
 
 - (IBAction)onSelect:(NSPopUpButton *)sender {
@@ -124,11 +143,77 @@
         [self.anchorSubType removeAllItems];
         [self.anchorSubType addItemsWithTitles:self.anchorTypeDict[title]];
     }
+    
+    [self checkValue];
+}
+
+- (IBAction)onCheckBox:(id)sender{
+    
+    if (!self.hasBgMusic.state) {
+        self.isBgMusicLoop.state = NO;
+    }
+    
+    if (self.isBgMusicLoop.state) {
+        self.hasBgMusic.state = YES;
+    }
+    
+    [self checkValue];
 }
 
 
 
 - (void)checkValue{
+    [self receiveData];
 }
+
+- (NSString*)getFaceCode{
+    
+    NSString* path = [[NSBundle mainBundle] pathForResource:@"FaceCode" ofType:@"plist"];
+    NSDictionary* dict = [NSDictionary dictionaryWithContentsOfFile:path][@"FaceGroup"];
+    
+    NSInteger index0 = self.anchorType.indexOfSelectedItem;
+    NSInteger index1 = self.anchorSubType.indexOfSelectedItem;
+    
+    if (index0 == 0) {
+        NSLog(@"~ static");
+        return @"static";
+    }
+    
+    NSArray* keyArray = @[@"static",@"face",@"ear",@"brow",@"eye",@"nose",@"mouse"];
+    NSString* key = [keyArray objectAtIndex:index0%keyArray.count];
+    NSString* value = dict[key][index1];
+    NSLog(@"~~%@",value);
+    return value;
+}
+
+- (void)receiveData{
+    self.sprite.spriteName = self.nameTextField.stringValue;
+   self.sprite.pos_x = self.pos_x.stringValue.floatValue;
+    self.sprite.pos_y = self.pos_y.stringValue.floatValue;
+    self.sprite.width = self.width.stringValue.floatValue;
+    self.sprite.height = self.height.stringValue.floatValue;
+    self.sprite.animationCount = self.animationCount.stringValue.integerValue;
+    self.sprite.recycle = self.isAnimationLoop.state;
+    self.sprite.order = self.order.stringValue.integerValue;
+    self.sprite.anchorType = [self getFaceCode];
+    self.sprite.hasBgMusic = self.hasBgMusic.state;
+    self.sprite.isBgMusicLoop = self.isBgMusicLoop.state;
+    
+    
+    
+    if (self.RefreshBlock) {
+        self.RefreshBlock(self.sprite);
+    }
+}
+
+- (void)setRefreshBlock:(void(^)(LEOSprite* sprite))block{
+    _RefreshBlock = block;
+}
+
+#pragma mark - TextFeild Delegate
+- (void)controlTextDidEndEditing:(NSNotification *)obj{
+   [self checkValue];
+}
+
 
 @end

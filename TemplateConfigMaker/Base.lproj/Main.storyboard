@@ -695,12 +695,12 @@
                                     <rect key="frame" x="-100" y="-100" width="87" height="18"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
-                                <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="Dr8-11-4i5">
+                                <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="Dr8-11-4i5">
                                     <rect key="frame" x="224" y="1" width="15" height="381"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
-                            <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="72o-Aw-1Yp">
+                            <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="70" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="72o-Aw-1Yp">
                                 <rect key="frame" x="340" y="55" width="212" height="373"/>
                                 <clipView key="contentView" ambiguous="YES" id="iRp-tt-Y0Y">
                                     <rect key="frame" x="1" y="17" width="210" height="355"/>
@@ -713,7 +713,7 @@
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                             <tableColumns>
-                                                <tableColumn width="116" minWidth="40" maxWidth="1000" id="KH4-Ni-zKX">
+                                                <tableColumn width="206.47265625" minWidth="40" maxWidth="1000" id="KH4-Ni-zKX">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
                                                         <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -727,7 +727,7 @@
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView identifier="CellID" id="9lr-pa-nk7">
-                                                            <rect key="frame" x="1" y="1" width="116" height="17"/>
+                                                            <rect key="frame" x="1" y="1" width="206" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cai-QH-tpr">
@@ -751,7 +751,7 @@
                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </clipView>
                                 <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="9IJ-PN-UiU">
-                                    <rect key="frame" x="1" y="357" width="142" height="15"/>
+                                    <rect key="frame" x="1" y="2" width="0.0" height="15"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="32e-4f-RDw">
@@ -773,12 +773,45 @@
                                     <font key="font" size="12" name="STHeitiSC-Light"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="onAction:" target="XfG-lQ-9wD" id="qLA-ca-2ad"/>
+                                    <action selector="onNewSprite:" target="XfG-lQ-9wD" id="GqP-JA-EPM"/>
+                                </connections>
+                            </button>
+                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="esM-9X-ozi">
+                                <rect key="frame" x="343" y="25" width="100" height="18"/>
+                                <buttonCell key="cell" type="check" title="模版背景音乐" bezelStyle="regularSquare" imagePosition="left" inset="2" id="IUF-Dy-5AO">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" size="13" name="STHeitiSC-Light"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="onBgMusic:" target="XfG-lQ-9wD" id="uUP-XX-Car"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GWd-Fm-0ZD">
+                                <rect key="frame" x="208" y="6" width="96" height="19"/>
+                                <buttonCell key="cell" type="roundRect" title="删除" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="oHt-YX-JP0">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" size="12" name="STHeitiSC-Light"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="onDeleteCurrentSprite:" target="XfG-lQ-9wD" id="8jM-o2-47y"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YFu-Ka-52g">
+                                <rect key="frame" x="685" y="19" width="117" height="19"/>
+                                <buttonCell key="cell" type="roundRect" title="Save" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="c3t-78-AGz">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="titleBar" size="12"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="onSave:" target="XfG-lQ-9wD" id="fqZ-0P-9DD"/>
                                 </connections>
                             </button>
                         </subviews>
                     </view>
                     <connections>
+                        <outlet property="bgMusic" destination="esM-9X-ozi" id="ent-Fk-uJw"/>
+                        <outlet property="btDelete" destination="GWd-Fm-0ZD" id="Dgs-UM-BVk"/>
+                        <outlet property="btSave" destination="YFu-Ka-52g" id="twO-0q-ONC"/>
                         <outlet property="configInputView" destination="N50-Tf-eIz" id="hle-L5-bHN"/>
                         <outlet property="tableView" destination="6UR-eC-NiR" id="T5g-d9-1R0"/>
                         <outlet property="textView" destination="k7c-4A-5ZI" id="Bm9-HY-yhj"/>

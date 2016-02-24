@@ -65,7 +65,7 @@
     self.anchor_y = [dict[@"pos_y"] floatValue];
     self.width = [dict[@"width"] floatValue];
     self.height = [dict[@"height"] floatValue];
-    self.anchorType = [dict[@"anchorType"] integerValue];
+    self.anchorType = dict[@"anchorType"];
     
     self.hasBgMusic = [dict[@"hasBgMusic"] boolValue];
     self.isBgMusicLoop = [dict[@"isBgMusicLoop"] boolValue];
@@ -92,6 +92,7 @@
     self.pos_y = [dict[@"pos_y"] floatValue];
     self.width = [dict[@"width"] floatValue]*size.width;
     self.height = [dict[@"height"] floatValue]*size.height;
+    
     self.spriteRect = CGRectMake(self.pos_x * size.width - self.width * 0.5, self.pos_y * size.height - self.height * 0.5, self.width, self.height);
     
     return self;
@@ -109,10 +110,37 @@
     self.recycle = YES;
     self.duration = 1;
     self.order = 0;
-    self.anchorType = SpriteAnchorTypeStatic;
-    self.hasBgMusic = YES;
-    self.isBgMusicLoop = YES;
+    self.hasBgMusic = NO;
+    self.isBgMusicLoop = NO;
+    self.anchorType = @"static";
     return self;
+}
+
+- (void)setAnchorType:(NSString *)anchorType{
+    _anchorType = anchorType;
+}
+
+- (NSString*)getStringFromFloat:(CGFloat)floatnumber{
+    return [NSString stringWithFormat:@"%.2f",floatnumber];
+}
+
+
+
+- (NSDictionary*)getDictFromSprite{
+    NSMutableDictionary* mdic = [NSMutableDictionary new];
+    [mdic setObject:self.spriteName forKey:@"spriteName"];
+    [mdic setObject:[self getStringFromFloat:self.pos_x] forKey:@"pos_x"];
+    [mdic setObject:[self getStringFromFloat:self.pos_y] forKey:@"pos_y"];
+    [mdic setObject:[self getStringFromFloat:self.width] forKey:@"width"];
+    [mdic setObject:[self getStringFromFloat:self.height] forKey:@"height"];
+    [mdic setObject:[@(self.animationCount) stringValue] forKey:@"animationCount"];
+    [mdic setObject:[@(self.recycle) stringValue] forKey:@"isloop"];
+    [mdic setObject:[@(self.duration) stringValue] forKey:@"animationDuration"];
+    [mdic setObject:[@(self.order) stringValue] forKey:@"order"];
+    [mdic setObject:self.anchorType forKey:@"anchorType"];
+    [mdic setObject:[@(self.hasBgMusic) stringValue] forKey:@"hasBgMusic"];
+    [mdic setObject:[@(self.isBgMusicLoop) stringValue] forKey:@"isBgMusicLoop"];
+    return mdic;
 }
 
 @end
