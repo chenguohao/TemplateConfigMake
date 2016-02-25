@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import <AppKit/AppKit.h>
 #import "LEOSprite.h"
+#import "FaceView.h"
 #import "SpriteConfigInputView.h"
 @interface ViewController()<NSTableViewDataSource,NSTableViewDelegate>
 @property (strong) NSString* str1;
@@ -21,6 +22,7 @@
 @property (weak) LEOSprite* curEditSprite;
 @property (strong) NSString* str0;
 @property (weak) IBOutlet NSButton *btSave;
+@property (weak) IBOutlet NSImageView *photoImage;
 
 @property (nonatomic, strong) NSMutableArray* spritesArray;
 @end
@@ -48,6 +50,16 @@ NSString* cellID = @"CellID";
         }
         [self produceSpriteConfig];
     }];
+    CGFloat r = self.photoImage.frame.size.width/500;
+    NSRect rect = NSRectFromCGRect(CGRectMake(154*r, 155*r, 217*r, 217*r));
+    FaceView* faceView = [[FaceView alloc] initWithFrame:rect];
+    [faceView setWantsLayer:YES];
+    faceView .layer.masksToBounds   = YES;
+    faceView.layer.borderColor = [NSColor redColor].CGColor;
+    faceView.layer.borderWidth = 1;
+    
+    
+    [self.photoImage addSubview:faceView];
 }
 
 -(NSArray*)getDicArrayFromSpriteArray:(NSArray*)array{
@@ -193,7 +205,7 @@ NSString* cellID = @"CellID";
     [panel beginWithCompletionHandler:^(NSInteger result){
         if (result == NSFileHandlingPanelOKButton) {
             NSURL*  theDoc = panel.URL;
-            theDoc =[theDoc URLByAppendingPathExtension:[NSString stringWithFormat:@".config"]];
+            theDoc =[theDoc URLByAppendingPathExtension:[NSString stringWithFormat:@"config"]];
             NSString* content = self.textView.string;
             BOOL result = [content writeToURL:theDoc atomically:YES encoding:NSUTF8StringEncoding error:nil];
             if (result) {

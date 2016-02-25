@@ -4,50 +4,76 @@
 <dict>
 	<key>FaceCodeStr2EnumValue</key>
 	<dict>
+		<key>static</key>
+		<integer>0</integer>
 		<key>ht</key>
-		<integer>0</integer>
+		<integer>1</integer>
 		<key>hf</key>
-		<integer>0</integer>
+		<integer>2</integer>
 		<key>hb</key>
-		<integer>0</integer>
+		<integer>15</integer>
 		<key>fms</key>
-		<integer>0</integer>
+		<integer>14</integer>
 		<key>fear</key>
-		<integer>0</integer>
+		<integer>16</integer>
 		<key>fearl</key>
-		<integer>0</integer>
+		<integer>17</integer>
 		<key>fearr</key>
-		<integer>0</integer>
-		<key>fb</key>
-		<integer>0</integer>
+		<integer>18</integer>
 		<key>fbl</key>
-		<integer>0</integer>
+		<integer>3</integer>
 		<key>fbr</key>
-		<integer>0</integer>
+		<integer>4</integer>
 		<key>fe</key>
-		<integer>0</integer>
+		<integer>6</integer>
 		<key>fel</key>
-		<integer>0</integer>
+		<integer>7</integer>
 		<key>fer</key>
-		<integer>0</integer>
+		<integer>8</integer>
 		<key>fetil</key>
-		<integer>0</integer>
+		<integer>21</integer>
 		<key>fetir</key>
-		<integer>0</integer>
+		<integer>22</integer>
 		<key>fetol</key>
-		<integer>0</integer>
+		<integer>23</integer>
 		<key>fetor</key>
-		<integer>0</integer>
+		<integer>24</integer>
+		<key>fn</key>
+		<integer>9</integer>
+		<key>fnb</key>
+		<integer>10</integer>
+		<key>fm</key>
+		<integer>11</integer>
+		<key>fmu</key>
+		<integer>25</integer>
+		<key>fmd</key>
+		<integer>26</integer>
+		<key>fmtl</key>
+		<integer>12</integer>
+		<key>fmtr</key>
+		<integer>13</integer>
+		<key>fbc</key>
+		<integer>5</integer>
+		<key>fa</key>
+		<integer>20</integer>
+		<key>fmb</key>
+		<integer>27</integer>
 	</dict>
 	<key>FaceGroup</key>
 	<dict>
+		<key>static</key>
+		<array>
+			<string>static</string>
+		</array>
 		<key>face</key>
 		<array>
+			<string>fa</string>
 			<string>ht</string>
 			<string>hf</string>
 			<string>hb</string>
 			<string>fms</string>
 			<string>fmb</string>
+			<string>hb</string>
 		</array>
 		<key>ear</key>
 		<array>
@@ -74,8 +100,6 @@
 		<key>nose</key>
 		<array>
 			<string>fn</string>
-			<string>fnh</string>
-			<string>fnt</string>
 			<string>fnb</string>
 		</array>
 		<key>mouse</key>

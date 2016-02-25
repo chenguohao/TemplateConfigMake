@@ -9,6 +9,7 @@
                 <outlet property="anchorSubType" destination="Bqq-Vf-1ns" id="o35-yY-8O8"/>
                 <outlet property="anchorType" destination="Jee-B9-W9N" id="9Um-T6-LOf"/>
                 <outlet property="animationCount" destination="JXq-kD-Y2d" id="vfk-mc-Uwz"/>
+                <outlet property="animationDuration" destination="qqn-3t-UG2" id="4Xl-65-gBb"/>
                 <outlet property="hasBgMusic" destination="Y79-jS-Wky" id="4nK-Zr-5gY"/>
                 <outlet property="height" destination="4PI-CP-ywe" id="wUU-Ax-vyc"/>
                 <outlet property="isAnimationLoop" destination="rGA-RB-Fo7" id="4r2-oe-G4a"/>
@@ -103,7 +104,7 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JXq-kD-Y2d">
-                    <rect key="frame" x="139" y="164" width="96" height="22"/>
+                    <rect key="frame" x="139" y="167" width="96" height="22"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="8BR-4c-lEN">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -111,7 +112,7 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F49-UO-1UG">
-                    <rect key="frame" x="161" y="98" width="74" height="22"/>
+                    <rect key="frame" x="160" y="91" width="74" height="22"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="boc-pz-lkp">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -119,7 +120,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yob-gl-SFf">
-                    <rect key="frame" x="19" y="100" width="30" height="17"/>
+                    <rect key="frame" x="18" y="93" width="30" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="层级" id="0XX-nf-fVh">
                         <font key="font" size="13" name="STHeitiSC-Light"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -135,15 +136,23 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="P7L-jW-yfA">
-                    <rect key="frame" x="19" y="167" width="56" height="17"/>
+                    <rect key="frame" x="19" y="170" width="56" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="动画帧数" id="nWD-h8-Qeq">
                         <font key="font" size="13" name="STHeitiSC-Light"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X6L-RX-W9S">
+                    <rect key="frame" x="19" y="142" width="56" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="动画时长" id="t0b-bQ-r14">
+                        <font key="font" size="13" name="STHeitiSC-Light"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9se-ug-cjA">
-                    <rect key="frame" x="19" y="133" width="56" height="17"/>
+                    <rect key="frame" x="18" y="118" width="56" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="动画循环" id="PSn-95-Jbb">
                         <font key="font" size="13" name="STHeitiSC-Light"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -199,7 +208,7 @@
                     </textFieldCell>
                 </textField>
                 <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qz8-rX-yXd">
-                    <rect key="frame" x="141" y="96" width="19" height="27"/>
+                    <rect key="frame" x="140" y="89" width="19" height="27"/>
                     <stepperCell key="cell" continuous="YES" alignment="left" maxValue="100" id="uEJ-7b-rs1"/>
                     <connections>
                         <action selector="onOrderPlus:" target="-2" id="3Ze-vc-waP"/>
@@ -260,7 +269,7 @@
                     </connections>
                 </button>
                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rGA-RB-Fo7">
-                    <rect key="frame" x="138" y="131" width="22" height="18"/>
+                    <rect key="frame" x="137" y="116" width="22" height="18"/>
                     <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="tsf-ga-Mvo">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
@@ -269,6 +278,14 @@
                         <action selector="onCheckBox:" target="-2" id="mmZ-6f-7G2"/>
                     </connections>
                 </button>
+                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qqn-3t-UG2">
+                    <rect key="frame" x="139" y="139" width="96" height="22"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="Z1w-0o-LUo">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
             </subviews>
             <connections>
                 <outlet property="nextKeyView" destination="-2" id="7O7-Or-Pk5"/>

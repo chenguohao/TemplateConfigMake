@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TemplateConfigMaker/ViewController.m"
-            timestampString = "478007623.750156"
+            timestampString = "478097918.45205"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "131"
-            endingLineNumber = "131"
+            startingLineNumber = "143"
+            endingLineNumber = "143"
             landmarkName = "-onNewSprite:"
             landmarkType = "5">
          </BreakpointContent>
@@ -26,12 +26,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TemplateConfigMaker/LEOSprite.m"
-            timestampString = "478000638.134632"
+            timestampString = "478077624.008376"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "120"
-            endingLineNumber = "120"
-            landmarkName = "-setAnchorType:"
+            startingLineNumber = "117"
+            endingLineNumber = "117"
+            landmarkName = "-setAnchorTypeWithFaceCode:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TemplateConfigMaker/SpriteConfigInputView.m"
-            timestampString = "478000515.805394"
+            timestampString = "478085989.28809"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "126"
-            endingLineNumber = "126"
+            startingLineNumber = "165"
+            endingLineNumber = "165"
             landmarkName = "-onOrderPlus:"
             landmarkType = "5">
          </BreakpointContent>
@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TemplateConfigMaker/SpriteConfigInputView.m"
-            timestampString = "478001129.934893"
+            timestampString = "478086230.320849"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "202"
-            endingLineNumber = "202"
+            startingLineNumber = "248"
+            endingLineNumber = "248"
             landmarkName = "-receiveData"
             landmarkType = "5">
          </BreakpointContent>
@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TemplateConfigMaker/ViewController.m"
-            timestampString = "478007623.750156"
+            timestampString = "478097918.45205"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "197"
-            endingLineNumber = "197"
+            startingLineNumber = "209"
+            endingLineNumber = "209"
             landmarkName = "-onSave:"
             landmarkType = "5">
          </BreakpointContent>
@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TemplateConfigMaker/ViewController.m"
-            timestampString = "478007623.750156"
+            timestampString = "478097918.45205"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "196"
-            endingLineNumber = "196"
+            startingLineNumber = "208"
+            endingLineNumber = "208"
             landmarkName = "-onSave:"
             landmarkType = "5">
          </BreakpointContent>
@@ -106,12 +106,60 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TemplateConfigMaker/ViewController.m"
-            timestampString = "478007623.750156"
+            timestampString = "478097918.45205"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "199"
-            endingLineNumber = "199"
+            startingLineNumber = "211"
+            endingLineNumber = "211"
             landmarkName = "-onSave:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TemplateConfigMaker/SpriteConfigInputView.m"
+            timestampString = "478085989.28809"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
+            landmarkName = "-setAnchorTypeWithEnum:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TemplateConfigMaker/SpriteConfigInputView.m"
+            timestampString = "478086126.242161"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
+            landmarkName = "-setAnchorTypeWithEnum:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TemplateConfigMaker/FaceView.m"
+            timestampString = "478102146.17414"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
+            landmarkName = "-points"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

@@ -23,18 +23,7 @@
 //}
 
 
-#pragma mark - animation
 
-- (void)setAnimationCount:(NSInteger)animationCount{
-    if (animationCount > _animationFrame) {
-        if (_recycle) {
-            _animationCount = 0;
-        }
-    } else {
-        _animationCount = animationCount;
-    }
-    
-}
 
 - (NSImage *)frameImage {
     return nil;
@@ -112,12 +101,33 @@
     self.order = 0;
     self.hasBgMusic = NO;
     self.isBgMusicLoop = NO;
-    self.anchorType = @"static";
+    self.anchorType = [self getEnumFromFaceCode:@"static"];
     return self;
 }
 
-- (void)setAnchorType:(NSString *)anchorType{
-    _anchorType = anchorType;
+- (SpriteAnchorType)getEnumFromFaceCode:(NSString*)faceCode{
+    NSString* path = [[NSBundle mainBundle] pathForResource:@"FaceCode" ofType:@"plist"];
+    NSDictionary* dict = [NSDictionary dictionaryWithContentsOfFile:path][@"FaceCodeStr2EnumValue"];
+    NSInteger number = [dict[faceCode] integerValue];
+    
+    return (SpriteAnchorType)number;
+}
+
+- (void)setAnchorTypeWithFaceCode:(NSString *)faceCode{
+    _anchorType = [self getEnumFromFaceCode:faceCode];
+}
+
++ (NSString*)getFaceCodeFromAnchorType:(SpriteAnchorType)anchorType{
+    NSString* path = [[NSBundle mainBundle] pathForResource:@"FaceCode" ofType:@"plist"];
+    NSDictionary* dict = [NSDictionary dictionaryWithContentsOfFile:path][@"FaceCodeStr2EnumValue"];
+    
+    for (NSString* key in dict.allKeys) {
+        if ([dict[key] integerValue] == anchorType) {
+            return key;
+        }
+    }
+    
+    return nil;
 }
 
 - (NSString*)getStringFromFloat:(CGFloat)floatnumber{
@@ -129,17 +139,18 @@
 - (NSDictionary*)getDictFromSprite{
     NSMutableDictionary* mdic = [NSMutableDictionary new];
     [mdic setObject:self.spriteName forKey:@"spriteName"];
+    [mdic setObject:[@(self.spriteType) stringValue] forKey:@"spriteType"];
     [mdic setObject:[self getStringFromFloat:self.pos_x] forKey:@"pos_x"];
     [mdic setObject:[self getStringFromFloat:self.pos_y] forKey:@"pos_y"];
     [mdic setObject:[self getStringFromFloat:self.width] forKey:@"width"];
     [mdic setObject:[self getStringFromFloat:self.height] forKey:@"height"];
     [mdic setObject:[@(self.animationCount) stringValue] forKey:@"animationCount"];
-    [mdic setObject:[@(self.recycle) stringValue] forKey:@"isloop"];
-    [mdic setObject:[@(self.duration) stringValue] forKey:@"animationDuration"];
+    [mdic setObject: @(self.recycle) forKey:@"isloop"];
+    [mdic setObject:[self getStringFromFloat:self.duration] forKey:@"animationDuration"];
     [mdic setObject:[@(self.order) stringValue] forKey:@"order"];
-    [mdic setObject:self.anchorType forKey:@"anchorType"];
-    [mdic setObject:[@(self.hasBgMusic) stringValue] forKey:@"hasBgMusic"];
-    [mdic setObject:[@(self.isBgMusicLoop) stringValue] forKey:@"isBgMusicLoop"];
+    [mdic setObject:[@(self.anchorType) stringValue] forKey:@"anchorType"];
+    [mdic setObject:@(self.hasBgMusic)forKey:@"hasBgMusic"];
+    [mdic setObject:@(self.isBgMusicLoop) forKey:@"isBgMusicLoop"];
     return mdic;
 }
 

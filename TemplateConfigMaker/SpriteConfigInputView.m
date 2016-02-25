@@ -17,6 +17,8 @@
 @property (weak) IBOutlet NSTextField *width;
 @property (weak) IBOutlet NSTextField *height;
 @property (weak) IBOutlet NSTextField *animationCount;
+@property (weak) IBOutlet NSTextField *animationDuration;
+
 @property (weak) IBOutlet NSButton *isAnimationLoop;
 @property (weak) IBOutlet NSTextField *order;
 @property (weak) IBOutlet NSPopUpButton *anchorType;
@@ -47,7 +49,7 @@
         self.height.delegate = self;
         self.animationCount.delegate = self;
         self.order.delegate = self;
-        
+        self.animationDuration.delegate = self;
         [self setUpData];
     }
     return self;
@@ -69,6 +71,7 @@
     self.width.stringValue = [NSString stringWithFormat:@"%.2f",sprite.width];
     self.height.stringValue = [NSString stringWithFormat:@"%.2f",sprite.height];
     self.animationCount.stringValue = [NSString stringWithFormat:@"%ld",sprite.animationCount];
+    self.animationDuration.stringValue = [NSString stringWithFormat:@"%.2f",sprite.duration];
     self.isAnimationLoop.state = sprite.recycle;
     self.order.stringValue = [NSString stringWithFormat:@"%ld",sprite.order];
     
@@ -76,6 +79,42 @@
     
     self.isBgMusicLoop.state = sprite.isBgMusicLoop;
     [self.orderPlus setIntegerValue:sprite.order];
+    
+    [self setAnchorTypeWithEnum:sprite.anchorType];
+    self.anchorType.enabled = (sprite.spriteType != SpriteTypeStatic);
+    self.anchorSubType.enabled = self.anchorType.enabled;
+}
+
+- (void)setAnchorTypeWithEnum:(SpriteAnchorType)anchorType{
+    NSString* faceCode = [LEOSprite getFaceCodeFromAnchorType:anchorType];
+    if (faceCode) {
+        NSString* path = [[NSBundle mainBundle] pathForResource:@"FaceCode" ofType:@"plist"];
+        NSDictionary* dict = [NSDictionary dictionaryWithContentsOfFile:path][@"FaceGroup"];
+        
+        NSArray* groupArray = @[@"static",
+                                @"face",
+                                @"ear",
+                                @"brow",
+                                @"eye",
+                                @"nose",
+                                @"mouse"];
+        
+        for (int group = 0; group < dict.allKeys.count; group++) {
+            NSString* key = groupArray[group];
+            NSArray* array = dict[key];
+            for (int part = 0; part < [array count]; part++) {
+                if ([array[part] isEqualToString:faceCode]) {
+                    [self.anchorType selectItemAtIndex:group];
+                    if (self.anchorSubType) {
+                        [self.anchorSubType removeAllItems];
+                        NSString* title = self.anchorTypeArray[group];
+                        [self.anchorSubType addItemsWithTitles:self.anchorTypeDict[title]];
+                    }
+                    [self.anchorSubType selectItemAtIndex:part];
+                }
+            }
+        }
+    }
 }
 
 - (void)setUpData{
@@ -84,21 +123,21 @@
     self.anchorSubType.enabled = self.anchorType.enabled;
     
     self.anchorTypeDict = @{@"静态":@[@"静态"],
-                            @"👨":@[@"头顶",@"额头",@"脸下",@"脸颊",@"下巴"],
-                            @"👂":@[@"双耳",@"左耳",@"右耳"],
+                            @"脸":@[@"全脸",@"头顶",@"额头",@"脖子",@"脸颊",@"下巴",@"上半身"],
+                            @"耳朵":@[@"双耳",@"左耳",@"右耳"],
                             @"眉毛":@[@"双眉",@"左眉",@"右眉"],
-                            @"👀":@[@"双眼",@"左眼",@"右眼"],
-                            @"👃":@[@"全鼻",@"鼻梁",@"鼻尖",@"鼻孔"],
-                            @"👄":@[@"全嘴",@"上嘴唇",@"下嘴唇",@"左嘴角",@"右嘴角"]};
+                            @"眼睛":@[@"双眼",@"左眼",@"右眼",],
+                            @"鼻子":@[@"全鼻",@"鼻孔"],
+                            @"嘴巴":@[@"全嘴",@"上嘴唇",@"下嘴唇",@"左嘴角",@"右嘴角"]};
     
     self.spriteTypeArray = @[@"静态",@"伴随面部"];
     self.anchorTypeArray = @[@"静态",
-                             @"👨",
-                             @"👂",
+                             @"脸",
+                             @"耳朵",
                              @"眉毛",
-                             @"👀",
-                             @"👃",
-                             @"👄"];
+                             @"眼睛",
+                             @"鼻子",
+                             @"嘴巴"];
     
     if (self.spriteType) {
         [self.spriteType removeAllItems];
@@ -128,7 +167,10 @@
  
 - (IBAction)onSpriteTypeSelect:(NSPopUpButton *)sender {
     NSInteger n = sender.indexOfSelectedItem;
-    
+    if (n == 0) {
+        [self.anchorType selectItemAtIndex:0];
+        [self.anchorSubType selectItemAtIndex:0];
+    }
     self.anchorType.enabled = (n != 0);
     self.anchorSubType.enabled = self.anchorType.enabled;
     [self checkValue];
@@ -143,8 +185,10 @@
         [self.anchorSubType removeAllItems];
         [self.anchorSubType addItemsWithTitles:self.anchorTypeDict[title]];
     }
+    if (sender != self.anchorType) {
+        [self checkValue];
+    }
     
-    [self checkValue];
 }
 
 - (IBAction)onCheckBox:(id)sender{
@@ -188,17 +232,19 @@
 
 - (void)receiveData{
     self.sprite.spriteName = self.nameTextField.stringValue;
+    self.sprite.spriteType = self.spriteType.indexOfSelectedItem;
    self.sprite.pos_x = self.pos_x.stringValue.floatValue;
     self.sprite.pos_y = self.pos_y.stringValue.floatValue;
     self.sprite.width = self.width.stringValue.floatValue;
     self.sprite.height = self.height.stringValue.floatValue;
-    self.sprite.animationCount = self.animationCount.stringValue.integerValue;
+    NSInteger n = self.animationCount.stringValue.integerValue;
+    self.sprite.animationCount = n;
     self.sprite.recycle = self.isAnimationLoop.state;
     self.sprite.order = self.order.stringValue.integerValue;
-    self.sprite.anchorType = [self getFaceCode];
+    [self.sprite setAnchorTypeWithFaceCode:[self getFaceCode]];
     self.sprite.hasBgMusic = self.hasBgMusic.state;
     self.sprite.isBgMusicLoop = self.isBgMusicLoop.state;
-    
+    self.sprite.duration = self.animationDuration.stringValue.floatValue;
     
     
     if (self.RefreshBlock) {

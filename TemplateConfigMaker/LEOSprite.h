@@ -71,7 +71,7 @@ typedef NS_ENUM(NSUInteger, SpriteAnchorType) {
 
 @property (nonatomic, assign) CGFloat width;
 @property (nonatomic, assign) CGFloat height;
-@property (nonatomic, assign) NSString* anchorType;
+@property (nonatomic, assign) SpriteAnchorType anchorType;
 
 @property (nonatomic, assign) BOOL hasBgMusic;
 @property (nonatomic, assign) BOOL isBgMusicLoop;
@@ -85,4 +85,6 @@ typedef NS_ENUM(NSUInteger, SpriteAnchorType) {
 - (instancetype)initWithName:(NSString*)spriteName;
 
 - (NSDictionary*)getDictFromSprite;
+- (void)setAnchorTypeWithFaceCode:(NSString *)faceCode;
++ (NSString*)getFaceCodeFromAnchorType:(SpriteAnchorType)anchorType;
 @end
