@@ -11,6 +11,8 @@
 #import "LEOSprite.h"
 #import "FaceView.h"
 #import "SpriteConfigInputView.h"
+#import "ContainerImageView.h"
+
 @interface ViewController()<NSTableViewDataSource,NSTableViewDelegate>
 @property (strong) NSString* str1;
 @property (weak) IBOutlet NSTableView *tableView;
@@ -22,9 +24,9 @@
 @property (weak) LEOSprite* curEditSprite;
 @property (strong) NSString* str0;
 @property (weak) IBOutlet NSButton *btSave;
-@property (weak) IBOutlet NSImageView *photoImage;
-
+@property (weak) IBOutlet ContainerImageView *photoImage;
 @property (nonatomic, strong) NSMutableArray* spritesArray;
+@property (nonatomic,strong) FaceView* faceView;
 @end
 
 NSString* cellID = @"CellID";
@@ -40,6 +42,8 @@ NSString* cellID = @"CellID";
     self.hasBgMusic = NO;
     [self.configInputView setRefreshBlock:^(LEOSprite *sprite) {
         self.curEditSprite = sprite;
+        self.faceView.hidden = sprite.spriteType == SpriteTypeStatic;
+        
         if (self.spritesArray.count) {
             NSInteger selectRow = self.tableView.selectedRow;
             [self.spritesArray replaceObjectAtIndex:self.tableView.selectedRow withObject:self.curEditSprite];
@@ -48,18 +52,19 @@ NSString* cellID = @"CellID";
             [self.tableView selectRowIndexes:indexSet byExtendingSelection:NO];
             [self selectRow:selectRow];
         }
+        [self.photoImage updateSprite:sprite];
         [self produceSpriteConfig];
     }];
     CGFloat r = self.photoImage.frame.size.width/500;
     NSRect rect = NSRectFromCGRect(CGRectMake(154*r, 155*r, 217*r, 217*r));
-    FaceView* faceView = [[FaceView alloc] initWithFrame:rect];
-    [faceView setWantsLayer:YES];
-    faceView .layer.masksToBounds   = YES;
-    faceView.layer.borderColor = [NSColor redColor].CGColor;
-    faceView.layer.borderWidth = 1;
+    self.faceView = [[FaceView alloc] initWithFrame:rect];
+    [self.faceView setWantsLayer:YES];
+    self.faceView .layer.masksToBounds   = YES;
+    self.faceView.layer.borderColor = [NSColor redColor].CGColor;
+    self.faceView.layer.borderWidth = 1;
+    self.faceView.hidden = YES;
     
-    
-    [self.photoImage addSubview:faceView];
+    [self.photoImage addSubview:self.faceView];
 }
 
 -(NSArray*)getDicArrayFromSpriteArray:(NSArray*)array{
@@ -110,14 +115,14 @@ NSString* cellID = @"CellID";
     return NO;
 }
 
-- (NSString*)getNewNameOfSprite{
-    NSString* newName = @"NewSpite";
+- (NSString*)getNewNameWithName:(NSString*)name{
+    NSString* newName =name;
     if ([self isSpriteArrayContainName:newName]) {
         
         int n = 0;
         
         while ([self isSpriteArrayContainName:newName]) {
-            newName = [NSString stringWithFormat:@"NewSprite%d",++n];
+            newName = [NSString stringWithFormat:@"%@%d",name,++n];
         }
     }
      return newName;
@@ -140,7 +145,7 @@ NSString* cellID = @"CellID";
 
 - (IBAction)onNewSprite:(id)sender{
    
-    LEOSprite* sprite = [[LEOSprite alloc] initWithName:[self getNewNameOfSprite]];
+    LEOSprite* sprite = [[LEOSprite alloc] initWithName:[self getNewNameWithName:@"newSprite"]];
     self.configInputView.sprite = sprite;
     [self.spritesArray addObject:sprite];
     [self.tableView reloadData];
@@ -228,6 +233,18 @@ NSString* cellID = @"CellID";
    
 }
 
+- (void)onDrag:(NSArray*)files{
+    NSString* path = [files firstObject];
+    NSString* file = [path lastPathComponent];
+    file = [file stringByDeletingPathExtension];
+    LEOSprite* sprite = [[LEOSprite alloc] initWithName:[self getNewNameWithName:file]];
+    sprite.imagePath = path;
+    self.configInputView.sprite = sprite;
+    [self.spritesArray addObject:sprite];
+    [self.photoImage addSprite:sprite];
+    [self.tableView reloadData];
+    [self produceSpriteConfig];
+}
 
 #pragma mark - sprite data
 - (void)produceSpriteConfig{

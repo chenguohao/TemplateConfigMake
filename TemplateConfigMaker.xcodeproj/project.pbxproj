@@ -20,6 +20,8 @@
 		23C425921C7D585600B8F000 /* FaceCode.plist in Resources */ = {isa = PBXBuildFile; fileRef = 23C425911C7D585600B8F000 /* FaceCode.plist */; };
 		23C4259F1C7F28FA00B8F000 /* lbb.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 23C4259E1C7F28FA00B8F000 /* lbb.jpg */; };
 		23C425A21C7F2C6100B8F000 /* FaceView.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C425A11C7F2C6100B8F000 /* FaceView.m */; };
+		23C425A51C7FE17000B8F000 /* LEOTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C425A41C7FE17000B8F000 /* LEOTableView.m */; };
+		23C425A81C7FEDE700B8F000 /* ContainerImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C425A71C7FEDE700B8F000 /* ContainerImageView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +66,10 @@
 		23C4259E1C7F28FA00B8F000 /* lbb.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = lbb.jpg; sourceTree = "<group>"; };
 		23C425A01C7F2C6100B8F000 /* FaceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FaceView.h; sourceTree = "<group>"; };
 		23C425A11C7F2C6100B8F000 /* FaceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FaceView.m; sourceTree = "<group>"; };
+		23C425A31C7FE17000B8F000 /* LEOTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEOTableView.h; sourceTree = "<group>"; };
+		23C425A41C7FE17000B8F000 /* LEOTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LEOTableView.m; sourceTree = "<group>"; };
+		23C425A61C7FEDE700B8F000 /* ContainerImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContainerImageView.h; sourceTree = "<group>"; };
+		23C425A71C7FEDE700B8F000 /* ContainerImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContainerImageView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,10 +124,10 @@
 				235A8B101C7570AB00EAEA50 /* AppDelegate.m */,
 				235A8B151C7570AB00EAEA50 /* ViewController.h */,
 				235A8B161C7570AB00EAEA50 /* ViewController.m */,
-				235A8B9E1C785FD500EAEA50 /* LEOSprite.h */,
-				235A8B9F1C785FD500EAEA50 /* LEOSprite.m */,
-				23C425A01C7F2C6100B8F000 /* FaceView.h */,
-				23C425A11C7F2C6100B8F000 /* FaceView.m */,
+				23C425A31C7FE17000B8F000 /* LEOTableView.h */,
+				23C425A41C7FE17000B8F000 /* LEOTableView.m */,
+				23C425AA1C7FEE5600B8F000 /* Data */,
+				23C425A91C7FEE2D00B8F000 /* FaceFeild */,
 				235A8B501C78156900EAEA50 /* SpriteConfigInputView.h */,
 				235A8B511C78156900EAEA50 /* SpriteConfigInputView.m */,
 				235A8B531C78158300EAEA50 /* SpriteConfigInputView.xib */,
@@ -159,6 +165,26 @@
 				235A8B331C7570AB00EAEA50 /* Info.plist */,
 			);
 			path = TemplateConfigMakerUITests;
+			sourceTree = "<group>";
+		};
+		23C425A91C7FEE2D00B8F000 /* FaceFeild */ = {
+			isa = PBXGroup;
+			children = (
+				23C425A61C7FEDE700B8F000 /* ContainerImageView.h */,
+				23C425A71C7FEDE700B8F000 /* ContainerImageView.m */,
+				23C425A01C7F2C6100B8F000 /* FaceView.h */,
+				23C425A11C7F2C6100B8F000 /* FaceView.m */,
+			);
+			name = FaceFeild;
+			sourceTree = "<group>";
+		};
+		23C425AA1C7FEE5600B8F000 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				235A8B9E1C785FD500EAEA50 /* LEOSprite.h */,
+				235A8B9F1C785FD500EAEA50 /* LEOSprite.m */,
+			);
+			name = Data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -293,11 +319,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23C425A81C7FEDE700B8F000 /* ContainerImageView.m in Sources */,
 				235A8B171C7570AB00EAEA50 /* ViewController.m in Sources */,
 				235A8B141C7570AB00EAEA50 /* main.m in Sources */,
 				235A8B521C78156900EAEA50 /* SpriteConfigInputView.m in Sources */,
 				23C425A21C7F2C6100B8F000 /* FaceView.m in Sources */,
 				235A8B111C7570AB00EAEA50 /* AppDelegate.m in Sources */,
+				23C425A51C7FE17000B8F000 /* LEOTableView.m in Sources */,
 				235A8BA01C785FD500EAEA50 /* LEOSprite.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

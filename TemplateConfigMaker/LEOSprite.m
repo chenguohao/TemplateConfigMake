@@ -7,7 +7,7 @@
 //
 
 #import "LEOSprite.h"
-
+#import <AppKit/AppKit.h>
 @implementation LEOSprite
 - (instancetype)init
 {
@@ -26,6 +26,11 @@
 
 
 - (NSImage *)frameImage {
+    
+    if (self.imagePath) {
+      return   [[NSImage alloc] initWithContentsOfFile:self.imagePath];
+    }
+    
     return nil;
 }
 

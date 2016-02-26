@@ -18,6 +18,8 @@
 @property (weak) IBOutlet NSTextField *height;
 @property (weak) IBOutlet NSTextField *animationCount;
 @property (weak) IBOutlet NSTextField *animationDuration;
+@property (weak) IBOutlet NSView *anchorView;
+@property (weak) IBOutlet NSView *posView;
 
 @property (weak) IBOutlet NSButton *isAnimationLoop;
 @property (weak) IBOutlet NSTextField *order;
@@ -81,8 +83,7 @@
     [self.orderPlus setIntegerValue:sprite.order];
     
     [self setAnchorTypeWithEnum:sprite.anchorType];
-    self.anchorType.enabled = (sprite.spriteType != SpriteTypeStatic);
-    self.anchorSubType.enabled = self.anchorType.enabled;
+    [self setLayoutState];
 }
 
 - (void)setAnchorTypeWithEnum:(SpriteAnchorType)anchorType{
@@ -119,9 +120,7 @@
 
 - (void)setUpData{
     
-    self.anchorType.enabled = NO;
-    self.anchorSubType.enabled = self.anchorType.enabled;
-    
+    [self setLayoutState];
     self.anchorTypeDict = @{@"静态":@[@"静态"],
                             @"脸":@[@"全脸",@"头顶",@"额头",@"脖子",@"脸颊",@"下巴",@"上半身"],
                             @"耳朵":@[@"双耳",@"左耳",@"右耳"],
@@ -164,15 +163,25 @@
     [self checkValue];
 }
 
+- (void)setLayoutState{
+    NSInteger n = self.spriteType.indexOfSelectedItem;
+    if (n == 0) {
+        self.posView.hidden = NO;
+        self.anchorView.hidden = !self.posView.hidden;
+    }else{
+        self.posView.hidden = YES;
+        self.anchorView.hidden = !self.posView.hidden;
+    }
+}
  
 - (IBAction)onSpriteTypeSelect:(NSPopUpButton *)sender {
     NSInteger n = sender.indexOfSelectedItem;
     if (n == 0) {
         [self.anchorType selectItemAtIndex:0];
         [self.anchorSubType selectItemAtIndex:0];
+       
     }
-    self.anchorType.enabled = (n != 0);
-    self.anchorSubType.enabled = self.anchorType.enabled;
+    [self setLayoutState];
     [self checkValue];
 }
 - (IBAction)onSpriteAnchorSubtype:(NSPopUpButton *)sender {

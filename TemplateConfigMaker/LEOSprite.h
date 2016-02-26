@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import <AppKit/AppKit.h>
 typedef NS_ENUM(NSUInteger, SpriteType) {
     SpriteTypeStatic = 0,//静态
     SpriteTypeDynamic,//动态
@@ -53,6 +53,7 @@ typedef NS_ENUM(NSUInteger, SpriteAnchorType) {
 };
 
 @interface LEOSprite : NSObject
+@property (nonatomic, strong) NSImageView* imageView;
 @property (nonatomic, assign) SpriteType spriteType;
 @property (nonatomic, assign) NSInteger order;
 @property (nonatomic, assign) SpriteTriggerType triggerType;
