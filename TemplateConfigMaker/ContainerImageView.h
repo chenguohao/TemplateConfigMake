@@ -8,9 +8,12 @@
 
 #import <Cocoa/Cocoa.h>
 @class LEOSprite;
+@class FaceView;
 @interface ContainerImageView : NSImageView
 @property (nonatomic,strong)NSMutableArray *spriteArray;
 
+@property (nonatomic,strong) FaceView* faceView;
 - (void)addSprite:(LEOSprite*)sprite;
 - (void)updateSprite:(LEOSprite*)sprite;
+- (void)removeSprite:(LEOSprite*)sprite;
 @end

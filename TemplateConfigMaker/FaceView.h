@@ -7,7 +7,9 @@
 //
 
 #import <Cocoa/Cocoa.h>
-
+#import "LEOSprite.h"
 @interface FaceView : NSView
-
+@property (nonatomic,assign)BOOL isShowBasePoints;
+- (void)setAnchorPointWithType:(SpriteAnchorType)anchorType;
+- (NSPoint)getPointWithAnchorType:(SpriteAnchorType)anchorType;
 @end

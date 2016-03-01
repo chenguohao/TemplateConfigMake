@@ -210,7 +210,7 @@
                     <rect key="frame" x="1" y="263" width="296" height="61"/>
                     <subviews>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="urc-MC-ds5">
-                            <rect key="frame" x="17" y="22" width="56" height="17"/>
+                            <rect key="frame" x="17" y="35" width="56" height="17"/>
                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="定位类型" id="Y0J-LG-w8b">
                                 <font key="font" size="13" name="STHeitiSC-Light"/>
                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -218,7 +218,7 @@
                             </textFieldCell>
                         </textField>
                         <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jee-B9-W9N">
-                            <rect key="frame" x="135" y="17" width="60" height="26"/>
+                            <rect key="frame" x="135" y="30" width="60" height="26"/>
                             <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="Sp0-OR-LqA" id="wz7-SP-uya">
                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="menu"/>
@@ -235,7 +235,7 @@
                             </connections>
                         </popUpButton>
                         <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bqq-Vf-1ns">
-                            <rect key="frame" x="198" y="17" width="81" height="26"/>
+                            <rect key="frame" x="198" y="30" width="81" height="26"/>
                             <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="XVb-1e-u9r" id="egR-oW-bSb">
                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="menu"/>
@@ -251,6 +251,24 @@
                                 <action selector="onSpriteAnchorSubtype:" target="-2" id="hpx-gv-m2n"/>
                             </connections>
                         </popUpButton>
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZOh-eF-NQL">
+                            <rect key="frame" x="20" y="10" width="43" height="17"/>
+                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="基准点" id="wpd-H6-snC">
+                                <font key="font" size="13" name="STHeitiSC-Light"/>
+                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bt0-Vs-Qsb">
+                            <rect key="frame" x="139" y="6" width="22" height="18"/>
+                            <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="sEu-uP-PL0">
+                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="onSwitchBasePoints:" target="-2" id="WN9-D9-2fF"/>
+                            </connections>
+                        </button>
                     </subviews>
                 </customView>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bN7-Tb-ySw">

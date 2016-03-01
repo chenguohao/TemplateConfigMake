@@ -8,10 +8,25 @@
 
 #import "ContainerImageView.h"
 #import "LEOSprite.h"
+#import "FaceView.h"
 @interface ContainerImageView()
 @end
 
 @implementation ContainerImageView
+
+- (instancetype)initWithCoder:(NSCoder *)coder{
+    self = [super initWithCoder:coder];
+    CGFloat r = self.frame.size.width/500;
+    NSRect rect = NSRectFromCGRect(CGRectMake(154*r, 155*r, 217*r, 217*r));
+    self.faceView = [[FaceView alloc] initWithFrame:rect];
+    
+    self.faceView .layer.masksToBounds   = YES;
+    
+    self.faceView.hidden = YES;
+    
+    [self addSubview:self.faceView];
+    return self;
+}
 
 - (NSMutableArray*)spriteArray{
     if (_spriteArray == nil) {
@@ -21,21 +36,29 @@
 }
 
 - (void)addSprite:(LEOSprite*)sprite{
-    
+    CGFloat l = self.frame.size.width;
     if (sprite.imagePath) {
         [self.spriteArray addObject:sprite];
+        CGFloat x;
+        CGFloat y;
         if (sprite.spriteType == SpriteTypeStatic) {
-            CGFloat l = self.frame.size.width;
-            CGFloat x = (sprite.pos_x - sprite.width/2)* l;
-            CGFloat y = l- (sprite.pos_y + sprite.height/2)* l;
-            CGFloat w = sprite.width * l;
-            CGFloat h = sprite.height* l;
-            NSImageView* imv = [[NSImageView alloc] initWithFrame:NSMakeRect(x, y, w, h)];
-            imv.image = [[NSImage alloc] initWithContentsOfFile:sprite.imagePath];
-            imv.imageScaling = NSImageScaleAxesIndependently;
-            sprite.imageView = imv;
-            [self addSubview:imv];
+            x = (sprite.pos_x - sprite.width/2)* l;
+            y = l- (sprite.pos_y + sprite.height/2)* l;
+        }else{
+            
+            NSPoint point = [[FaceView new] getPointWithAnchorType:sprite.anchorType];
+            
+            x = (point.x - sprite.width/2)* l;
+            y = l- (point.y + sprite.height/2)* l;
         }
+        
+        CGFloat w = sprite.width * l;
+        CGFloat h = sprite.height* l;
+        NSImageView* imv = [[NSImageView alloc] initWithFrame:NSMakeRect(x, y, w, h)];
+        imv.image = [[NSImage alloc] initWithContentsOfFile:sprite.imagePath];
+        imv.imageScaling = NSImageScaleAxesIndependently;
+        sprite.imageView = imv;
+        [self addSubview:imv];
        
     }
 }
@@ -53,14 +76,46 @@
     if (i != -1) {
         [self.spriteArray replaceObjectAtIndex:i withObject:sprite];
         CGFloat l = self.frame.size.width;
-        CGFloat x = (sprite.pos_x - sprite.width/2)* l;
-        CGFloat y = l- (sprite.pos_y + sprite.height/2)* l;
-        CGFloat w = sprite.width * l;
-        CGFloat h = sprite.height* l;
+        CGFloat x;
+        CGFloat y;
+        CGFloat w;
+        CGFloat h;
+        if (sprite.spriteType == SpriteTypeStatic) {
+            x = (sprite.pos_x - sprite.width/2)* l;
+            y = l- (sprite.pos_y + sprite.height/2)* l;
+            w = sprite.width * l;
+            h = sprite.height* l;
+        }else{
+            
+            NSPoint point = [self.faceView getPointWithAnchorType:sprite.anchorType];
+            l = self.faceView.frame.size.width;
+            w = sprite.width * l;
+            h = sprite.height* l;
+            x = point.x - w/2+self.faceView.frame.origin.x;
+            y =  point.y-h/2+self.faceView.frame.origin.y;
+          
+        }
+       
         sprite.imageView.frame = NSMakeRect(x, y, w, h);
     }
    
 }
 
+- (void)removeSprite:(LEOSprite*)sprite{
+    NSInteger i = -1;
+    for (LEOSprite* subsprite in self.spriteArray) {
+        if (subsprite == sprite) {
+            i = [self.spriteArray indexOfObject:subsprite];
+            break;
+        }
+    }
+    
+    if (i != -1) {
+        LEOSprite* removeSprite = self.spriteArray[i];
+        NSImageView* imv = removeSprite.imageView;
+        [imv removeFromSuperview];
+        [self.spriteArray removeObjectAtIndex:i];
+    }
+}
 
 @end

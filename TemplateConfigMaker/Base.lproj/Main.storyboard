@@ -766,7 +766,7 @@
                             <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="N50-Tf-eIz" customClass="SpriteConfigInputView">
                                 <rect key="frame" x="20" y="30" width="309" height="400"/>
                             </customView>
-                            <button hidden="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5SY-yD-FI7">
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5SY-yD-FI7">
                                 <rect key="frame" x="26" y="3" width="98" height="19"/>
                                 <buttonCell key="cell" type="roundRect" title="添加新控件" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Wag-f6-yf6">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>

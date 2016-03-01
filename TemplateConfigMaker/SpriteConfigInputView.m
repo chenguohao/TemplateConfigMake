@@ -34,6 +34,7 @@
 @property (strong) NSArray* anchorTypeArray;
 @property (strong) NSDictionary* anchorTypeDict;
 @property (copy,nonatomic) void (^RefreshBlock) (LEOSprite* sprite);
+@property (copy,nonatomic) void (^switchBasePointsBlock) (BOOL isOpen);
 @end
 
 @implementation SpriteConfigInputView
@@ -112,6 +113,7 @@
                         [self.anchorSubType addItemsWithTitles:self.anchorTypeDict[title]];
                     }
                     [self.anchorSubType selectItemAtIndex:part];
+                    break;
                 }
             }
         }
@@ -122,7 +124,7 @@
     
     [self setLayoutState];
     self.anchorTypeDict = @{@"静态":@[@"静态"],
-                            @"脸":@[@"全脸",@"头顶",@"额头",@"脖子",@"脸颊",@"下巴",@"上半身"],
+                            @"脸":@[@"全脸",@"头顶",@"额头",@"脖子",@"脸颊",@"下巴"],
                             @"耳朵":@[@"双耳",@"左耳",@"右耳"],
                             @"眉毛":@[@"双眉",@"左眉",@"右眉"],
                             @"眼睛":@[@"双眼",@"左眼",@"右眼",],
@@ -194,9 +196,7 @@
         [self.anchorSubType removeAllItems];
         [self.anchorSubType addItemsWithTitles:self.anchorTypeDict[title]];
     }
-    if (sender != self.anchorType) {
-        [self checkValue];
-    }
+    [self checkValue];
     
 }
 
@@ -260,9 +260,19 @@
         self.RefreshBlock(self.sprite);
     }
 }
+- (IBAction)onSwitchBasePoints:(NSButton *)sender {
+    BOOL isOpen = sender.state;
+    if (self.switchBasePointsBlock) {
+        self.switchBasePointsBlock(isOpen);
+    }
+}
 
 - (void)setRefreshBlock:(void(^)(LEOSprite* sprite))block{
     _RefreshBlock = block;
+}
+
+- (void)setBasePointsSwitchBlock:(void(^)(BOOL isOpen))block{
+    _switchBasePointsBlock = block;
 }
 
 #pragma mark - TextFeild Delegate

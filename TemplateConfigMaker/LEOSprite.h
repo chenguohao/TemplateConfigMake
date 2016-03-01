@@ -35,21 +35,28 @@ typedef NS_ENUM(NSUInteger, SpriteAnchorType) {
     SpriteAnchorTypeEyeRight = 8,//右眼睛
     
     SpriteAnchorTypeApexNose = 9,//鼻尖
-    SpriteAnchorTypeLeftNostril = 10,//左鼻孔
-    SpriteAnchorTypeRightNostril = 11,//右鼻孔
-    SpriteAnchorTypeMouth = 12,//嘴巴
-    SpriteAnchorTypeLeftMouthSide = 13,//左嘴角
-    SpriteAnchorTypeRightMouthSide = 14,//右嘴角
-    SpriteAnchorTypeCheek = 15,//脸颊
-    SpriteAnchorTypeNeck = 16,//脖子
+    SpriteAnchorTypeNostril = 10,//鼻孔
+    SpriteAnchorTypeMouth = 11,//嘴巴
+    SpriteAnchorTypeLeftMouthSide = 12,//左嘴角
+    SpriteAnchorTypeRightMouthSide = 13,//右嘴角
+    SpriteAnchorTypeCheek = 14,//脸颊
+    SpriteAnchorTypeNeck = 15,//脖子
     
-    SpriteAnchorTypeEar = 17,//耳朵
-    SpriteAnchorTypeEarLeft = 18,
-    SpriteAnchorTypeEarRight = 19,
+    SpriteAnchorTypeEar = 16,//耳朵
+    SpriteAnchorTypeEarLeft = 17,//左耳朵
+    SpriteAnchorTypeEarRight = 18,//右耳朵
     
-    SpriteSubTypeTopBody = 20,//上半身
-    SpriteSubTypeFace = 21, //全脸
+    SpriteAnchorTypeTopBody = 19,//上半身
+    SpriteAnchorTypeFace = 20, //全脸
     
+    
+    SpriteAnchorTypeInLeftEyeSide = 21,//内眼角左
+    SpriteAnchorTypeInRightEyeSide = 22,//内眼角右
+    SpriteAnchorTypeOutLeftEyeSide = 23,//外眼角左
+    SpriteAnchorTypeOutRightEyeSide= 24,//外眼角右
+    SpriteAnchorTypeUpMouth = 25,//上嘴唇
+    SpriteAnchorTypeDownMouth = 26,//下嘴唇
+    SpriteAnchorTypeLowerJaw = 27,//下巴
 };
 
 @interface LEOSprite : NSObject

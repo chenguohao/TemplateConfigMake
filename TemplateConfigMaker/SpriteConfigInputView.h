@@ -14,4 +14,5 @@
 @property (strong) IBOutlet NSView *view;
 @property (strong, nonatomic) LEOSprite* sprite;
 - (void)setRefreshBlock:(void(^)(LEOSprite* sprite))block;
+- (void)setBasePointsSwitchBlock:(void(^)(BOOL isOpen))block;
 @end

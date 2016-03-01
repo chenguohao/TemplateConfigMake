@@ -26,7 +26,6 @@
 @property (weak) IBOutlet NSButton *btSave;
 @property (weak) IBOutlet ContainerImageView *photoImage;
 @property (nonatomic, strong) NSMutableArray* spritesArray;
-@property (nonatomic,strong) FaceView* faceView;
 @end
 
 NSString* cellID = @"CellID";
@@ -42,8 +41,8 @@ NSString* cellID = @"CellID";
     self.hasBgMusic = NO;
     [self.configInputView setRefreshBlock:^(LEOSprite *sprite) {
         self.curEditSprite = sprite;
-        self.faceView.hidden = sprite.spriteType == SpriteTypeStatic;
-        
+        self.photoImage.faceView.hidden = sprite.spriteType == SpriteTypeStatic;
+        [self.photoImage.faceView setAnchorPointWithType:sprite.anchorType];
         if (self.spritesArray.count) {
             NSInteger selectRow = self.tableView.selectedRow;
             [self.spritesArray replaceObjectAtIndex:self.tableView.selectedRow withObject:self.curEditSprite];
@@ -55,16 +54,11 @@ NSString* cellID = @"CellID";
         [self.photoImage updateSprite:sprite];
         [self produceSpriteConfig];
     }];
-    CGFloat r = self.photoImage.frame.size.width/500;
-    NSRect rect = NSRectFromCGRect(CGRectMake(154*r, 155*r, 217*r, 217*r));
-    self.faceView = [[FaceView alloc] initWithFrame:rect];
-    [self.faceView setWantsLayer:YES];
-    self.faceView .layer.masksToBounds   = YES;
-    self.faceView.layer.borderColor = [NSColor redColor].CGColor;
-    self.faceView.layer.borderWidth = 1;
-    self.faceView.hidden = YES;
     
-    [self.photoImage addSubview:self.faceView];
+    [self.configInputView setBasePointsSwitchBlock:^(BOOL isOpen) {
+        self.photoImage.faceView.isShowBasePoints = isOpen;
+    }];
+    
 }
 
 -(NSArray*)getDicArrayFromSpriteArray:(NSArray*)array{
@@ -131,6 +125,7 @@ NSString* cellID = @"CellID";
 #pragma mark - action
 - (IBAction)onDeleteCurrentSprite:(NSButton *)sender {
     if (self.curEditSprite) {
+        [self.photoImage removeSprite:self.curEditSprite];
         [self.spritesArray removeObject:self.curEditSprite];
         [self.tableView reloadData];
         if (self.spritesArray.count) {
@@ -138,6 +133,7 @@ NSString* cellID = @"CellID";
         }else{
             self.curEditSprite = nil;
         }
+        
     }
     [self produceSpriteConfig];
 }
