@@ -110,6 +110,25 @@
     return self;
 }
 
+- (instancetype)initWithDict:(NSDictionary*)dict{
+    self = [super init];
+    
+    self.spriteName = dict[@"spriteName"];
+    self.spriteType = [dict[@"spriteType"] integerValue];
+    self.animationCount = [dict[@"animationCount"] integerValue];
+    self.duration = [dict[@"animationDuration"] integerValue];
+    self.recycle = [dict[@"isloop"] boolValue];
+    self.order = [dict[@"order"] integerValue];
+    self.pos_x = [dict[@"pos_x"] floatValue];
+    self.pos_y = [dict[@"pos_y"] floatValue];
+    self.width = [dict[@"width"] floatValue];
+    self.height= [dict[@"height"] floatValue];
+    self.isBgMusicLoop = [dict[@"isBgMusicLoop"] boolValue];
+    self.hasBgMusic = [dict[@"hasBgMusic"] boolValue];
+    self.anchorType = [dict[@"anchorType"] integerValue];
+    return self;
+}
+
 - (SpriteAnchorType)getEnumFromFaceCode:(NSString*)faceCode{
     NSString* path = [[NSBundle mainBundle] pathForResource:@"FaceCode" ofType:@"plist"];
     NSDictionary* dict = [NSDictionary dictionaryWithContentsOfFile:path][@"FaceCodeStr2EnumValue"];

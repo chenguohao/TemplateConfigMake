@@ -87,11 +87,9 @@ typedef NS_ENUM(NSUInteger, SpriteAnchorType) {
 
 // CG UI
 @property (nonatomic, assign) CGRect spriteRect;
-- (instancetype)initDynimicWithDict:(NSDictionary*)dict;
-- (instancetype)initStaticWithDict:(NSDictionary*)dict
-                              Size:(CGSize)size;
-- (instancetype)initWithName:(NSString*)spriteName;
 
+- (instancetype)initWithName:(NSString*)spriteName;
+- (instancetype)initWithDict:(NSDictionary*)dict;
 - (NSDictionary*)getDictFromSprite;
 - (void)setAnchorTypeWithFaceCode:(NSString *)faceCode;
 + (NSString*)getFaceCodeFromAnchorType:(SpriteAnchorType)anchorType;

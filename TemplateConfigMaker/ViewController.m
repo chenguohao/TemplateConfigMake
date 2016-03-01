@@ -12,6 +12,7 @@
 #import "FaceView.h"
 #import "SpriteConfigInputView.h"
 #import "ContainerImageView.h"
+#import "LEOConfigTextView.h"
 
 @interface ViewController()<NSTableViewDataSource,NSTableViewDelegate>
 @property (strong) NSString* str1;
@@ -19,7 +20,7 @@
 @property (weak) IBOutlet NSButton *btDelete;
 @property (weak) IBOutlet NSButton *bgMusic;
 @property (assign) BOOL hasBgMusic;
-@property (unsafe_unretained) IBOutlet NSTextView *textView;
+@property (unsafe_unretained) IBOutlet LEOConfigTextView *textView;
 @property (weak) IBOutlet SpriteConfigInputView *configInputView;
 @property (weak) LEOSprite* curEditSprite;
 @property (strong) NSString* str0;
@@ -59,6 +60,58 @@ NSString* cellID = @"CellID";
         self.photoImage.faceView.isShowBasePoints = isOpen;
     }];
     
+    [self.textView setDragFileBlock:^(NSArray *array) {
+        NSString* str = array.firstObject;
+        if ([str hasSuffix:@".config"] != 1) {
+            NSAlert *alert = [[NSAlert alloc] init];
+            [alert addButtonWithTitle:@"确定"];
+            [alert setMessageText:@"只支持.config文件"];
+            [alert setAlertStyle:NSWarningAlertStyle];
+            [alert beginSheetModalForWindow:[[[NSApplication sharedApplication] windows] firstObject] modalDelegate:self didEndSelector:nil contextInfo:nil];
+        }else{
+            [self readConfigWithPath:str];
+        }
+    }];
+}
+
+- (void)readConfigWithPath:(NSString*)path{
+    
+    NSString* str = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
+    self.textView.string = str;
+    NSDictionary* dic = [self dictionaryWithJsonString:str];
+    if (dic) {
+        if ([[dic allKeys] containsObject:@"sprites"]) {
+            NSArray* array = dic[@"sprites"];
+            NSMutableArray* spritesArray = [NSMutableArray new];
+            for (NSDictionary* spriteDic in array) {
+                LEOSprite* sprite = [[LEOSprite alloc] initWithDict:spriteDic];
+                [spritesArray addObject:sprite];
+            }
+            self.spritesArray = spritesArray;
+            [self.tableView reloadData];
+        }
+        if ([[dic allKeys] containsObject:@"hasBgMusic"]) {
+            self.hasBgMusic = [dic[@"hasBgMusic"] boolValue];
+            self.bgMusic.state = self.hasBgMusic;
+        }
+    }
+}
+
+- (NSDictionary *)dictionaryWithJsonString:(NSString *)jsonString {
+    if (jsonString == nil) {
+        return nil;
+    }
+    
+    NSData *jsonData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
+    NSError *err;
+    NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:jsonData
+                                                        options:NSJSONReadingMutableContainers
+                                                          error:&err];
+    if(err) {
+        NSLog(@"json解析失败：%@",err);
+        return nil;
+    }
+    return dic;
 }
 
 -(NSArray*)getDicArrayFromSpriteArray:(NSArray*)array{
@@ -231,15 +284,27 @@ NSString* cellID = @"CellID";
 
 - (void)onDrag:(NSArray*)files{
     NSString* path = [files firstObject];
-    NSString* file = [path lastPathComponent];
-    file = [file stringByDeletingPathExtension];
-    LEOSprite* sprite = [[LEOSprite alloc] initWithName:[self getNewNameWithName:file]];
-    sprite.imagePath = path;
-    self.configInputView.sprite = sprite;
-    [self.spritesArray addObject:sprite];
-    [self.photoImage addSprite:sprite];
-    [self.tableView reloadData];
-    [self produceSpriteConfig];
+    
+    if ([path hasSuffix:@".png"] != 1 &&[path hasSuffix:@".jpg"] != 1  ) {
+        NSAlert *alert = [[NSAlert alloc] init];
+        [alert addButtonWithTitle:@"确定"];
+        [alert setMessageText:@"只支持png/jpg文件"];
+        [alert setAlertStyle:NSWarningAlertStyle];
+        [alert beginSheetModalForWindow:[[[NSApplication sharedApplication] windows] firstObject] modalDelegate:self didEndSelector:nil contextInfo:nil];
+    }else{
+        NSString* file = [path lastPathComponent];
+        file = [file stringByDeletingPathExtension];
+        LEOSprite* sprite = [[LEOSprite alloc] initWithName:[self getNewNameWithName:file]];
+        sprite.imagePath = path;
+        self.configInputView.sprite = sprite;
+        [self.spritesArray addObject:sprite];
+        [self.photoImage addSprite:sprite];
+        [self.tableView reloadData];
+        [self produceSpriteConfig];
+    }
+    
+    
+   
 }
 
 #pragma mark - sprite data

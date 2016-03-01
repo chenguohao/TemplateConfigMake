@@ -22,6 +22,7 @@
 		23C425A21C7F2C6100B8F000 /* FaceView.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C425A11C7F2C6100B8F000 /* FaceView.m */; };
 		23C425A51C7FE17000B8F000 /* LEOTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C425A41C7FE17000B8F000 /* LEOTableView.m */; };
 		23C425A81C7FEDE700B8F000 /* ContainerImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C425A71C7FEDE700B8F000 /* ContainerImageView.m */; };
+		23C426351C85A32E00B8F000 /* LEOConfigTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C426341C85A32E00B8F000 /* LEOConfigTextView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,8 @@
 		23C425A41C7FE17000B8F000 /* LEOTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LEOTableView.m; sourceTree = "<group>"; };
 		23C425A61C7FEDE700B8F000 /* ContainerImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContainerImageView.h; sourceTree = "<group>"; };
 		23C425A71C7FEDE700B8F000 /* ContainerImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContainerImageView.m; sourceTree = "<group>"; };
+		23C426331C85A32E00B8F000 /* LEOConfigTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEOConfigTextView.h; sourceTree = "<group>"; };
+		23C426341C85A32E00B8F000 /* LEOConfigTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LEOConfigTextView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,13 +127,9 @@
 				235A8B101C7570AB00EAEA50 /* AppDelegate.m */,
 				235A8B151C7570AB00EAEA50 /* ViewController.h */,
 				235A8B161C7570AB00EAEA50 /* ViewController.m */,
-				23C425A31C7FE17000B8F000 /* LEOTableView.h */,
-				23C425A41C7FE17000B8F000 /* LEOTableView.m */,
+				23C426321C85A30100B8F000 /* UI */,
 				23C425AA1C7FEE5600B8F000 /* Data */,
 				23C425A91C7FEE2D00B8F000 /* FaceFeild */,
-				235A8B501C78156900EAEA50 /* SpriteConfigInputView.h */,
-				235A8B511C78156900EAEA50 /* SpriteConfigInputView.m */,
-				235A8B531C78158300EAEA50 /* SpriteConfigInputView.xib */,
 				235A8B181C7570AB00EAEA50 /* Assets.xcassets */,
 				23C4259E1C7F28FA00B8F000 /* lbb.jpg */,
 				235A8B1A1C7570AB00EAEA50 /* Main.storyboard */,
@@ -185,6 +184,20 @@
 				235A8B9F1C785FD500EAEA50 /* LEOSprite.m */,
 			);
 			name = Data;
+			sourceTree = "<group>";
+		};
+		23C426321C85A30100B8F000 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				23C425A31C7FE17000B8F000 /* LEOTableView.h */,
+				23C425A41C7FE17000B8F000 /* LEOTableView.m */,
+				235A8B501C78156900EAEA50 /* SpriteConfigInputView.h */,
+				235A8B511C78156900EAEA50 /* SpriteConfigInputView.m */,
+				235A8B531C78158300EAEA50 /* SpriteConfigInputView.xib */,
+				23C426331C85A32E00B8F000 /* LEOConfigTextView.h */,
+				23C426341C85A32E00B8F000 /* LEOConfigTextView.m */,
+			);
+			name = UI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -320,6 +333,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				23C425A81C7FEDE700B8F000 /* ContainerImageView.m in Sources */,
+				23C426351C85A32E00B8F000 /* LEOConfigTextView.m in Sources */,
 				235A8B171C7570AB00EAEA50 /* ViewController.m in Sources */,
 				235A8B141C7570AB00EAEA50 /* main.m in Sources */,
 				235A8B521C78156900EAEA50 /* SpriteConfigInputView.m in Sources */,
