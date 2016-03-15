@@ -100,6 +100,8 @@
     self.pos_y = 0.5;
     self.width = 0.5;
     self.height = 0.5;
+    self.anchor_x = 0.5;
+    self.anchor_y = 0.5;
     self.animationCount = 1;
     self.recycle = YES;
     self.duration = 1;
@@ -119,8 +121,19 @@
     self.duration = [dict[@"animationDuration"] integerValue];
     self.recycle = [dict[@"isloop"] boolValue];
     self.order = [dict[@"order"] integerValue];
-    self.pos_x = [dict[@"pos_x"] floatValue];
-    self.pos_y = [dict[@"pos_y"] floatValue];
+    if (self.spriteType == SpriteTypeStatic) {
+        self.pos_x = [dict[@"pos_x"] floatValue];
+        self.pos_y = [dict[@"pos_y"] floatValue];
+        self.anchor_x = 0.5;
+        self.anchor_y = 0.5;
+    }else{
+        self.pos_x = 0;
+        self.pos_y = 0;
+        self.anchor_x = [dict[@"pos_x"] floatValue];
+        self.anchor_y = [dict[@"pos_y"] floatValue];
+    }
+   
+    
     self.width = [dict[@"width"] floatValue];
     self.height= [dict[@"height"] floatValue];
     self.isBgMusicLoop = [dict[@"isBgMusicLoop"] boolValue];
@@ -166,6 +179,8 @@
     [mdic setObject:[@(self.spriteType) stringValue] forKey:@"spriteType"];
     [mdic setObject:[self getStringFromFloat:self.pos_x] forKey:@"pos_x"];
     [mdic setObject:[self getStringFromFloat:self.pos_y] forKey:@"pos_y"];
+    [mdic setObject:[self getStringFromFloat:self.anchor_x] forKey:@"anchor_x"];
+    [mdic setObject:[self getStringFromFloat:self.anchor_y] forKey:@"anchor_y"];
     [mdic setObject:[self getStringFromFloat:self.width] forKey:@"width"];
     [mdic setObject:[self getStringFromFloat:self.height] forKey:@"height"];
     [mdic setObject:[@(self.animationCount) stringValue] forKey:@"animationCount"];

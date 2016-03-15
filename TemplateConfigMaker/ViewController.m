@@ -195,8 +195,11 @@ NSString* cellID = @"CellID";
 - (IBAction)onNewSprite:(id)sender{
    
     LEOSprite* sprite = [[LEOSprite alloc] initWithName:[self getNewNameWithName:@"newSprite"]];
-    self.configInputView.sprite = sprite;
+    
     [self.spritesArray addObject:sprite];
+    if(self.spritesArray.count == 1){
+        self.configInputView.sprite = sprite;
+    }
     [self.tableView reloadData];
     [self produceSpriteConfig];
 }
@@ -296,8 +299,11 @@ NSString* cellID = @"CellID";
         file = [file stringByDeletingPathExtension];
         LEOSprite* sprite = [[LEOSprite alloc] initWithName:[self getNewNameWithName:file]];
         sprite.imagePath = path;
-        self.configInputView.sprite = sprite;
         [self.spritesArray addObject:sprite];
+        if (self.spritesArray.count == 1) {
+            
+            self.configInputView.sprite = sprite;
+        }
         [self.photoImage addSprite:sprite];
         [self.tableView reloadData];
         [self produceSpriteConfig];

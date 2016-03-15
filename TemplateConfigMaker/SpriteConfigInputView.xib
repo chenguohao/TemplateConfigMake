@@ -9,6 +9,8 @@
                 <outlet property="anchorSubType" destination="Bqq-Vf-1ns" id="o35-yY-8O8"/>
                 <outlet property="anchorType" destination="Jee-B9-W9N" id="9Um-T6-LOf"/>
                 <outlet property="anchorView" destination="GRt-oT-6xR" id="4Vm-Lv-J8w"/>
+                <outlet property="anchorx" destination="ttG-rj-6XI" id="NYM-C5-caE"/>
+                <outlet property="anchory" destination="aus-lG-KSE" id="VlA-o0-bgR"/>
                 <outlet property="animationCount" destination="JXq-kD-Y2d" id="vfk-mc-Uwz"/>
                 <outlet property="animationDuration" destination="qqn-3t-UG2" id="4Xl-65-gBb"/>
                 <outlet property="hasBgMusic" destination="Y79-jS-Wky" id="4nK-Zr-5gY"/>
@@ -29,7 +31,7 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView id="c22-O7-iKe" userLabel="view">
-            <rect key="frame" x="0.0" y="0.0" width="289" height="400"/>
+            <rect key="frame" x="0.0" y="0.0" width="817" height="400"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8xl-nM-bKO">
@@ -74,10 +76,10 @@
                     </textFieldCell>
                 </textField>
                 <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qX6-q2-Obr">
-                    <rect key="frame" x="1" y="245" width="254" height="97"/>
+                    <rect key="frame" x="1" y="260" width="254" height="67"/>
                     <subviews>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Y7R-Fi-B5k">
-                            <rect key="frame" x="18" y="59" width="68" height="17"/>
+                            <rect key="frame" x="18" y="44" width="68" height="17"/>
                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="pos_x" id="wxU-Nc-pAB">
                                 <font key="font" metaFont="system"/>
                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -85,7 +87,7 @@
                             </textFieldCell>
                         </textField>
                         <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="U7t-mi-L5J">
-                            <rect key="frame" x="138" y="55" width="96" height="22"/>
+                            <rect key="frame" x="138" y="40" width="96" height="22"/>
                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="Df0-Uh-FAP">
                                 <font key="font" metaFont="system"/>
                                 <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -93,7 +95,7 @@
                             </textFieldCell>
                         </textField>
                         <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tjl-KG-C8J">
-                            <rect key="frame" x="138" y="20" width="96" height="22"/>
+                            <rect key="frame" x="138" y="5" width="96" height="22"/>
                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="5xE-0l-CjQ">
                                 <font key="font" metaFont="system"/>
                                 <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -101,7 +103,7 @@
                             </textFieldCell>
                         </textField>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4r7-Wb-DgZ">
-                            <rect key="frame" x="18" y="24" width="68" height="17"/>
+                            <rect key="frame" x="18" y="9" width="68" height="17"/>
                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="pos_y" id="amG-Wa-nBf">
                                 <font key="font" metaFont="system"/>
                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -206,71 +208,6 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GRt-oT-6xR">
-                    <rect key="frame" x="1" y="263" width="296" height="61"/>
-                    <subviews>
-                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="urc-MC-ds5">
-                            <rect key="frame" x="17" y="35" width="56" height="17"/>
-                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="定位类型" id="Y0J-LG-w8b">
-                                <font key="font" size="13" name="STHeitiSC-Light"/>
-                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                            </textFieldCell>
-                        </textField>
-                        <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jee-B9-W9N">
-                            <rect key="frame" x="135" y="30" width="60" height="26"/>
-                            <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="Sp0-OR-LqA" id="wz7-SP-uya">
-                                <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                <font key="font" metaFont="menu"/>
-                                <menu key="menu" id="P0y-wQ-PCf">
-                                    <items>
-                                        <menuItem title="Item 1" state="on" id="Sp0-OR-LqA"/>
-                                        <menuItem title="Item 2" id="1rO-rG-Lm5"/>
-                                        <menuItem title="Item 3" id="tjA-dY-ocs"/>
-                                    </items>
-                                </menu>
-                            </popUpButtonCell>
-                            <connections>
-                                <action selector="onSelect:" target="-2" id="njE-wY-2VL"/>
-                            </connections>
-                        </popUpButton>
-                        <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bqq-Vf-1ns">
-                            <rect key="frame" x="198" y="30" width="81" height="26"/>
-                            <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="XVb-1e-u9r" id="egR-oW-bSb">
-                                <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                <font key="font" metaFont="menu"/>
-                                <menu key="menu" id="Gr8-oF-6Ac">
-                                    <items>
-                                        <menuItem title="Item 1" state="on" id="XVb-1e-u9r"/>
-                                        <menuItem title="Item 2" id="Se7-JN-PeF"/>
-                                        <menuItem title="Item 3" id="Mtl-e9-iaM"/>
-                                    </items>
-                                </menu>
-                            </popUpButtonCell>
-                            <connections>
-                                <action selector="onSpriteAnchorSubtype:" target="-2" id="hpx-gv-m2n"/>
-                            </connections>
-                        </popUpButton>
-                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZOh-eF-NQL">
-                            <rect key="frame" x="20" y="10" width="43" height="17"/>
-                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="基准点" id="wpd-H6-snC">
-                                <font key="font" size="13" name="STHeitiSC-Light"/>
-                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                            </textFieldCell>
-                        </textField>
-                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bt0-Vs-Qsb">
-                            <rect key="frame" x="139" y="6" width="22" height="18"/>
-                            <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="sEu-uP-PL0">
-                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                <font key="font" metaFont="system"/>
-                            </buttonCell>
-                            <connections>
-                                <action selector="onSwitchBasePoints:" target="-2" id="WN9-D9-2fF"/>
-                            </connections>
-                        </button>
-                    </subviews>
-                </customView>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bN7-Tb-ySw">
                     <rect key="frame" x="19" y="58" width="82" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="单独背景音乐" id="8nc-Nu-gJu">
@@ -316,11 +253,100 @@
                         <action selector="onOrderPlus:" target="-2" id="3Ze-vc-waP"/>
                     </connections>
                 </stepper>
+                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GRt-oT-6xR">
+                    <rect key="frame" x="0.0" y="252" width="296" height="84"/>
+                    <subviews>
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="urc-MC-ds5">
+                            <rect key="frame" x="17" y="58" width="56" height="17"/>
+                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="定位类型" id="Y0J-LG-w8b">
+                                <font key="font" size="13" name="STHeitiSC-Light"/>
+                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                        <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jee-B9-W9N">
+                            <rect key="frame" x="114" y="53" width="81" height="26"/>
+                            <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="Sp0-OR-LqA" id="wz7-SP-uya">
+                                <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="menu"/>
+                                <menu key="menu" id="P0y-wQ-PCf">
+                                    <items>
+                                        <menuItem title="Item 1" state="on" id="Sp0-OR-LqA"/>
+                                        <menuItem title="Item 2" id="1rO-rG-Lm5"/>
+                                        <menuItem title="Item 3" id="tjA-dY-ocs"/>
+                                    </items>
+                                </menu>
+                            </popUpButtonCell>
+                            <connections>
+                                <action selector="onSelect:" target="-2" id="njE-wY-2VL"/>
+                            </connections>
+                        </popUpButton>
+                        <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bqq-Vf-1ns">
+                            <rect key="frame" x="198" y="53" width="81" height="26"/>
+                            <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="XVb-1e-u9r" id="egR-oW-bSb">
+                                <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="menu"/>
+                                <menu key="menu" id="Gr8-oF-6Ac">
+                                    <items>
+                                        <menuItem title="Item 1" state="on" id="XVb-1e-u9r"/>
+                                        <menuItem title="Item 2" id="Se7-JN-PeF"/>
+                                        <menuItem title="Item 3" id="Mtl-e9-iaM"/>
+                                    </items>
+                                </menu>
+                            </popUpButtonCell>
+                            <connections>
+                                <action selector="onSpriteAnchorSubtype:" target="-2" id="hpx-gv-m2n"/>
+                            </connections>
+                        </popUpButton>
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZOh-eF-NQL">
+                            <rect key="frame" x="17" y="5" width="43" height="17"/>
+                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="基准点" id="wpd-H6-snC">
+                                <font key="font" size="13" name="STHeitiSC-Light"/>
+                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yjn-qG-cxt">
+                            <rect key="frame" x="17" y="30" width="30" height="17"/>
+                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="锚点" id="AKF-CT-KSq">
+                                <font key="font" size="13" name="STHeitiSC-Light"/>
+                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                        <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ttG-rj-6XI">
+                            <rect key="frame" x="116" y="28" width="76" height="22"/>
+                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="NCy-bg-VoT">
+                                <font key="font" metaFont="system"/>
+                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                        <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aus-lG-KSE">
+                            <rect key="frame" x="200" y="28" width="76" height="22"/>
+                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="8ae-q4-BAG">
+                                <font key="font" metaFont="system"/>
+                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bt0-Vs-Qsb">
+                            <rect key="frame" x="114" y="3" width="22" height="18"/>
+                            <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="sEu-uP-PL0">
+                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="onSwitchBasePoints:" target="-2" id="WN9-D9-2fF"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                </customView>
             </subviews>
             <connections>
                 <outlet property="nextKeyView" destination="-2" id="7O7-Or-Pk5"/>
             </connections>
-            <point key="canvasLocation" x="285.5" y="377"/>
+            <point key="canvasLocation" x="549.5" y="377"/>
         </customView>
     </objects>
 </document>

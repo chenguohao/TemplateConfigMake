@@ -42,14 +42,14 @@
         CGFloat x;
         CGFloat y;
         if (sprite.spriteType == SpriteTypeStatic) {
-            x = (sprite.pos_x - sprite.width/2)* l;
-            y = l- (sprite.pos_y + sprite.height/2)* l;
+            x = (sprite.pos_x - sprite.width*sprite.anchor_x)* l;
+            y = l- (sprite.pos_y + sprite.height*sprite.anchor_y)* l;
         }else{
             
             NSPoint point = [[FaceView new] getPointWithAnchorType:sprite.anchorType];
             
-            x = (point.x - sprite.width/2)* l;
-            y = l- (point.y + sprite.height/2)* l;
+            x = (point.x - sprite.width*sprite.anchor_x)* l;
+            y = l- (point.y + sprite.height*sprite.anchor_y)* l;
         }
         
         CGFloat w = sprite.width * l;
@@ -91,8 +91,8 @@
             l = self.faceView.frame.size.width;
             w = sprite.width * l;
             h = sprite.height* l;
-            x = point.x - w/2+self.faceView.frame.origin.x;
-            y =  point.y-h/2+self.faceView.frame.origin.y;
+            x = point.x - w*sprite.anchor_x+self.faceView.frame.origin.x;
+            y =  point.y-h*(1-sprite.anchor_y)+self.faceView.frame.origin.y;
           
         }
        

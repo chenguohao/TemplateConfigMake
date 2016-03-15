@@ -28,6 +28,8 @@
 @property (weak) IBOutlet NSButton *hasBgMusic;
 @property (weak) IBOutlet NSButton *isBgMusicLoop;
 @property (weak) IBOutlet NSStepper *orderPlus;
+@property (weak) IBOutlet NSTextField *anchorx;
+@property (weak) IBOutlet NSTextField *anchory;
 
 
 @property (strong) NSArray* spriteTypeArray;
@@ -50,6 +52,8 @@
         self.pos_y.delegate = self;
         self.width.delegate = self;
         self.height.delegate = self;
+        self.anchorx.delegate = self;
+        self.anchory.delegate = self;
         self.animationCount.delegate = self;
         self.order.delegate = self;
         self.animationDuration.delegate = self;
@@ -71,6 +75,9 @@
     [self.spriteType selectItemAtIndex:sprite.spriteType];
     self.pos_x.stringValue = [NSString stringWithFormat:@"%.2f",sprite.pos_x];
     self.pos_y.stringValue = [NSString stringWithFormat:@"%.2f",sprite.pos_y];
+    self.anchorx.stringValue = [NSString stringWithFormat:@"%.2f",sprite.anchor_x];
+    self.anchory.stringValue = [NSString stringWithFormat:@"%.2f",sprite.anchor_y];
+    
     self.width.stringValue = [NSString stringWithFormat:@"%.2f",sprite.width];
     self.height.stringValue = [NSString stringWithFormat:@"%.2f",sprite.height];
     self.animationCount.stringValue = [NSString stringWithFormat:@"%ld",sprite.animationCount];
@@ -254,6 +261,12 @@
     self.sprite.hasBgMusic = self.hasBgMusic.state;
     self.sprite.isBgMusicLoop = self.isBgMusicLoop.state;
     self.sprite.duration = self.animationDuration.stringValue.floatValue;
+    if(!self.anchorx.hidden){
+      self.sprite.anchor_x = self.anchorx.stringValue.floatValue;
+    }
+    if(!self.anchory.hidden){
+      self.sprite.anchor_y = self.anchory.stringValue.floatValue;  
+    }
     
     
     if (self.RefreshBlock) {
