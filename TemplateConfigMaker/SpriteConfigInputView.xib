@@ -17,6 +17,7 @@
                 <outlet property="height" destination="4PI-CP-ywe" id="wUU-Ax-vyc"/>
                 <outlet property="isAnimationLoop" destination="rGA-RB-Fo7" id="4r2-oe-G4a"/>
                 <outlet property="isBgMusicLoop" destination="XVC-me-5eP" id="Xpg-Vp-0JA"/>
+                <outlet property="isRotate" destination="mdN-3n-q4E" id="dAd-wv-GB0"/>
                 <outlet property="nameTextField" destination="c8w-to-Xrg" id="vzD-ah-4sP"/>
                 <outlet property="order" destination="F49-UO-1UG" id="51D-Yy-5j6"/>
                 <outlet property="orderPlus" destination="qz8-rX-yXd" id="x0c-vJ-iFd"/>
@@ -193,7 +194,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f13-9F-Gvo">
-                    <rect key="frame" x="19" y="33" width="82" height="17"/>
+                    <rect key="frame" x="143" y="57" width="82" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="背景音乐循环" id="a8J-dc-RFr">
                         <font key="font" size="13" name="STHeitiSC-Light"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -208,51 +209,6 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bN7-Tb-ySw">
-                    <rect key="frame" x="19" y="58" width="82" height="17"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="单独背景音乐" id="8nc-Nu-gJu">
-                        <font key="font" size="13" name="STHeitiSC-Light"/>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Y79-jS-Wky">
-                    <rect key="frame" x="137" y="54" width="22" height="18"/>
-                    <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="0Z3-0b-Ndh">
-                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="onCheckBox:" target="-2" id="pTs-Lr-6Tp"/>
-                    </connections>
-                </button>
-                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XVC-me-5eP">
-                    <rect key="frame" x="137" y="30" width="22" height="18"/>
-                    <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="BeG-nn-2je">
-                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="onCheckBox:" target="-2" id="5kt-e8-lyZ"/>
-                    </connections>
-                </button>
-                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rGA-RB-Fo7">
-                    <rect key="frame" x="137" y="116" width="22" height="18"/>
-                    <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="tsf-ga-Mvo">
-                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="onCheckBox:" target="-2" id="mmZ-6f-7G2"/>
-                    </connections>
-                </button>
-                <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qz8-rX-yXd">
-                    <rect key="frame" x="135" y="85" width="19" height="27"/>
-                    <stepperCell key="cell" continuous="YES" alignment="left" maxValue="100" id="uEJ-7b-rs1"/>
-                    <connections>
-                        <action selector="onOrderPlus:" target="-2" id="3Ze-vc-waP"/>
-                    </connections>
-                </stepper>
                 <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GRt-oT-6xR">
                     <rect key="frame" x="0.0" y="252" width="296" height="84"/>
                     <subviews>
@@ -330,6 +286,24 @@
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
                         </textField>
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="maj-6J-YZP">
+                            <rect key="frame" x="151" y="5" width="56" height="17"/>
+                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="是否旋转" id="GBh-Bw-1l9">
+                                <font key="font" size="13" name="STHeitiSC-Light"/>
+                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mdN-3n-q4E">
+                            <rect key="frame" x="248" y="3" width="22" height="18"/>
+                            <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="iCU-h4-6bw">
+                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="onCheckBox:" target="-2" id="g8D-Nk-DQb"/>
+                            </connections>
+                        </button>
                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bt0-Vs-Qsb">
                             <rect key="frame" x="114" y="3" width="22" height="18"/>
                             <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="sEu-uP-PL0">
@@ -342,6 +316,51 @@
                         </button>
                     </subviews>
                 </customView>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bN7-Tb-ySw">
+                    <rect key="frame" x="19" y="58" width="82" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="单独背景音乐" id="8nc-Nu-gJu">
+                        <font key="font" size="13" name="STHeitiSC-Light"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Y79-jS-Wky">
+                    <rect key="frame" x="117" y="56" width="22" height="18"/>
+                    <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="0Z3-0b-Ndh">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="onCheckBox:" target="-2" id="pTs-Lr-6Tp"/>
+                    </connections>
+                </button>
+                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rGA-RB-Fo7">
+                    <rect key="frame" x="137" y="116" width="22" height="18"/>
+                    <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="tsf-ga-Mvo">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="onCheckBox:" target="-2" id="mmZ-6f-7G2"/>
+                    </connections>
+                </button>
+                <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qz8-rX-yXd">
+                    <rect key="frame" x="135" y="85" width="19" height="27"/>
+                    <stepperCell key="cell" continuous="YES" alignment="left" maxValue="100" id="uEJ-7b-rs1"/>
+                    <connections>
+                        <action selector="onOrderPlus:" target="-2" id="3Ze-vc-waP"/>
+                    </connections>
+                </stepper>
+                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XVC-me-5eP">
+                    <rect key="frame" x="229" y="55" width="22" height="18"/>
+                    <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="BeG-nn-2je">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="onCheckBox:" target="-2" id="SP8-0b-qhV"/>
+                    </connections>
+                </button>
             </subviews>
             <connections>
                 <outlet property="nextKeyView" destination="-2" id="7O7-Or-Pk5"/>

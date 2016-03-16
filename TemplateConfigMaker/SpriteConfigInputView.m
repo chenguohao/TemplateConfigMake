@@ -30,6 +30,7 @@
 @property (weak) IBOutlet NSStepper *orderPlus;
 @property (weak) IBOutlet NSTextField *anchorx;
 @property (weak) IBOutlet NSTextField *anchory;
+@property (weak) IBOutlet NSButton *isRotate;
 
 
 @property (strong) NSArray* spriteTypeArray;
@@ -86,7 +87,7 @@
     self.order.stringValue = [NSString stringWithFormat:@"%ld",sprite.order];
     
     self.hasBgMusic.state = sprite.hasBgMusic;
-    
+    self.isRotate.state = sprite.isRotate;
     self.isBgMusicLoop.state = sprite.isBgMusicLoop;
     [self.orderPlus setIntegerValue:sprite.order];
     
@@ -260,6 +261,7 @@
     [self.sprite setAnchorTypeWithFaceCode:[self getFaceCode]];
     self.sprite.hasBgMusic = self.hasBgMusic.state;
     self.sprite.isBgMusicLoop = self.isBgMusicLoop.state;
+    self.sprite.isRotate = self.isRotate.state;
     self.sprite.duration = self.animationDuration.stringValue.floatValue;
     if(!self.anchorx.hidden){
       self.sprite.anchor_x = self.anchorx.stringValue.floatValue;

@@ -59,38 +59,15 @@
     self.anchor_y = [dict[@"pos_y"] floatValue];
     self.width = [dict[@"width"] floatValue];
     self.height = [dict[@"height"] floatValue];
-    self.anchorType = dict[@"anchorType"];
+    self.anchorType = [dict[@"anchorType"] integerValue];
     
     self.hasBgMusic = [dict[@"hasBgMusic"] boolValue];
     self.isBgMusicLoop = [dict[@"isBgMusicLoop"] boolValue];
-    
+    self.isRotate = [dict[@"isRotate"] boolValue];
     return self;
 }
     
 
-    
-    
-- (instancetype)initStaticWithDict:(NSDictionary*)dict
-                              Size:(CGSize)size{
-    self = [super init];
-    
-    self.spriteName = dict[@"spriteName"];
-    self.spriteType = SpriteTypeStatic;
-    
-    self.animationFrame = [dict[@"animationCount"] integerValue];
-    self.recycle = [dict[@"isloop"] boolValue];
-    self.duration = [dict[@"animationDuration"] integerValue];
-    self.order = [dict[@"order"] integerValue];
-    
-    self.pos_x = [dict[@"pos_x"] floatValue];
-    self.pos_y = [dict[@"pos_y"] floatValue];
-    self.width = [dict[@"width"] floatValue]*size.width;
-    self.height = [dict[@"height"] floatValue]*size.height;
-    
-    self.spriteRect = CGRectMake(self.pos_x * size.width - self.width * 0.5, self.pos_y * size.height - self.height * 0.5, self.width, self.height);
-    
-    return self;
-}
 
 - (instancetype)initWithName:(NSString*)spriteName{
     self = [super init];
@@ -108,6 +85,7 @@
     self.order = 0;
     self.hasBgMusic = NO;
     self.isBgMusicLoop = NO;
+    self.isRotate = NO;
     self.anchorType = [self getEnumFromFaceCode:@"static"];
     return self;
 }
@@ -137,6 +115,7 @@
     self.width = [dict[@"width"] floatValue];
     self.height= [dict[@"height"] floatValue];
     self.isBgMusicLoop = [dict[@"isBgMusicLoop"] boolValue];
+    self.isRotate = [dict[@"isRotate"] boolValue];
     self.hasBgMusic = [dict[@"hasBgMusic"] boolValue];
     self.anchorType = [dict[@"anchorType"] integerValue];
     return self;
@@ -190,6 +169,8 @@
     [mdic setObject:[@(self.anchorType) stringValue] forKey:@"anchorType"];
     [mdic setObject:@(self.hasBgMusic)forKey:@"hasBgMusic"];
     [mdic setObject:@(self.isBgMusicLoop) forKey:@"isBgMusicLoop"];
+    [mdic setObject:@(self.isRotate) forKey:@"isRotate"];
+    
     return mdic;
 }
 

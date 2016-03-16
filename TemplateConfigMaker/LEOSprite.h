@@ -80,7 +80,7 @@ typedef NS_ENUM(NSUInteger, SpriteAnchorType) {
 @property (nonatomic, assign) CGFloat width;
 @property (nonatomic, assign) CGFloat height;
 @property (nonatomic, assign) SpriteAnchorType anchorType;
-
+@property (nonatomic, assign) BOOL isRotate;
 @property (nonatomic, assign) BOOL hasBgMusic;
 @property (nonatomic, assign) BOOL isBgMusicLoop;
 @property (nonatomic, strong) NSString *imagePath;
