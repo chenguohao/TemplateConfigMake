@@ -98,7 +98,42 @@
        
         sprite.imageView.frame = NSMakeRect(x, y, w, h);
     }
-   
+    [self reSortOrder];
+}
+
+NSComparisonResult viewcmp( NSView * view1, NSView * view2, void * context )
+{
+    if (view1.tag > view2.tag) {
+        return (NSComparisonResult)NSOrderedDescending;
+    }
+    
+    if (view1.tag < view2.tag) {
+        return (NSComparisonResult)NSOrderedAscending;
+    }
+    return (NSComparisonResult)NSOrderedSame;
+}
+
+- (void)reSortOrder{
+
+    NSComparator cmptr = ^(LEOSprite* sprite, LEOSprite* sprite2){
+        if (sprite.order > sprite2.order) {
+            return (NSComparisonResult)NSOrderedDescending;
+        }
+        
+        if (sprite.order < sprite2.order) {
+            return (NSComparisonResult)NSOrderedAscending;
+        }
+        return (NSComparisonResult)NSOrderedSame;
+    };
+    
+     [self.spriteArray sortUsingComparator:cmptr];
+    
+    for (LEOSprite* sprite in self.spriteArray) {
+        sprite.imageView.tag = [self.spriteArray indexOfObject:sprite];
+    }
+
+    [self sortSubviewsUsingFunction:viewcmp context:nil];
+    
 }
 
 - (void)removeSprite:(LEOSprite*)sprite{
