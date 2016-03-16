@@ -20,6 +20,7 @@
 @property (weak) IBOutlet NSTextField *animationDuration;
 @property (weak) IBOutlet NSView *anchorView;
 @property (weak) IBOutlet NSView *posView;
+@property (weak) IBOutlet NSView *triggerView;
 
 @property (weak) IBOutlet NSButton *isAnimationLoop;
 @property (weak) IBOutlet NSTextField *order;
@@ -31,10 +32,14 @@
 @property (weak) IBOutlet NSTextField *anchorx;
 @property (weak) IBOutlet NSTextField *anchory;
 @property (weak) IBOutlet NSButton *isRotate;
+@property (weak) IBOutlet NSPopUpButton *trigerTypeOn;
+@property (weak) IBOutlet NSPopUpButton *trigerTypeOff;
 
 
 @property (strong) NSArray* spriteTypeArray;
 @property (strong) NSArray* anchorTypeArray;
+@property (strong) NSArray* trigerTypeArray;
+
 @property (strong) NSDictionary* anchorTypeDict;
 @property (copy,nonatomic) void (^RefreshBlock) (LEOSprite* sprite);
 @property (copy,nonatomic) void (^switchBasePointsBlock) (BOOL isOpen);
@@ -138,8 +143,8 @@
                             @"眼睛":@[@"双眼",@"左眼",@"右眼",],
                             @"鼻子":@[@"全鼻",@"鼻孔"],
                             @"嘴巴":@[@"全嘴",@"上嘴唇",@"下嘴唇",@"左嘴角",@"右嘴角"]};
-    
-    self.spriteTypeArray = @[@"静态",@"伴随面部"];
+    self.trigerTypeArray = @[@"N/A",@"张嘴",@"闭嘴",@"眨眼"];
+    self.spriteTypeArray = @[@"静态",@"伴随面部",@"条件触发"];
     self.anchorTypeArray = @[@"静态",
                              @"脸",
                              @"耳朵",
@@ -162,6 +167,16 @@
         [self.anchorSubType removeAllItems];
         [self.anchorSubType addItemsWithTitles:self.anchorTypeDict[@"静态"]];
     }
+    
+    if (self.trigerTypeOn) {
+        [self.trigerTypeOn removeAllItems];
+        [self.trigerTypeOn addItemsWithTitles:self.trigerTypeArray];
+    }
+    
+    if (self.trigerTypeOff) {
+        [self.trigerTypeOff removeAllItems];
+        [self.trigerTypeOff addItemsWithTitles:self.trigerTypeArray];
+    }
 }
 
 #pragma mark - action
@@ -178,9 +193,15 @@
     if (n == 0) {
         self.posView.hidden = NO;
         self.anchorView.hidden = !self.posView.hidden;
-    }else{
+        self.triggerView.hidden = YES;
+    }else if(n == 1){
         self.posView.hidden = YES;
         self.anchorView.hidden = !self.posView.hidden;
+        self.triggerView.hidden = YES;
+    }else if(n == 2){
+        self.posView.hidden = YES;
+        self.anchorView.hidden = !self.posView.hidden;
+        self.triggerView.hidden = NO;
     }
 }
  
@@ -197,6 +218,11 @@
 - (IBAction)onSpriteAnchorSubtype:(NSPopUpButton *)sender {
     [self checkValue];
 }
+
+- (IBAction)onTriggerType:(NSPopUpButton *)sender {
+    [self checkValue];
+}
+
 
 - (IBAction)onSelect:(NSPopUpButton *)sender {
     NSString* title = sender.selectedItem.title;
@@ -263,6 +289,9 @@
     self.sprite.isBgMusicLoop = self.isBgMusicLoop.state;
     self.sprite.isRotate = self.isRotate.state;
     self.sprite.duration = self.animationDuration.stringValue.floatValue;
+    self.sprite.triggerOffType = self.trigerTypeOff.indexOfSelectedItem;
+    self.sprite.triggerOnType  = self.trigerTypeOn.indexOfSelectedItem;
+    
     if(!self.anchorx.hidden){
       self.sprite.anchor_x = self.anchorx.stringValue.floatValue;
     }
@@ -291,6 +320,18 @@
 }
 
 #pragma mark - TextFeild Delegate
+- (void)controlTextDidChange:(NSNotification *)obj{
+    id sender = obj.object;
+    if (sender == self.width) {
+        CGFloat f = self.width.stringValue.floatValue;
+        NSImage* img = self.sprite.imageView.image;
+        if (img) {
+            CGFloat r = img.size.width/img.size.height;
+            self.height.stringValue = [NSString stringWithFormat:@"%.2f",f/r];
+        }
+    }
+}
+
 - (void)controlTextDidEndEditing:(NSNotification *)obj{
    [self checkValue];
 }

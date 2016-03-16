@@ -25,6 +25,9 @@
                 <outlet property="pos_x" destination="U7t-mi-L5J" id="fth-wM-Kwn"/>
                 <outlet property="pos_y" destination="Tjl-KG-C8J" id="02S-bC-9yI"/>
                 <outlet property="spriteType" destination="8xl-nM-bKO" id="OFk-9x-iGi"/>
+                <outlet property="trigerTypeOff" destination="Zcs-ql-u4d" id="z9r-J9-ahk"/>
+                <outlet property="trigerTypeOn" destination="aus-e6-a5T" id="kPx-dq-BLM"/>
+                <outlet property="triggerView" destination="6IU-hs-24A" id="kxQ-96-cr3"/>
                 <outlet property="view" destination="c22-O7-iKe" id="sim-jS-eAB"/>
                 <outlet property="width" destination="tpX-EC-Upf" id="fya-bM-nr7"/>
             </connections>
@@ -122,7 +125,7 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JXq-kD-Y2d">
-                    <rect key="frame" x="139" y="167" width="96" height="22"/>
+                    <rect key="frame" x="139" y="133" width="84" height="22"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="8BR-4c-lEN">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -130,7 +133,7 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F49-UO-1UG">
-                    <rect key="frame" x="160" y="91" width="74" height="22"/>
+                    <rect key="frame" x="160" y="57" width="74" height="22"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="boc-pz-lkp">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -138,7 +141,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yob-gl-SFf">
-                    <rect key="frame" x="18" y="93" width="30" height="17"/>
+                    <rect key="frame" x="18" y="59" width="30" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="层级" id="0XX-nf-fVh">
                         <font key="font" size="13" name="STHeitiSC-Light"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -154,7 +157,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="P7L-jW-yfA">
-                    <rect key="frame" x="19" y="170" width="56" height="17"/>
+                    <rect key="frame" x="19" y="136" width="56" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="动画帧数" id="nWD-h8-Qeq">
                         <font key="font" size="13" name="STHeitiSC-Light"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -162,7 +165,7 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qqn-3t-UG2">
-                    <rect key="frame" x="139" y="139" width="96" height="22"/>
+                    <rect key="frame" x="139" y="105" width="84" height="22"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="Z1w-0o-LUo">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -170,7 +173,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X6L-RX-W9S">
-                    <rect key="frame" x="19" y="142" width="56" height="17"/>
+                    <rect key="frame" x="19" y="108" width="56" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="动画时长" id="t0b-bQ-r14">
                         <font key="font" size="13" name="STHeitiSC-Light"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -178,7 +181,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9se-ug-cjA">
-                    <rect key="frame" x="18" y="118" width="56" height="17"/>
+                    <rect key="frame" x="18" y="84" width="56" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="动画循环" id="PSn-95-Jbb">
                         <font key="font" size="13" name="STHeitiSC-Light"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -194,7 +197,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f13-9F-Gvo">
-                    <rect key="frame" x="143" y="57" width="82" height="17"/>
+                    <rect key="frame" x="143" y="23" width="82" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="背景音乐循环" id="a8J-dc-RFr">
                         <font key="font" size="13" name="STHeitiSC-Light"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -317,7 +320,7 @@
                     </subviews>
                 </customView>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bN7-Tb-ySw">
-                    <rect key="frame" x="19" y="58" width="82" height="17"/>
+                    <rect key="frame" x="19" y="24" width="82" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="单独背景音乐" id="8nc-Nu-gJu">
                         <font key="font" size="13" name="STHeitiSC-Light"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -325,7 +328,7 @@
                     </textFieldCell>
                 </textField>
                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Y79-jS-Wky">
-                    <rect key="frame" x="117" y="56" width="22" height="18"/>
+                    <rect key="frame" x="117" y="22" width="22" height="18"/>
                     <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="0Z3-0b-Ndh">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
@@ -335,7 +338,7 @@
                     </connections>
                 </button>
                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rGA-RB-Fo7">
-                    <rect key="frame" x="137" y="116" width="22" height="18"/>
+                    <rect key="frame" x="145" y="82" width="22" height="18"/>
                     <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="tsf-ga-Mvo">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
@@ -344,15 +347,8 @@
                         <action selector="onCheckBox:" target="-2" id="mmZ-6f-7G2"/>
                     </connections>
                 </button>
-                <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qz8-rX-yXd">
-                    <rect key="frame" x="135" y="85" width="19" height="27"/>
-                    <stepperCell key="cell" continuous="YES" alignment="left" maxValue="100" id="uEJ-7b-rs1"/>
-                    <connections>
-                        <action selector="onOrderPlus:" target="-2" id="3Ze-vc-waP"/>
-                    </connections>
-                </stepper>
                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XVC-me-5eP">
-                    <rect key="frame" x="229" y="55" width="22" height="18"/>
+                    <rect key="frame" x="229" y="21" width="22" height="18"/>
                     <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="BeG-nn-2je">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
@@ -361,6 +357,60 @@
                         <action selector="onCheckBox:" target="-2" id="SP8-0b-qhV"/>
                     </connections>
                 </button>
+                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6IU-hs-24A">
+                    <rect key="frame" x="20" y="163" width="257" height="29"/>
+                    <subviews>
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1WL-5V-6mA">
+                            <rect key="frame" x="1" y="6" width="68" height="17"/>
+                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="TrigerType" id="U2P-vB-xNR">
+                                <font key="font" metaFont="system"/>
+                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                        <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aus-e6-a5T">
+                            <rect key="frame" x="97" y="3" width="73" height="26"/>
+                            <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="99S-oc-uyi" id="X33-6t-UyD">
+                                <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="menu"/>
+                                <menu key="menu" id="lfK-jg-kM8">
+                                    <items>
+                                        <menuItem title="Item 1" state="on" id="99S-oc-uyi"/>
+                                        <menuItem title="Item 2" id="jMj-Uh-Un7"/>
+                                        <menuItem title="Item 3" id="bMB-sO-5nK"/>
+                                    </items>
+                                </menu>
+                            </popUpButtonCell>
+                            <connections>
+                                <action selector="onTriggerType:" target="-2" id="QyN-xZ-saK"/>
+                            </connections>
+                        </popUpButton>
+                        <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zcs-ql-u4d">
+                            <rect key="frame" x="177" y="3" width="73" height="26"/>
+                            <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="eC9-aC-S19" id="5n5-8L-Xf2">
+                                <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="menu"/>
+                                <menu key="menu" id="AcX-Pu-C7A">
+                                    <items>
+                                        <menuItem title="Item 1" state="on" id="eC9-aC-S19"/>
+                                        <menuItem title="Item 2" id="Iru-Ct-AXW"/>
+                                        <menuItem title="Item 3" id="n01-tf-Vj1"/>
+                                    </items>
+                                </menu>
+                            </popUpButtonCell>
+                            <connections>
+                                <action selector="onTriggerType:" target="-2" id="4Nq-wm-ps1"/>
+                            </connections>
+                        </popUpButton>
+                    </subviews>
+                </customView>
+                <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qz8-rX-yXd">
+                    <rect key="frame" x="137" y="54" width="19" height="27"/>
+                    <stepperCell key="cell" continuous="YES" alignment="left" maxValue="100" id="uEJ-7b-rs1"/>
+                    <connections>
+                        <action selector="onOrderPlus:" target="-2" id="3Ze-vc-waP"/>
+                    </connections>
+                </stepper>
             </subviews>
             <connections>
                 <outlet property="nextKeyView" destination="-2" id="7O7-Or-Pk5"/>

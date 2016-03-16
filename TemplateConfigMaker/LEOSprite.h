@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import <AppKit/AppKit.h>
+
+
+
 typedef NS_ENUM(NSUInteger, SpriteType) {
     SpriteTypeStatic = 0,//静态
     SpriteTypeDynamic,//动态
@@ -16,8 +19,14 @@ typedef NS_ENUM(NSUInteger, SpriteType) {
 
 
 typedef NS_ENUM(NSUInteger, SpriteTriggerType) {
-    SpriteTriggerTypeStartRightNow,//动画立即触发
-    SpriteTriggerTypeStartFrom,//动画等待触发
+    SpriteTrigerTypeNone    = 0,
+    SpriteTrigerTypeZhayan   = 1,   //眨眼
+    SpriteTrigerTypeTiaomei  = 2,  //挑眉
+    SpriteTrigerTypeZhangzui = 4, //张嘴
+    SpriteTrigerTypeBizui    = 8,    //闭嘴
+    SpriteTrigerTypeYaotou   = 16,   //摇头
+    SpriteTrigerTypeBaitou   = 32,   //摇头
+    SpriteTrigerTypeDiantou  = 64  //点头
 };
 
 
@@ -63,7 +72,8 @@ typedef NS_ENUM(NSUInteger, SpriteAnchorType) {
 @property (nonatomic, strong) NSImageView* imageView;
 @property (nonatomic, assign) SpriteType spriteType;
 @property (nonatomic, assign) NSInteger order;
-@property (nonatomic, assign) SpriteTriggerType triggerType;
+@property (nonatomic, assign) SpriteTriggerType triggerOnType;
+@property (nonatomic, assign) SpriteTriggerType triggerOffType;
 @property (nonatomic, assign) BOOL recycle;
 @property (nonatomic, strong) NSString *spriteName;
 @property (nonatomic, assign) CGFloat startTime;
@@ -79,7 +89,10 @@ typedef NS_ENUM(NSUInteger, SpriteAnchorType) {
 
 @property (nonatomic, assign) CGFloat width;
 @property (nonatomic, assign) CGFloat height;
+
 @property (nonatomic, assign) SpriteAnchorType anchorType;
+
+
 @property (nonatomic, assign) BOOL isRotate;
 @property (nonatomic, assign) BOOL hasBgMusic;
 @property (nonatomic, assign) BOOL isBgMusicLoop;

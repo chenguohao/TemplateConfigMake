@@ -9,63 +9,7 @@
 #import "LEOSprite.h"
 #import <AppKit/AppKit.h>
 @implementation LEOSprite
-- (instancetype)init
-{
-    self = [super init];
-    if (self) {
-        
-    }
-    return self;
-}
 
-//- (CGRect)spriteRect{
-//    return CGRectMake(self.pos_x, self.pos_y, self.width, self.height);
-//}
-
-
-
-
-- (NSImage *)frameImage {
-    
-    if (self.imagePath) {
-      return   [[NSImage alloc] initWithContentsOfFile:self.imagePath];
-    }
-    
-    return nil;
-}
-
-- (void)setDuration:(CGFloat)duration{
-    _duration = duration;
-
-}
-
-- (void)setRecycle:(BOOL)recycle{
-    _recycle = recycle;
-
-}
-
-- (instancetype)initDynimicWithDict:(NSDictionary*)dict{
-    self = [super init];
-    
-    self.spriteName = dict[@"spriteName"];
-    self.spriteType = SpriteTypeDynamic;
-    self.order = [dict[@"order"] integerValue];
-    
-    self.animationFrame = [dict[@"animationCount"] integerValue];
-    self.recycle = [dict[@"isloop"] boolValue];
-    self.duration = [dict[@"animationDuration"] integerValue];
-    
-    self.anchor_x = [dict[@"pos_x"] floatValue];
-    self.anchor_y = [dict[@"pos_y"] floatValue];
-    self.width = [dict[@"width"] floatValue];
-    self.height = [dict[@"height"] floatValue];
-    self.anchorType = [dict[@"anchorType"] integerValue];
-    
-    self.hasBgMusic = [dict[@"hasBgMusic"] boolValue];
-    self.isBgMusicLoop = [dict[@"isBgMusicLoop"] boolValue];
-    self.isRotate = [dict[@"isRotate"] boolValue];
-    return self;
-}
     
 
 
@@ -87,6 +31,8 @@
     self.isBgMusicLoop = NO;
     self.isRotate = NO;
     self.anchorType = [self getEnumFromFaceCode:@"static"];
+    self.triggerOffType = 0;
+    self.triggerOnType  = 0;
     return self;
 }
 
@@ -110,7 +56,6 @@
         self.anchor_x = [dict[@"pos_x"] floatValue];
         self.anchor_y = [dict[@"pos_y"] floatValue];
     }
-   
     
     self.width = [dict[@"width"] floatValue];
     self.height= [dict[@"height"] floatValue];
@@ -118,6 +63,8 @@
     self.isRotate = [dict[@"isRotate"] boolValue];
     self.hasBgMusic = [dict[@"hasBgMusic"] boolValue];
     self.anchorType = [dict[@"anchorType"] integerValue];
+    self.triggerOffType = [dict[@"triggerOffType"] integerValue];
+    self.triggerOnType  = [dict[@"triggerOnType"] integerValue];
     return self;
 }
 
@@ -156,10 +103,19 @@
     NSMutableDictionary* mdic = [NSMutableDictionary new];
     [mdic setObject:self.spriteName forKey:@"spriteName"];
     [mdic setObject:[@(self.spriteType) stringValue] forKey:@"spriteType"];
-    [mdic setObject:[self getStringFromFloat:self.pos_x] forKey:@"pos_x"];
-    [mdic setObject:[self getStringFromFloat:self.pos_y] forKey:@"pos_y"];
-    [mdic setObject:[self getStringFromFloat:self.anchor_x] forKey:@"anchor_x"];
-    [mdic setObject:[self getStringFromFloat:self.anchor_y] forKey:@"anchor_y"];
+    if (self.spriteType == SpriteTypeStatic) {
+        [mdic setObject:[self getStringFromFloat:self.pos_x] forKey:@"pos_x"];
+        [mdic setObject:[self getStringFromFloat:self.pos_y] forKey:@"pos_y"];
+    }else if (self.spriteType == SpriteTypeDynamic){
+        
+        [mdic setObject:[self getStringFromFloat:self.anchor_x] forKey:@"pos_x"];
+        [mdic setObject:[self getStringFromFloat:self.anchor_y] forKey:@"pos_y"];
+    }else if (self.spriteType == SpriteTypeCondition){
+        
+        [mdic setObject:[self getStringFromFloat:self.anchor_x] forKey:@"pos_x"];
+        [mdic setObject:[self getStringFromFloat:self.anchor_y] forKey:@"pos_y"];
+    }
+   
     [mdic setObject:[self getStringFromFloat:self.width] forKey:@"width"];
     [mdic setObject:[self getStringFromFloat:self.height] forKey:@"height"];
     [mdic setObject:[@(self.animationCount) stringValue] forKey:@"animationCount"];
@@ -170,7 +126,8 @@
     [mdic setObject:@(self.hasBgMusic)forKey:@"hasBgMusic"];
     [mdic setObject:@(self.isBgMusicLoop) forKey:@"isBgMusicLoop"];
     [mdic setObject:@(self.isRotate) forKey:@"isRotate"];
-    
+    [mdic setObject:[@(self.triggerOnType) stringValue] forKey:@"triggerOnType"];
+    [mdic setObject:[@(self.triggerOffType) stringValue] forKey:@"triggerOffType"];
     return mdic;
 }
 
