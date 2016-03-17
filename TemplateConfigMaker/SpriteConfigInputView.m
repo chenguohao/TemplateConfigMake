@@ -40,10 +40,14 @@
 @property (strong) NSArray* anchorTypeArray;
 @property (strong) NSArray* trigerTypeArray;
 
+@property (strong) NSArray* trigerEnumIndexArray;
+
 @property (strong) NSDictionary* anchorTypeDict;
 @property (copy,nonatomic) void (^RefreshBlock) (LEOSprite* sprite);
 @property (copy,nonatomic) void (^switchBasePointsBlock) (BOOL isOpen);
 @end
+
+
 
 @implementation SpriteConfigInputView
 
@@ -79,17 +83,19 @@
     _sprite = sprite;
     self.nameTextField.stringValue = sprite.spriteName;
     [self.spriteType selectItemAtIndex:sprite.spriteType];
-    self.pos_x.stringValue = [NSString stringWithFormat:@"%.2f",sprite.pos_x];
-    self.pos_y.stringValue = [NSString stringWithFormat:@"%.2f",sprite.pos_y];
+    self.pos_x.stringValue = [NSString stringWithFormat:@"%.0f",sprite.pos_x*480];
+    self.pos_y.stringValue = [NSString stringWithFormat:@"%.0f",sprite.pos_y*480];
     self.anchorx.stringValue = [NSString stringWithFormat:@"%.2f",sprite.anchor_x];
     self.anchory.stringValue = [NSString stringWithFormat:@"%.2f",sprite.anchor_y];
     
-    self.width.stringValue = [NSString stringWithFormat:@"%.2f",sprite.width];
-    self.height.stringValue = [NSString stringWithFormat:@"%.2f",sprite.height];
-    self.animationCount.stringValue = [NSString stringWithFormat:@"%ld",sprite.animationCount];
+    self.width.stringValue = [NSString stringWithFormat:@"%.0f",(sprite.width*480)];
+    self.height.stringValue = [NSString stringWithFormat:@"%.0f",(sprite.height*480)];
+    self.animationCount.stringValue = [NSString stringWithFormat:@"%ld",sprite.animationCount+1];
     self.animationDuration.stringValue = [NSString stringWithFormat:@"%.2f",sprite.duration];
     self.isAnimationLoop.state = sprite.recycle;
     self.order.stringValue = [NSString stringWithFormat:@"%ld",sprite.order];
+    [self.trigerTypeOff selectItemAtIndex:[self setTriggerWithEnum:sprite.triggerOffType]];
+    [self.trigerTypeOn selectItemAtIndex:[self setTriggerWithEnum:sprite.triggerOnType]];
     
     self.hasBgMusic.state = sprite.hasBgMusic;
     self.isRotate.state = sprite.isRotate;
@@ -98,6 +104,17 @@
     
     [self setAnchorTypeWithEnum:sprite.anchorType];
     [self setLayoutState];
+}
+
+- (NSInteger)setTriggerWithEnum:(SpriteTriggerType)type{
+    
+    for (NSNumber* number in self.trigerEnumIndexArray) {
+        if (number.integerValue == type) {
+            return [self.trigerEnumIndexArray indexOfObject:number];
+        }
+    }
+    
+    return 0;
 }
 
 - (void)setAnchorTypeWithEnum:(SpriteAnchorType)anchorType{
@@ -136,6 +153,10 @@
 - (void)setUpData{
     
     [self setLayoutState];
+    
+    
+    self.trigerEnumIndexArray = @[@(0),@(4),@(8),@(1)];
+    
     self.anchorTypeDict = @{@"静态":@[@"静态"],
                             @"脸":@[@"全脸",@"头顶",@"额头",@"脖子",@"脸颊",@"下巴"],
                             @"耳朵":@[@"双耳",@"左耳",@"右耳"],
@@ -220,6 +241,12 @@
 }
 
 - (IBAction)onTriggerType:(NSPopUpButton *)sender {
+    if (sender == self.trigerTypeOff) {
+        NSInteger n = self.trigerTypeOff.indexOfSelectedItem;
+        if (n == 0) {
+            self.isAnimationLoop.state = 0;
+        }
+    }
     [self checkValue];
 }
 
@@ -276,12 +303,12 @@
 - (void)receiveData{
     self.sprite.spriteName = self.nameTextField.stringValue;
     self.sprite.spriteType = self.spriteType.indexOfSelectedItem;
-   self.sprite.pos_x = self.pos_x.stringValue.floatValue;
-    self.sprite.pos_y = self.pos_y.stringValue.floatValue;
-    self.sprite.width = self.width.stringValue.floatValue;
-    self.sprite.height = self.height.stringValue.floatValue;
+    self.sprite.pos_x = self.pos_x.stringValue.floatValue/480;
+    self.sprite.pos_y = self.pos_y.stringValue.floatValue/480;
+    self.sprite.width = self.width.stringValue.floatValue/480;
+    self.sprite.height = self.height.stringValue.floatValue/480;
     NSInteger n = self.animationCount.stringValue.integerValue;
-    self.sprite.animationCount = n;
+    self.sprite.animationCount = n-1;
     self.sprite.recycle = self.isAnimationLoop.state;
     self.sprite.order = self.order.stringValue.integerValue;
     [self.sprite setAnchorTypeWithFaceCode:[self getFaceCode]];
@@ -289,9 +316,8 @@
     self.sprite.isBgMusicLoop = self.isBgMusicLoop.state;
     self.sprite.isRotate = self.isRotate.state;
     self.sprite.duration = self.animationDuration.stringValue.floatValue;
-    self.sprite.triggerOffType = self.trigerTypeOff.indexOfSelectedItem;
-    self.sprite.triggerOnType  = self.trigerTypeOn.indexOfSelectedItem;
-    
+    self.sprite.triggerOffType = [self.trigerEnumIndexArray[self.trigerTypeOff.indexOfSelectedItem] integerValue];
+    self.sprite.triggerOnType  = [self.trigerEnumIndexArray[self.trigerTypeOn.indexOfSelectedItem] integerValue];
     if(!self.anchorx.hidden){
       self.sprite.anchor_x = self.anchorx.stringValue.floatValue;
     }
@@ -327,9 +353,16 @@
         NSImage* img = self.sprite.imageView.image;
         if (img) {
             CGFloat r = img.size.width/img.size.height;
-            self.height.stringValue = [NSString stringWithFormat:@"%.2f",f/r];
+            self.height.stringValue = [NSString stringWithFormat:@"%.0f",(f/r)];
         }
+    }else if (sender == self.animationCount){
+        CGFloat f = self.animationCount.stringValue.floatValue;
+        self.animationDuration.stringValue = [NSString stringWithFormat:@"%.2f",f/8];
+    }else if (sender == self.animationDuration){
+        CGFloat f = self.animationDuration.stringValue.floatValue;
+        self.animationCount.stringValue = [NSString stringWithFormat:@"%.0f",f*8];
     }
+    [self checkValue];
 }
 
 - (void)controlTextDidEndEditing:(NSNotification *)obj{

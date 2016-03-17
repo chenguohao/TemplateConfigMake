@@ -14,6 +14,8 @@
 #import "ContainerImageView.h"
 #import "LEOConfigTextView.h"
 
+#define tempVer @"1.1"
+
 @interface ViewController()<NSTableViewDataSource,NSTableViewDelegate>
 @property (strong) NSString* str1;
 @property (weak) IBOutlet NSTableView *tableView;
@@ -27,6 +29,7 @@
 @property (weak) IBOutlet NSButton *btSave;
 @property (weak) IBOutlet ContainerImageView *photoImage;
 @property (nonatomic, strong) NSMutableArray* spritesArray;
+@property (weak) IBOutlet NSTextField *templateVersion;
 @end
 
 NSString* cellID = @"CellID";
@@ -40,6 +43,7 @@ NSString* cellID = @"CellID";
     self.tableView.delegate = self;
     self.curEditSprite = nil;
     self.hasBgMusic = NO;
+    self.templateVersion.stringValue = tempVer;
     [self.configInputView setRefreshBlock:^(LEOSprite *sprite) {
         self.curEditSprite = sprite;
         self.photoImage.faceView.hidden = sprite.spriteType == SpriteTypeStatic;
@@ -315,7 +319,9 @@ NSString* cellID = @"CellID";
 
 #pragma mark - sprite data
 - (void)produceSpriteConfig{
-    self.textView.string = [self DataTOjsonString:@{@"sprites":[self getDicArrayFromSpriteArray:self.spritesArray],@"hasBgMusic":@(self.hasBgMusic)}];
+    self.textView.string = [self DataTOjsonString:@{
+                                                    @"sprites":[self getDicArrayFromSpriteArray:self.spritesArray],
+                                                    @"hasBgMusic":@(self.hasBgMusic),@"tempViersion":self.templateVersion.stringValue}];
 }
 
 @end
