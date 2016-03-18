@@ -92,9 +92,11 @@
     _sprite = sprite;
     self.nameTextField.stringValue = sprite.spriteName;
     [self.spriteType selectItemAtIndex:sprite.spriteType];
-    self.pos_x.stringValue = [NSString stringWithFormat:@"%.0f",sprite.pos_x*480];
+    CGFloat w = sprite.width*480;
+    CGFloat h = sprite.height*480;
+    self.pos_x.stringValue = [NSString stringWithFormat:@"%.0f",sprite.pos_x*480-w/2];
     self.posXStepper.integerValue = self.pos_x.stringValue.integerValue;
-    self.pos_y.stringValue = [NSString stringWithFormat:@"%.0f",sprite.pos_y*480];
+    self.pos_y.stringValue = [NSString stringWithFormat:@"%.0f",sprite.pos_y*480-h/2];
     self.posYStepper.integerValue = self.pos_y.stringValue.integerValue;
     self.anchorx.stringValue = [NSString stringWithFormat:@"%.2f",sprite.anchor_x];
     CGFloat f = sprite.anchor_x*100;
@@ -120,7 +122,7 @@
     self.isAnimationLoop.state = sprite.recycle;
     self.order.stringValue = [NSString stringWithFormat:@"%ld",sprite.order];
     [self.trigerTypeOff selectItemAtIndex:[self setTriggerWithEnum:sprite.triggerOffType]];
-    [self.trigerTypeOn selectItemAtIndex:[self setTriggerWithEnum:sprite.triggerOnType]];
+    [self.trigerTypeOn  selectItemAtIndex:[self setTriggerWithEnum:sprite.triggerOnType]];
     
     self.hasBgMusic.state = sprite.hasBgMusic;
     self.isRotate.state = sprite.isRotate;
@@ -388,10 +390,14 @@
 - (void)receiveData{
     self.sprite.spriteName = self.nameTextField.stringValue;
     self.sprite.spriteType = self.spriteType.indexOfSelectedItem;
-    self.sprite.pos_x = self.pos_x.stringValue.floatValue/480;
-    self.sprite.pos_y = self.pos_y.stringValue.floatValue/480;
-    self.sprite.width = self.width.stringValue.floatValue/480;
-    self.sprite.height = self.height.stringValue.floatValue/480;
+    CGFloat w = self.width.stringValue.floatValue/480;
+    CGFloat h = self.height.stringValue.floatValue/480;
+    self.sprite.width  = w;
+    self.sprite.height = h;
+    
+    self.sprite.pos_x = self.pos_x.stringValue.floatValue/480+w/2;
+    self.sprite.pos_y = self.pos_y.stringValue.floatValue/480+h/2;
+    
     NSInteger n = self.animationCount.stringValue.integerValue;
     self.sprite.animationCount = n-1;
     self.sprite.recycle = self.isAnimationLoop.state;

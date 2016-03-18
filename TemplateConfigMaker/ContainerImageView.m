@@ -43,13 +43,13 @@
         CGFloat y;
         if (sprite.spriteType == SpriteTypeStatic) {
             x = (sprite.pos_x - sprite.width*sprite.anchor_x)* l;
-            y = l- (sprite.pos_y + sprite.height*sprite.anchor_y)* l;
+            y = l-(sprite.pos_y + sprite.height*sprite.anchor_y)* l;
         }else{
             
             NSPoint point = [[FaceView new] getPointWithAnchorType:sprite.anchorType];
             
             x = (point.x - sprite.width*sprite.anchor_x)* l;
-            y = l- (point.y + sprite.height*sprite.anchor_y)* l;
+            y = l-(point.y + sprite.height*sprite.anchor_y)* l;
         }
         
         CGFloat w = sprite.width * l;
@@ -58,6 +58,10 @@
         imv.image = [[NSImage alloc] initWithContentsOfFile:sprite.imagePath];
         imv.imageScaling = NSImageScaleAxesIndependently;
         sprite.imageView = imv;
+        imv.wantsLayer = YES;
+        imv.layer.masksToBounds = YES;
+        imv.layer.borderColor = [NSColor blueColor].CGColor;
+        imv.layer.borderWidth = 1;
         [self addSubview:imv];
        
     }

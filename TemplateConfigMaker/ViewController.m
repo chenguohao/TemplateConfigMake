@@ -14,7 +14,7 @@
 #import "ContainerImageView.h"
 #import "LEOConfigTextView.h"
 
-#define tempVer @"1.1"
+#define tempVer @"2"
 
 @interface ViewController()<NSTableViewDataSource,NSTableViewDelegate>
 @property (strong) NSString* str1;
@@ -27,6 +27,8 @@
 @property (weak) LEOSprite* curEditSprite;
 @property (strong) NSString* str0;
 @property (weak) IBOutlet NSButton *btSave;
+@property (weak) IBOutlet NSView *containerView;
+
 @property (weak) IBOutlet ContainerImageView *photoImage;
 @property (nonatomic, strong) NSMutableArray* spritesArray;
 @property (weak) IBOutlet NSTextField *templateVersion;
@@ -38,6 +40,8 @@ NSString* cellID = @"CellID";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+  
+    
     self.tableView.allowsEmptySelection = NO;
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
