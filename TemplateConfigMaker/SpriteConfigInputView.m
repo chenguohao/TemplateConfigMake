@@ -32,9 +32,18 @@
 @property (weak) IBOutlet NSTextField *anchorx;
 @property (weak) IBOutlet NSTextField *anchory;
 @property (weak) IBOutlet NSButton *isRotate;
+
 @property (weak) IBOutlet NSPopUpButton *trigerTypeOn;
 @property (weak) IBOutlet NSPopUpButton *trigerTypeOff;
 
+@property (weak) IBOutlet NSStepper *posXStepper;
+@property (weak) IBOutlet NSStepper *posYStepper;
+
+@property (weak) IBOutlet NSStepper *widthStepper;
+@property (weak) IBOutlet NSStepper *heightStepper;
+
+@property (weak) IBOutlet NSStepper *anchorPosXStepper;
+@property (weak) IBOutlet NSStepper *anchorPosYStepper;
 
 @property (strong) NSArray* spriteTypeArray;
 @property (strong) NSArray* anchorTypeArray;
@@ -84,12 +93,28 @@
     self.nameTextField.stringValue = sprite.spriteName;
     [self.spriteType selectItemAtIndex:sprite.spriteType];
     self.pos_x.stringValue = [NSString stringWithFormat:@"%.0f",sprite.pos_x*480];
+    self.posXStepper.integerValue = self.pos_x.stringValue.integerValue;
     self.pos_y.stringValue = [NSString stringWithFormat:@"%.0f",sprite.pos_y*480];
+    self.posYStepper.integerValue = self.pos_y.stringValue.integerValue;
     self.anchorx.stringValue = [NSString stringWithFormat:@"%.2f",sprite.anchor_x];
+    CGFloat f = sprite.anchor_x*100;
+    NSInteger anchorX =  f;
+    if ((f - anchorX)>0.5) {
+        anchorX += 1;
+    }
+    self.anchorPosXStepper.integerValue = anchorX;
     self.anchory.stringValue = [NSString stringWithFormat:@"%.2f",sprite.anchor_y];
-    
+    f = sprite.anchor_y*100;
+    NSInteger anchorY =  f;
+    if ((f - anchorY)>0.5) {
+        anchorY += 1;
+    }
+    self.anchorPosYStepper.integerValue = anchorY;
     self.width.stringValue = [NSString stringWithFormat:@"%.0f",(sprite.width*480)];
+    self.widthStepper.integerValue = self.width.stringValue.integerValue;
     self.height.stringValue = [NSString stringWithFormat:@"%.0f",(sprite.height*480)];
+    self.heightStepper.integerValue = self.height.stringValue.integerValue;
+    
     self.animationCount.stringValue = [NSString stringWithFormat:@"%ld",sprite.animationCount+1];
     self.animationDuration.stringValue = [NSString stringWithFormat:@"%.2f",sprite.duration];
     self.isAnimationLoop.state = sprite.recycle;
@@ -203,11 +228,51 @@
 #pragma mark - action
 - (IBAction)onOrderPlus:(NSStepper *)sender {
     NSStepper* ss = sender;
-    
     self.order.stringValue = [NSString stringWithFormat:@"%ld",ss.integerValue];
-    
     [self checkValue];
 }
+- (IBAction)onPosXPlus:(NSStepper *)sender {
+    NSStepper* ss = sender;
+    self.pos_x.stringValue = [NSString stringWithFormat:@"%ld",ss.integerValue];
+    [self checkValue];
+}
+- (IBAction)onPosYPlus:(id)sender {
+    NSStepper* ss = sender;
+    self.pos_y.stringValue = [NSString stringWithFormat:@"%ld",ss.integerValue];
+    [self checkValue];
+}
+
+
+- (IBAction)onWidthPlus:(NSStepper *)sender {
+    NSStepper* ss = sender;
+    self.width.stringValue = [NSString stringWithFormat:@"%ld",ss.integerValue];
+    [self checkValue];
+}
+
+- (IBAction)onHeightPlus:(NSStepper *)sender {
+    NSStepper* ss = sender;
+    self.height.stringValue = [NSString stringWithFormat:@"%ld",ss.integerValue];
+    [self checkValue];
+}
+
+- (IBAction)onAnchorXPlus:(NSStepper *)sender {
+    NSStepper* ss = sender;
+    CGFloat f = (CGFloat)ss.integerValue/100;
+  
+    
+    
+    self.anchorx.stringValue = [NSString stringWithFormat:@"%.2f",f];
+    NSLog(@"~~~%@",[NSString stringWithFormat:@" stepper %d",ss.integerValue]);
+    [self checkValue];
+}
+
+
+- (IBAction)onAnchorYPlus:(NSStepper *)sender {
+    NSStepper* ss = sender;
+    self.anchory.stringValue = [NSString stringWithFormat:@"%f",(float)ss.integerValue/100];
+    [self checkValue];
+}
+
 
 - (void)setLayoutState{
     NSInteger n = self.spriteType.indexOfSelectedItem;
@@ -300,6 +365,26 @@
     return value;
 }
 
+- (CGFloat)getAccurateFloatFromStr:(NSString*)originStr{
+    CGFloat f = originStr.floatValue;
+    
+    
+    NSString* str = [NSString stringWithFormat:@"%.2f",f];
+    if (![str isEqualToString:originStr]) {
+        NSString* bigf  = [NSString stringWithFormat:@"%.2f",f+0.01];
+        NSString* smalf = [NSString stringWithFormat:@"%.2f",f-0.01];;
+        if ([bigf isEqualToString:originStr]) {
+            return f+0.01;
+        }
+        
+        if ([smalf isEqualToString:originStr]) {
+            return f-0.01;
+        }
+    }
+    
+    return f;
+}
+
 - (void)receiveData{
     self.sprite.spriteName = self.nameTextField.stringValue;
     self.sprite.spriteType = self.spriteType.indexOfSelectedItem;
@@ -319,7 +404,8 @@
     self.sprite.triggerOffType = [self.trigerEnumIndexArray[self.trigerTypeOff.indexOfSelectedItem] integerValue];
     self.sprite.triggerOnType  = [self.trigerEnumIndexArray[self.trigerTypeOn.indexOfSelectedItem] integerValue];
     if(!self.anchorx.hidden){
-      self.sprite.anchor_x = self.anchorx.stringValue.floatValue;
+        CGFloat f = [self getAccurateFloatFromStr:self.anchorx.stringValue];
+        self.sprite.anchor_x = f;
     }
     if(!self.anchory.hidden){
       self.sprite.anchor_y = self.anchory.stringValue.floatValue;  
@@ -362,7 +448,7 @@
         CGFloat f = self.animationDuration.stringValue.floatValue;
         self.animationCount.stringValue = [NSString stringWithFormat:@"%.0f",f*8];
     }
-    [self checkValue];
+    //[self checkValue];
 }
 
 - (void)controlTextDidEndEditing:(NSNotification *)obj{
