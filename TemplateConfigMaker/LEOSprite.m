@@ -33,6 +33,9 @@
     self.anchorType = [self getEnumFromFaceCode:@"static"];
     self.triggerOffType = 0;
     self.triggerOnType  = 0;
+    self.detectType = 0;
+    self.loopCount = 0;
+    self.loopIndex = 0;
     return self;
 }
 
@@ -63,8 +66,13 @@
     self.isRotate = [dict[@"isRotate"] boolValue];
     self.hasBgMusic = [dict[@"hasBgMusic"] boolValue];
     self.anchorType = [dict[@"anchorType"] integerValue];
+    
     self.triggerOffType = [dict[@"triggerOffType"] integerValue];
     self.triggerOnType  = [dict[@"triggerOnType"] integerValue];
+    self.detectType = [dict[@"detectType"] integerValue];
+    self.loopIndex = [dict[@"loopIndex"] integerValue];
+    self.loopCount = [dict[@"loopCount"] integerValue];
+    
     return self;
 }
 
@@ -126,8 +134,12 @@
     [mdic setObject:@(self.hasBgMusic)forKey:@"hasBgMusic"];
     [mdic setObject:@(self.isBgMusicLoop) forKey:@"isBgMusicLoop"];
     [mdic setObject:@(self.isRotate) forKey:@"isRotate"];
+    
+    [mdic setObject:[@(self.detectType) stringValue] forKey:@"detectType"];
     [mdic setObject:[@(self.triggerOnType) stringValue] forKey:@"triggerOnType"];
     [mdic setObject:[@(self.triggerOffType) stringValue] forKey:@"triggerOffType"];
+    [mdic setObject:[@(self.loopCount) stringValue] forKey:@"loopCount"];
+    [mdic setObject:[@(self.loopIndex) stringValue] forKey:@"loopIndex"];
     return mdic;
 }
 

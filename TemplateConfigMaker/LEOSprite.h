@@ -17,6 +17,10 @@ typedef NS_ENUM(NSUInteger, SpriteType) {
     SpriteTypeCondition,//条件触发
 };
 
+typedef NS_ENUM (NSUInteger, DetectType){
+    SpriteDetectTypeTrigger = 0,
+    SpriteDetectTypeStatus  = 1
+};
 
 typedef NS_ENUM(NSUInteger, SpriteTriggerType) {
     SpriteTrigerTypeNone    = 0,
@@ -72,8 +76,7 @@ typedef NS_ENUM(NSUInteger, SpriteAnchorType) {
 @property (nonatomic, strong) NSImageView* imageView;
 @property (nonatomic, assign) SpriteType spriteType;
 @property (nonatomic, assign) NSInteger order;
-@property (nonatomic, assign) SpriteTriggerType triggerOnType;
-@property (nonatomic, assign) SpriteTriggerType triggerOffType;
+
 @property (nonatomic, assign) BOOL recycle;
 @property (nonatomic, strong) NSString *spriteName;
 @property (nonatomic, assign) CGFloat startTime;
@@ -90,6 +93,8 @@ typedef NS_ENUM(NSUInteger, SpriteAnchorType) {
 @property (nonatomic, assign) CGFloat width;
 @property (nonatomic, assign) CGFloat height;
 
+
+
 @property (nonatomic, assign) SpriteAnchorType anchorType;
 
 
@@ -100,6 +105,13 @@ typedef NS_ENUM(NSUInteger, SpriteAnchorType) {
 
 // CG UI
 @property (nonatomic, assign) CGRect spriteRect;
+
+// 新增属性
+@property (nonatomic,assign) NSInteger loopCount;
+@property (nonatomic,assign) NSInteger loopIndex;
+@property (nonatomic,assign) DetectType detectType;
+@property (nonatomic, assign) SpriteTriggerType triggerOnType;
+@property (nonatomic, assign) SpriteTriggerType triggerOffType;
 
 - (instancetype)initWithName:(NSString*)spriteName;
 - (instancetype)initWithDict:(NSDictionary*)dict;

@@ -22,7 +22,8 @@
 @property (weak) IBOutlet NSView *posView;
 @property (weak) IBOutlet NSView *triggerView;
 
-@property (weak) IBOutlet NSButton *isAnimationLoop;
+@property (weak) IBOutlet NSPopUpButton *detectType;
+
 @property (weak) IBOutlet NSTextField *order;
 @property (weak) IBOutlet NSPopUpButton *anchorType;
 @property (weak) IBOutlet NSPopUpButton *anchorSubType;
@@ -48,6 +49,11 @@
 @property (strong) NSArray* spriteTypeArray;
 @property (strong) NSArray* anchorTypeArray;
 @property (strong) NSArray* trigerTypeArray;
+@property (strong) NSArray* detectTypeArray;
+
+@property (weak) IBOutlet NSTextField *loopCount;
+@property (weak) IBOutlet NSTextField *loopIndex;
+
 
 @property (strong) NSArray* trigerEnumIndexArray;
 @property (assign,nonatomic) CGFloat sizeRate;
@@ -76,6 +82,8 @@
         self.animationCount.delegate = self;
         self.order.delegate = self;
         self.animationDuration.delegate = self;
+        self.loopCount.delegate = self;
+        self.loopIndex.delegate = self;
         [self setUpData];
     }
     return self;
@@ -127,15 +135,20 @@
     
     self.animationCount.stringValue = [NSString stringWithFormat:@"%ld",sprite.animationCount+1];
     self.animationDuration.stringValue = [NSString stringWithFormat:@"%.2f",sprite.duration];
-    self.isAnimationLoop.state = sprite.recycle;
+    
     self.order.stringValue = [NSString stringWithFormat:@"%ld",sprite.order];
-    [self.trigerTypeOff selectItemAtIndex:[self setTriggerWithEnum:sprite.triggerOffType]];
-    [self.trigerTypeOn  selectItemAtIndex:[self setTriggerWithEnum:sprite.triggerOnType]];
+   
     
     self.hasBgMusic.state = sprite.hasBgMusic;
     self.isRotate.state = sprite.isRotate;
     self.isBgMusicLoop.state = sprite.isBgMusicLoop;
     [self.orderPlus setIntegerValue:sprite.order];
+    
+    [self.trigerTypeOff selectItemAtIndex:[self setTriggerWithEnum:sprite.triggerOffType]];
+    [self.trigerTypeOn  selectItemAtIndex:[self setTriggerWithEnum:sprite.triggerOnType]];
+    self.loopCount.stringValue = [NSString stringWithFormat:@"%ld",sprite.loopCount];
+    self.loopIndex.stringValue = [NSString stringWithFormat:@"%ld",sprite.loopIndex];
+    [self.detectType selectItemAtIndex:sprite.detectType];
     
     [self setAnchorTypeWithEnum:sprite.anchorType];
     [self setLayoutState];
@@ -209,6 +222,8 @@
                              @"鼻子",
                              @"嘴巴"];
     
+    self.detectTypeArray = @[@"变化触发",@"状态触发"];
+    
     if (self.spriteType) {
         [self.spriteType removeAllItems];
         [self.spriteType addItemsWithTitles:self.spriteTypeArray];
@@ -233,9 +248,16 @@
         [self.trigerTypeOff removeAllItems];
         [self.trigerTypeOff addItemsWithTitles:self.trigerTypeArray];
     }
+    
+    if (self.detectType) {
+        [self.detectType removeAllItems];
+        [self.detectType addItemsWithTitles:self.detectTypeArray];
+    }
 }
 
 #pragma mark - action
+
+#pragma mark - stepper
 - (IBAction)onOrderPlus:(NSStepper *)sender {
     NSStepper* ss = sender;
     self.order.stringValue = [NSString stringWithFormat:@"%ld",ss.integerValue];
@@ -282,7 +304,7 @@
     self.anchory.stringValue = [NSString stringWithFormat:@"%f",(float)ss.integerValue/100];
     [self checkValue];
 }
-
+#pragma mark -
 
 - (void)setLayoutState{
     NSInteger n = self.spriteType.indexOfSelectedItem;
@@ -300,7 +322,13 @@
         self.triggerView.hidden = NO;
     }
 }
- 
+
+#pragma mark - picker
+
+- (IBAction)onDetectTypeSelect:(NSPopUpButton *)sender {
+     [self checkValue];
+}
+
 - (IBAction)onSpriteTypeSelect:(NSPopUpButton *)sender {
     NSInteger n = sender.indexOfSelectedItem;
     if (n == 0) {
@@ -319,7 +347,7 @@
     if (sender == self.trigerTypeOff) {
         NSInteger n = self.trigerTypeOff.indexOfSelectedItem;
         if (n == 0) {
-            self.isAnimationLoop.state = 0;
+             
         }
     }
     [self checkValue];
@@ -408,15 +436,13 @@
     
     NSInteger n = self.animationCount.stringValue.integerValue;
     self.sprite.animationCount = n-1;
-    self.sprite.recycle = self.isAnimationLoop.state;
     self.sprite.order = self.order.stringValue.integerValue;
     [self.sprite setAnchorTypeWithFaceCode:[self getFaceCode]];
     self.sprite.hasBgMusic = self.hasBgMusic.state;
     self.sprite.isBgMusicLoop = self.isBgMusicLoop.state;
     self.sprite.isRotate = self.isRotate.state;
     self.sprite.duration = self.animationDuration.stringValue.floatValue;
-    self.sprite.triggerOffType = [self.trigerEnumIndexArray[self.trigerTypeOff.indexOfSelectedItem] integerValue];
-    self.sprite.triggerOnType  = [self.trigerEnumIndexArray[self.trigerTypeOn.indexOfSelectedItem] integerValue];
+    
     if(!self.anchorx.hidden){
         CGFloat f = [self getAccurateFloatFromStr:self.anchorx.stringValue];
         self.sprite.anchor_x = f;
@@ -425,6 +451,11 @@
       self.sprite.anchor_y = self.anchory.stringValue.floatValue;  
     }
     
+    self.sprite.triggerOffType = [self.trigerEnumIndexArray[self.trigerTypeOff.indexOfSelectedItem] integerValue];
+    self.sprite.triggerOnType  = [self.trigerEnumIndexArray[self.trigerTypeOn.indexOfSelectedItem] integerValue];
+    self.sprite.detectType = self.detectType.indexOfSelectedItem;
+    self.sprite.loopIndex = self.loopIndex.stringValue.integerValue;
+    self.sprite.loopCount = self.loopCount.stringValue.integerValue;
     
     if (self.RefreshBlock) {
         self.RefreshBlock(self.sprite);
