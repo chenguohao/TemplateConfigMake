@@ -7,12 +7,14 @@
 //
 
 #import <Cocoa/Cocoa.h>
-@class LEOSprite;
+#import "LEOSprite.h"
 @interface SpriteConfigInputView : NSView{
     LEOSprite* _sprite;
 }
 @property (strong) IBOutlet NSView *view;
+@property (assign,nonatomic) CGFloat sizeRate;
 @property (strong, nonatomic) LEOSprite* sprite;
++ (CGFloat)getSizeRateWithType:(SpriteType)type;
 - (void)setRefreshBlock:(void(^)(LEOSprite* sprite))block;
 - (void)setBasePointsSwitchBlock:(void(^)(BOOL isOpen))block;
 @end

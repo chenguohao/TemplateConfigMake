@@ -34,10 +34,11 @@
     self.triggerOffType = 0;
     self.triggerOnType  = 0;
     self.detectType = 0;
-    self.loopCount = 0;
+    self.loopCount = 1;
     self.loopIndex = 0;
     return self;
 }
+
 
 - (instancetype)initWithDict:(NSDictionary*)dict{
     self = [super init];
@@ -46,7 +47,6 @@
     self.spriteType = [dict[@"spriteType"] integerValue];
     self.animationCount = [dict[@"animationCount"] integerValue];
     self.duration = [dict[@"animationDuration"] integerValue];
-    self.recycle = [dict[@"isloop"] boolValue];
     self.order = [dict[@"order"] integerValue];
     if (self.spriteType == SpriteTypeStatic) {
         self.pos_x = [dict[@"pos_x"] floatValue];
@@ -127,7 +127,6 @@
     [mdic setObject:[self getStringFromFloat:self.width] forKey:@"width"];
     [mdic setObject:[self getStringFromFloat:self.height] forKey:@"height"];
     [mdic setObject:[@(self.animationCount) stringValue] forKey:@"animationCount"];
-    [mdic setObject: @(self.recycle) forKey:@"isloop"];
     [mdic setObject:[self getStringFromFloat:self.duration] forKey:@"animationDuration"];
     [mdic setObject:[@(self.order) stringValue] forKey:@"order"];
     [mdic setObject:[@(self.anchorType) stringValue] forKey:@"anchorType"];

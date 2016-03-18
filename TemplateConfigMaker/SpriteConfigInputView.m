@@ -56,7 +56,7 @@
 
 
 @property (strong) NSArray* trigerEnumIndexArray;
-@property (assign,nonatomic) CGFloat sizeRate;
+
 @property (strong) NSDictionary* anchorTypeDict;
 @property (copy,nonatomic) void (^RefreshBlock) (LEOSprite* sprite);
 @property (copy,nonatomic) void (^switchBasePointsBlock) (BOOL isOpen);
@@ -94,6 +94,14 @@
         _sprite = [LEOSprite new];
     }
     return _sprite;
+}
+
+
++ (CGFloat)getSizeRateWithType:(SpriteType)type{
+    if (type == SpriteTypeStatic) {
+        return 480;
+    }
+    return 217;
 }
 
 - (CGFloat)sizeRate

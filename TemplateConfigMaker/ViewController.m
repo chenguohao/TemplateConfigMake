@@ -307,10 +307,18 @@ NSString* cellID = @"CellID";
         file = [file stringByDeletingPathExtension];
         LEOSprite* sprite = [[LEOSprite alloc] initWithName:[self getNewNameWithName:file]];
         sprite.imagePath = path;
+       
+        
+        NSImage* img = [[NSImage alloc] initWithContentsOfFile:path];
+        CGFloat rate = [SpriteConfigInputView getSizeRateWithType:sprite.spriteType];
+        sprite.width = img.size.width/rate;
+        sprite.height = img.size.height/rate;
+        
         [self.spritesArray addObject:sprite];
         if (self.spritesArray.count == 1) {
             
             self.configInputView.sprite = sprite;
+            
         }
         [self.photoImage addSprite:sprite];
         [self.tableView reloadData];
