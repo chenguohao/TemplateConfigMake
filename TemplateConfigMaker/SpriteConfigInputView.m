@@ -50,7 +50,7 @@
 @property (strong) NSArray* trigerTypeArray;
 
 @property (strong) NSArray* trigerEnumIndexArray;
-
+@property (assign,nonatomic) CGFloat sizeRate;
 @property (strong) NSDictionary* anchorTypeDict;
 @property (copy,nonatomic) void (^RefreshBlock) (LEOSprite* sprite);
 @property (copy,nonatomic) void (^switchBasePointsBlock) (BOOL isOpen);
@@ -88,15 +88,23 @@
     return _sprite;
 }
 
+- (CGFloat)sizeRate
+{
+    if (self.sprite.spriteType == SpriteTypeStatic) {
+        return 480;
+    }
+    return 217;
+}
+
 - (void)setSprite:(LEOSprite *)sprite{
     _sprite = sprite;
     self.nameTextField.stringValue = sprite.spriteName;
     [self.spriteType selectItemAtIndex:sprite.spriteType];
-    CGFloat w = sprite.width*480;
-    CGFloat h = sprite.height*480;
-    self.pos_x.stringValue = [NSString stringWithFormat:@"%.0f",sprite.pos_x*480-w/2];
+    CGFloat w = sprite.width*self.sizeRate;
+    CGFloat h = sprite.height*self.sizeRate;
+    self.pos_x.stringValue = [NSString stringWithFormat:@"%.0f",sprite.pos_x*self.sizeRate-w/2];
     self.posXStepper.integerValue = self.pos_x.stringValue.integerValue;
-    self.pos_y.stringValue = [NSString stringWithFormat:@"%.0f",sprite.pos_y*480-h/2];
+    self.pos_y.stringValue = [NSString stringWithFormat:@"%.0f",sprite.pos_y*self.sizeRate-h/2];
     self.posYStepper.integerValue = self.pos_y.stringValue.integerValue;
     self.anchorx.stringValue = [NSString stringWithFormat:@"%.2f",sprite.anchor_x];
     CGFloat f = sprite.anchor_x*100;
@@ -112,9 +120,9 @@
         anchorY += 1;
     }
     self.anchorPosYStepper.integerValue = anchorY;
-    self.width.stringValue = [NSString stringWithFormat:@"%.0f",(sprite.width*480)];
+    self.width.stringValue = [NSString stringWithFormat:@"%.0f",(sprite.width*self.sizeRate)];
     self.widthStepper.integerValue = self.width.stringValue.integerValue;
-    self.height.stringValue = [NSString stringWithFormat:@"%.0f",(sprite.height*480)];
+    self.height.stringValue = [NSString stringWithFormat:@"%.0f",(sprite.height*self.sizeRate)];
     self.heightStepper.integerValue = self.height.stringValue.integerValue;
     
     self.animationCount.stringValue = [NSString stringWithFormat:@"%ld",sprite.animationCount+1];
@@ -390,13 +398,13 @@
 - (void)receiveData{
     self.sprite.spriteName = self.nameTextField.stringValue;
     self.sprite.spriteType = self.spriteType.indexOfSelectedItem;
-    CGFloat w = self.width.stringValue.floatValue/480;
-    CGFloat h = self.height.stringValue.floatValue/480;
+    CGFloat w = self.width.stringValue.floatValue/self.sizeRate;
+    CGFloat h = self.height.stringValue.floatValue/self.sizeRate;
     self.sprite.width  = w;
     self.sprite.height = h;
     
-    self.sprite.pos_x = self.pos_x.stringValue.floatValue/480+w/2;
-    self.sprite.pos_y = self.pos_y.stringValue.floatValue/480+h/2;
+    self.sprite.pos_x = self.pos_x.stringValue.floatValue/self.sizeRate+w/2;
+    self.sprite.pos_y = self.pos_y.stringValue.floatValue/self.sizeRate+h/2;
     
     NSInteger n = self.animationCount.stringValue.integerValue;
     self.sprite.animationCount = n-1;
