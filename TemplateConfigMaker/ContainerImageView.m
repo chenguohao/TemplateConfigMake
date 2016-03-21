@@ -12,12 +12,14 @@
 @interface ContainerImageView()
 @end
 
+#define faceLen 142
+
 @implementation ContainerImageView
 
 - (instancetype)initWithCoder:(NSCoder *)coder{
     self = [super initWithCoder:coder];
-    CGFloat r = self.frame.size.width/500;
-    NSRect rect = NSRectFromCGRect(CGRectMake(154*r, 155*r, 217*r, 217*r));
+    CGFloat r = self.frame.size.width/480;
+    NSRect rect = NSRectFromCGRect(CGRectMake(172*r, 190*r, faceLen*r, faceLen*r));
     self.faceView = [[FaceView alloc] initWithFrame:rect];
     
     self.faceView .layer.masksToBounds   = YES;

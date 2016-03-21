@@ -287,14 +287,6 @@
                                 <action selector="onSpriteAnchorSubtype:" target="-2" id="hpx-gv-m2n"/>
                             </connections>
                         </popUpButton>
-                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZOh-eF-NQL">
-                            <rect key="frame" x="17" y="5" width="43" height="17"/>
-                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="基准点" id="wpd-H6-snC">
-                                <font key="font" size="13" name="STHeitiSC-Light"/>
-                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                            </textFieldCell>
-                        </textField>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yjn-qG-cxt">
                             <rect key="frame" x="17" y="30" width="30" height="17"/>
                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="锚点" id="AKF-CT-KSq">
@@ -319,34 +311,6 @@
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
                         </textField>
-                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="maj-6J-YZP">
-                            <rect key="frame" x="151" y="5" width="56" height="17"/>
-                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="随脸旋转" id="GBh-Bw-1l9">
-                                <font key="font" size="13" name="STHeitiSC-Light"/>
-                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                            </textFieldCell>
-                        </textField>
-                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mdN-3n-q4E">
-                            <rect key="frame" x="248" y="3" width="22" height="18"/>
-                            <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="iCU-h4-6bw">
-                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                <font key="font" metaFont="system"/>
-                            </buttonCell>
-                            <connections>
-                                <action selector="onCheckBox:" target="-2" id="g8D-Nk-DQb"/>
-                            </connections>
-                        </button>
-                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bt0-Vs-Qsb">
-                            <rect key="frame" x="114" y="3" width="22" height="18"/>
-                            <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="sEu-uP-PL0">
-                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                <font key="font" metaFont="system"/>
-                            </buttonCell>
-                            <connections>
-                                <action selector="onSwitchBasePoints:" target="-2" id="WN9-D9-2fF"/>
-                            </connections>
-                        </button>
                         <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="frm-db-8dO">
                             <rect key="frame" x="199" y="25" width="19" height="27"/>
                             <stepperCell key="cell" continuous="YES" alignment="left" maxValue="100" id="1jC-HR-SdB"/>
@@ -361,6 +325,42 @@
                                 <action selector="onAnchorXPlus:" target="-2" id="SaE-HY-uqP"/>
                             </connections>
                         </stepper>
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="maj-6J-YZP">
+                            <rect key="frame" x="17" y="5" width="56" height="17"/>
+                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="随脸旋转" id="GBh-Bw-1l9">
+                                <font key="font" size="13" name="STHeitiSC-Light"/>
+                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mdN-3n-q4E">
+                            <rect key="frame" x="114" y="3" width="22" height="18"/>
+                            <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="iCU-h4-6bw">
+                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="onCheckBox:" target="-2" id="g8D-Nk-DQb"/>
+                            </connections>
+                        </button>
+                        <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZOh-eF-NQL">
+                            <rect key="frame" x="221" y="2" width="43" height="17"/>
+                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="基准点" id="wpd-H6-snC">
+                                <font key="font" size="13" name="STHeitiSC-Light"/>
+                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                        <button hidden="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bt0-Vs-Qsb">
+                            <rect key="frame" x="268" y="1" width="22" height="18"/>
+                            <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="sEu-uP-PL0">
+                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="onSwitchBasePoints:" target="-2" id="WN9-D9-2fF"/>
+                            </connections>
+                        </button>
                     </subviews>
                 </customView>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bN7-Tb-ySw">

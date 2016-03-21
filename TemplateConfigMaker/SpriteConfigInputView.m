@@ -388,6 +388,9 @@
 
 
 - (void)checkValue{
+    if ([self.loopCount.stringValue isEqualToString:@"0"]) {
+        self.loopCount.stringValue = @"1";
+    }
     [self receiveData];
 }
 

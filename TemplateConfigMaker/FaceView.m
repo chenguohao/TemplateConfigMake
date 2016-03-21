@@ -27,29 +27,30 @@
 
 - (NSArray*)base21points{
     if (_base21Points == nil) {
+        int n = -10;
         NSArray* array = @[ [NSValue valueWithPoint:NSMakePoint(197, 188)], //1
                            [NSValue valueWithPoint:NSMakePoint(166, 188)], //2
                            [NSValue valueWithPoint:NSMakePoint(133, 181)], //3
                            [NSValue valueWithPoint:NSMakePoint(81, 181)],  //4
                            [NSValue valueWithPoint:NSMakePoint(46, 188)],  //5
-                           [NSValue valueWithPoint:NSMakePoint(15, 181)],  //6
-                           [NSValue valueWithPoint:NSMakePoint(186, 158)], //7
-                           [NSValue valueWithPoint:NSMakePoint(139, 153)], //8
-                           [NSValue valueWithPoint:NSMakePoint(79, 150)],  //9
-                           [NSValue valueWithPoint:NSMakePoint(30, 157)],  //10
-                           [NSValue valueWithPoint:NSMakePoint(133, 90)],  //11
+                           [NSValue valueWithPoint:NSMakePoint(15, 188)],  //6
+                           [NSValue valueWithPoint:NSMakePoint(189, 151)], //7
+                           [NSValue valueWithPoint:NSMakePoint(139, 148)], //8
+                           [NSValue valueWithPoint:NSMakePoint(79, 148)],  //9
+                           [NSValue valueWithPoint:NSMakePoint(26, 151)],  //10
+                           [NSValue valueWithPoint:NSMakePoint(140, 90+n)],  //11
+                            
+                           [NSValue valueWithPoint:NSMakePoint(106, 76+n)],  //12
+                           [NSValue valueWithPoint:NSMakePoint(73, 90+n)],   //13
+                           [NSValue valueWithPoint:NSMakePoint(106, 48)],  //14
+                           [NSValue valueWithPoint:NSMakePoint(106, 32)],  //15
+                           [NSValue valueWithPoint:NSMakePoint(106, 18)],   //16
+                           [NSValue valueWithPoint:NSMakePoint(161, 152)], //17
+                           [NSValue valueWithPoint:NSMakePoint(55, 152)],  //18
                            
-                           [NSValue valueWithPoint:NSMakePoint(105, 76)],  //12
-                           [NSValue valueWithPoint:NSMakePoint(80, 90)],   //13
-                           [NSValue valueWithPoint:NSMakePoint(106, 58)],  //14
-                           [NSValue valueWithPoint:NSMakePoint(106, 44)],  //15
-                           [NSValue valueWithPoint:NSMakePoint(106, 25)],   //16
-                           [NSValue valueWithPoint:NSMakePoint(161, 160)], //17
-                           [NSValue valueWithPoint:NSMakePoint(57, 160)],  //18
-                           
-                           [NSValue valueWithPoint:NSMakePoint(106, 92)],  //19
-                           [NSValue valueWithPoint:NSMakePoint(148, 52)],  //20
-                           [NSValue valueWithPoint:NSMakePoint(66, 51)]   //21
+                           [NSValue valueWithPoint:NSMakePoint(106, 92+n)],  //19
+                           [NSValue valueWithPoint:NSMakePoint(154, 45)],  //20
+                           [NSValue valueWithPoint:NSMakePoint(60, 45)]   //21
                         ];
         
         NSMutableArray* marray = [NSMutableArray new];
@@ -243,6 +244,8 @@
     _isShowBasePoints = isShowBasePoints;
     [self setNeedsDisplay:YES];
 }
+
+
 
 - (void)drawRect:(NSRect)dirtyRect {
       [super drawRect:dirtyRect];

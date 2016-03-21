@@ -138,7 +138,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TemplateConfigMaker/FaceView.m"
-            timestampString = "478163043.601745"
+            timestampString = "480244187.561176"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "29"
@@ -170,11 +170,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TemplateConfigMaker/FaceView.m"
-            timestampString = "478166325.608603"
+            timestampString = "480244187.561176"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "80"
-            endingLineNumber = "80"
+            startingLineNumber = "81"
+            endingLineNumber = "81"
             landmarkName = "-getPointWithAnchorType:"
             landmarkType = "5">
          </BreakpointContent>
@@ -186,11 +186,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TemplateConfigMaker/FaceView.m"
-            timestampString = "478166325.608603"
+            timestampString = "480244187.561176"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "103"
-            endingLineNumber = "103"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
             landmarkName = "-getPointWithAnchorType:"
             landmarkType = "5">
          </BreakpointContent>
@@ -202,11 +202,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TemplateConfigMaker/FaceView.m"
-            timestampString = "478166325.608603"
+            timestampString = "480244187.561176"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "108"
-            endingLineNumber = "108"
+            startingLineNumber = "109"
+            endingLineNumber = "109"
             landmarkName = "-getPointWithAnchorType:"
             landmarkType = "5">
          </BreakpointContent>
@@ -218,11 +218,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TemplateConfigMaker/FaceView.m"
-            timestampString = "478170895.590992"
+            timestampString = "480244187.561176"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "302"
-            endingLineNumber = "302"
+            startingLineNumber = "305"
+            endingLineNumber = "305"
             landmarkName = "-drawRect:"
             landmarkType = "5">
          </BreakpointContent>
@@ -282,11 +282,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TemplateConfigMaker/FaceView.m"
-            timestampString = "478170895.590992"
+            timestampString = "480244187.561176"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "294"
-            endingLineNumber = "294"
+            startingLineNumber = "297"
+            endingLineNumber = "297"
             landmarkName = "-drawRect:"
             landmarkType = "5">
          </BreakpointContent>
@@ -298,11 +298,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TemplateConfigMaker/ContainerImageView.m"
-            timestampString = "479968192.569598"
+            timestampString = "480242340.808248"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "72"
-            endingLineNumber = "72"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
             landmarkName = "-updateSprite:"
             landmarkType = "5">
          </BreakpointContent>
@@ -362,11 +362,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TemplateConfigMaker/SpriteConfigInputView.m"
-            timestampString = "479991075.311512"
+            timestampString = "480245129.542025"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "468"
-            endingLineNumber = "468"
+            startingLineNumber = "471"
+            endingLineNumber = "471"
             landmarkName = "-receiveData"
             landmarkType = "5">
          </BreakpointContent>
@@ -378,11 +378,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TemplateConfigMaker/SpriteConfigInputView.m"
-            timestampString = "479991075.311512"
+            timestampString = "480245129.542025"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "435"
-            endingLineNumber = "435"
+            startingLineNumber = "438"
+            endingLineNumber = "438"
             landmarkName = "-receiveData"
             landmarkType = "5">
          </BreakpointContent>
@@ -410,11 +410,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TemplateConfigMaker/SpriteConfigInputView.m"
-            timestampString = "479991075.311512"
+            timestampString = "480245129.542025"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "490"
-            endingLineNumber = "490"
+            startingLineNumber = "493"
+            endingLineNumber = "493"
             landmarkName = "-controlTextDidChange:"
             landmarkType = "5">
          </BreakpointContent>
@@ -522,11 +522,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TemplateConfigMaker/FaceView.m"
-            timestampString = "479971281.870922"
+            timestampString = "480244187.561176"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "250"
-            endingLineNumber = "250"
+            startingLineNumber = "253"
+            endingLineNumber = "253"
+            landmarkName = "-drawRect:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TemplateConfigMaker/FaceView.m"
+            timestampString = "480244187.561176"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "259"
+            endingLineNumber = "259"
             landmarkName = "-drawRect:"
             landmarkType = "5">
          </BreakpointContent>

@@ -781,7 +781,7 @@
                                     </button>
                                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YUJ-j3-pqn" customClass="ContainerImageView">
                                         <rect key="frame" x="371" y="138" width="343" height="343"/>
-                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="lbb" id="y5C-AT-xY3"/>
+                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="model" id="y5C-AT-xY3"/>
                                     </imageView>
                                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YFu-Ka-52g">
                                         <rect key="frame" x="604" y="30" width="117" height="19"/>
@@ -819,7 +819,7 @@
                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                     </textField>
-                                    <button hidden="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5SY-yD-FI7">
+                                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5SY-yD-FI7">
                                         <rect key="frame" x="26" y="19" width="98" height="19"/>
                                         <buttonCell key="cell" type="roundRect" title="添加新控件" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Wag-f6-yf6">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -875,6 +875,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="lbb" width="500" height="500"/>
+        <image name="model" width="480" height="480"/>
     </resources>
 </document>

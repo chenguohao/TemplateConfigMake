@@ -17,6 +17,8 @@
 		235A8B521C78156900EAEA50 /* SpriteConfigInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 235A8B511C78156900EAEA50 /* SpriteConfigInputView.m */; };
 		235A8B541C78158300EAEA50 /* SpriteConfigInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 235A8B531C78158300EAEA50 /* SpriteConfigInputView.xib */; };
 		235A8BA01C785FD500EAEA50 /* LEOSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = 235A8B9F1C785FD500EAEA50 /* LEOSprite.m */; };
+		2390E2661C9FD41000559B4F /* bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2390E2651C9FD41000559B4F /* bg.jpg */; };
+		2390E2681C9FDFFA00559B4F /* model.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2390E2671C9FDFFA00559B4F /* model.jpg */; };
 		23C425921C7D585600B8F000 /* FaceCode.plist in Resources */ = {isa = PBXBuildFile; fileRef = 23C425911C7D585600B8F000 /* FaceCode.plist */; };
 		23C4259F1C7F28FA00B8F000 /* lbb.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 23C4259E1C7F28FA00B8F000 /* lbb.jpg */; };
 		23C425A21C7F2C6100B8F000 /* FaceView.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C425A11C7F2C6100B8F000 /* FaceView.m */; };
@@ -63,6 +65,8 @@
 		235A8B531C78158300EAEA50 /* SpriteConfigInputView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpriteConfigInputView.xib; sourceTree = "<group>"; };
 		235A8B9E1C785FD500EAEA50 /* LEOSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEOSprite.h; sourceTree = "<group>"; };
 		235A8B9F1C785FD500EAEA50 /* LEOSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LEOSprite.m; sourceTree = "<group>"; };
+		2390E2651C9FD41000559B4F /* bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bg.jpg; sourceTree = "<group>"; };
+		2390E2671C9FDFFA00559B4F /* model.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = model.jpg; sourceTree = "<group>"; };
 		23C425911C7D585600B8F000 /* FaceCode.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = FaceCode.plist; sourceTree = "<group>"; };
 		23C4259E1C7F28FA00B8F000 /* lbb.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = lbb.jpg; sourceTree = "<group>"; };
 		23C425A01C7F2C6100B8F000 /* FaceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FaceView.h; sourceTree = "<group>"; };
@@ -132,6 +136,8 @@
 				23C425A91C7FEE2D00B8F000 /* FaceFeild */,
 				235A8B181C7570AB00EAEA50 /* Assets.xcassets */,
 				23C4259E1C7F28FA00B8F000 /* lbb.jpg */,
+				2390E2671C9FDFFA00559B4F /* model.jpg */,
+				2390E2651C9FD41000559B4F /* bg.jpg */,
 				235A8B1A1C7570AB00EAEA50 /* Main.storyboard */,
 				23C425911C7D585600B8F000 /* FaceCode.plist */,
 				235A8B1D1C7570AB00EAEA50 /* Info.plist */,
@@ -307,6 +313,8 @@
 				235A8B191C7570AB00EAEA50 /* Assets.xcassets in Resources */,
 				235A8B541C78158300EAEA50 /* SpriteConfigInputView.xib in Resources */,
 				23C425921C7D585600B8F000 /* FaceCode.plist in Resources */,
+				2390E2681C9FDFFA00559B4F /* model.jpg in Resources */,
+				2390E2661C9FD41000559B4F /* bg.jpg in Resources */,
 				235A8B1C1C7570AB00EAEA50 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
