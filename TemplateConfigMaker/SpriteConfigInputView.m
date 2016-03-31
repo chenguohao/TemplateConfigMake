@@ -8,6 +8,7 @@
 
 #import "SpriteConfigInputView.h"
 #import "LEOSprite.h"
+#import "ContainerImageView.h"
 #import <AppKit/NSTextField.h>
 @interface SpriteConfigInputView ()<NSTextFieldDelegate>
 @property (weak) IBOutlet NSTextField *nameTextField;
@@ -101,7 +102,7 @@
     if (type == SpriteTypeStatic) {
         return 480;
     }
-    return 217;
+    return [ContainerImageView getFaceLenth];
 }
 
 - (CGFloat)sizeRate
@@ -109,7 +110,7 @@
     if (self.sprite.spriteType == SpriteTypeStatic) {
         return 480;
     }
-    return 217;
+    return [ContainerImageView getFaceLenth];
 }
 
 - (void)setSprite:(LEOSprite *)sprite{
@@ -211,7 +212,7 @@
     [self setLayoutState];
     
     
-    self.trigerEnumIndexArray = @[@(0),@(4),@(8),@(1)];
+    self.trigerEnumIndexArray = @[@(0),@(4),@(8),@(2),@(32)];
     
     self.anchorTypeDict = @{@"静态":@[@"静态"],
                             @"脸":@[@"全脸",@"头顶",@"额头",@"脖子",@"脸颊",@"下巴"],
@@ -220,7 +221,7 @@
                             @"眼睛":@[@"双眼",@"左眼",@"右眼",],
                             @"鼻子":@[@"全鼻",@"鼻孔"],
                             @"嘴巴":@[@"全嘴",@"上嘴唇",@"下嘴唇",@"左嘴角",@"右嘴角"]};
-    self.trigerTypeArray = @[@"N/A",@"张嘴",@"闭嘴",@"眨眼"];
+    self.trigerTypeArray = @[@"N/A",@"张嘴",@"闭嘴",@"挑眉",@"摆头"];
     self.spriteTypeArray = @[@"静态",@"伴随面部",@"条件触发"];
     self.anchorTypeArray = @[@"静态",
                              @"脸",

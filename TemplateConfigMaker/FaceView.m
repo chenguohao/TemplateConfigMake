@@ -68,6 +68,7 @@
     return _base21Points;
 }
 
+
 - (void)setAnchorPointWithType:(SpriteAnchorType)anchorType{
     self.anchorPoint = [self getPointWithAnchorType:anchorType];
     [self setNeedsDisplay:YES];

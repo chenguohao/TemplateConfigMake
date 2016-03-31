@@ -159,4 +159,8 @@ NSComparisonResult viewcmp( NSView * view1, NSView * view2, void * context )
     }
 }
 
++ (CGFloat)getFaceLenth{
+    return faceLen;
+}
+
 @end
