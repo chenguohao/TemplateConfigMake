@@ -266,7 +266,7 @@ NSString* cellID = @"CellID";
     // This method displays the panel and returns immediately.
     // The completion handler is called when the user selects an
     // item or cancels the panel.
-   
+
     [panel beginWithCompletionHandler:^(NSInteger result){
         if (result == NSFileHandlingPanelOKButton) {
             NSURL*  theDoc = panel.URL;
