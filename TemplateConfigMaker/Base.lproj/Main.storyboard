@@ -771,7 +771,7 @@
                                     </customView>
                                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="esM-9X-ozi">
                                         <rect key="frame" x="26" y="868" width="100" height="18"/>
-                                        <buttonCell key="cell" type="check" title="模版背景音乐" bezelStyle="regularSquare" imagePosition="left" inset="2" id="IUF-Dy-5AO">
+                                        <buttonCell key="cell" type="check" title="模版背景音乐" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="IUF-Dy-5AO">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                             <font key="font" size="13" name="STHeitiSC-Light"/>
                                         </buttonCell>
@@ -803,17 +803,9 @@
                                             <action selector="onDeleteCurrentSprite:" target="XfG-lQ-9wD" id="8jM-o2-47y"/>
                                         </connections>
                                     </button>
-                                    <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y5T-e5-SFM">
-                                        <rect key="frame" x="272" y="864" width="57" height="22"/>
-                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="YfE-xn-pYN">
-                                            <font key="font" metaFont="system"/>
-                                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                        </textFieldCell>
-                                    </textField>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dgh-Qn-oPd">
-                                        <rect key="frame" x="214" y="869" width="56" height="17"/>
-                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="模版版本" id="txr-kr-oqn">
+                                        <rect key="frame" x="201" y="869" width="91" height="17"/>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="模版版本:v3" id="txr-kr-oqn">
                                             <font key="font" size="13" name="STHeitiSC-Light"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -829,6 +821,36 @@
                                             <action selector="onNewSprite:" target="XfG-lQ-9wD" id="GqP-JA-EPM"/>
                                         </connections>
                                     </button>
+                                    <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OaL-Ya-iUb">
+                                        <rect key="frame" x="350" y="860" width="166" height="26"/>
+                                        <subviews>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="khK-A0-S8l">
+                                                <rect key="frame" x="18" y="8" width="60" height="17"/>
+                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="支持人数" id="elJ-US-ZcP">
+                                                    <font key="font" size="13" name="STHeitiSC-Light"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UCO-cQ-SJk">
+                                                <rect key="frame" x="82" y="2" width="73" height="26"/>
+                                                <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="V5H-UV-tHj" id="Xn8-rb-leF">
+                                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="menu"/>
+                                                    <menu key="menu" id="sjk-hb-DO7">
+                                                        <items>
+                                                            <menuItem title="Item 1" state="on" id="V5H-UV-tHj"/>
+                                                            <menuItem title="Item 2" id="PhP-qB-blz"/>
+                                                            <menuItem title="Item 3" id="37W-G3-Enn"/>
+                                                        </items>
+                                                    </menu>
+                                                </popUpButtonCell>
+                                                <connections>
+                                                    <action selector="onPeopleCount:" target="XfG-lQ-9wD" id="YTB-tZ-FY7"/>
+                                                </connections>
+                                            </popUpButton>
+                                        </subviews>
+                                    </customView>
                                 </subviews>
                             </customView>
                         </subviews>
@@ -839,39 +861,16 @@
                         <outlet property="btSave" destination="YFu-Ka-52g" id="twO-0q-ONC"/>
                         <outlet property="configInputView" destination="N50-Tf-eIz" id="hle-L5-bHN"/>
                         <outlet property="containerView" destination="kKv-id-7DE" id="qPF-fh-xl2"/>
+                        <outlet property="peopleCount" destination="UCO-cQ-SJk" id="tMc-Az-9ZZ"/>
                         <outlet property="photoImage" destination="YUJ-j3-pqn" id="3On-vl-xOy"/>
+                        <outlet property="supportPeople" destination="OaL-Ya-iUb" id="xYU-iP-Hfz"/>
                         <outlet property="tableView" destination="6UR-eC-NiR" id="T5g-d9-1R0"/>
-                        <outlet property="templateVersion" destination="y5T-e5-SFM" id="4sH-9L-zBx"/>
                         <outlet property="textView" destination="k7c-4A-5ZI" id="Bm9-HY-yhj"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="130.5" y="723"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="d3G-NP-Yb7">
-            <objects>
-                <viewController id="CPH-yK-ILw" sceneMemberID="viewController">
-                    <view key="view" id="fTa-je-OFP">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </view>
-                </viewController>
-                <customObject id="bz0-kb-SDH" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="Gcc-8q-Otr">
-            <objects>
-                <viewController id="3gr-cW-hFi" sceneMemberID="viewController">
-                    <view key="view" id="Sx7-fj-daO">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </view>
-                </viewController>
-                <customObject id="FlQ-Ck-1NQ" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
+            <point key="canvasLocation" x="131.5" y="850"/>
         </scene>
     </scenes>
     <resources>

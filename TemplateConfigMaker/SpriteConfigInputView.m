@@ -10,7 +10,9 @@
 #import "LEOSprite.h"
 #import "ContainerImageView.h"
 #import <AppKit/NSTextField.h>
-@interface SpriteConfigInputView ()<NSTextFieldDelegate>
+@interface SpriteConfigInputView ()<NSTextFieldDelegate>{
+    NSInteger tempVersion;
+}
 @property (weak) IBOutlet NSTextField *nameTextField;
 @property (weak) IBOutlet NSPopUpButton *spriteType;
 @property (weak) IBOutlet NSTextField *pos_x;
@@ -22,6 +24,8 @@
 @property (weak) IBOutlet NSView *anchorView;
 @property (weak) IBOutlet NSView *posView;
 @property (weak) IBOutlet NSView *triggerView;
+@property (weak) IBOutlet NSTextField *widthLabel;
+@property (weak) IBOutlet NSTextField *heightLabel;
 
 @property (weak) IBOutlet NSPopUpButton *detectType;
 
@@ -54,6 +58,8 @@
 
 @property (weak) IBOutlet NSTextField *loopCount;
 @property (weak) IBOutlet NSTextField *loopIndex;
+@property (weak) IBOutlet NSPopUpButton *faceIndex;
+@property (weak) IBOutlet NSView *faceIndexView;
 
 
 @property (strong) NSArray* trigerEnumIndexArray;
@@ -61,6 +67,8 @@
 @property (strong) NSDictionary* anchorTypeDict;
 @property (copy,nonatomic) void (^RefreshBlock) (LEOSprite* sprite);
 @property (copy,nonatomic) void (^switchBasePointsBlock) (BOOL isOpen);
+
+
 @end
 
 
@@ -126,16 +134,31 @@
     self.anchorx.stringValue = [NSString stringWithFormat:@"%.2f",sprite.anchor_x];
     CGFloat f = sprite.anchor_x*100;
     NSInteger anchorX =  f;
-    if ((f - anchorX)>0.5) {
-        anchorX += 1;
+    if (f > 0) {
+        if ((f - anchorX)>0.5) {
+            anchorX += 1;
+        }
+
+    }else{
+        if ((f - anchorX)<-0.5) {
+            anchorX -= 1;
+        }
     }
+    
     self.anchorPosXStepper.integerValue = anchorX;
     self.anchory.stringValue = [NSString stringWithFormat:@"%.2f",sprite.anchor_y];
     f = sprite.anchor_y*100;
     NSInteger anchorY =  f;
-    if ((f - anchorY)>0.5) {
-        anchorY += 1;
+    if (f > 0) {
+        if ((f - anchorY)>0.5) {
+            anchorY += 1;
+        }
+    }else{
+        if ((f - anchorY)<-0.5) {
+            anchorY -= 1;
+        }
     }
+    
     self.anchorPosYStepper.integerValue = anchorY;
     self.width.stringValue = [NSString stringWithFormat:@"%.0f",(sprite.width*self.sizeRate)];
     self.widthStepper.integerValue = self.width.stringValue.integerValue;
@@ -152,6 +175,8 @@
     self.isRotate.state = sprite.isRotate;
     self.isBgMusicLoop.state = sprite.isBgMusicLoop;
     [self.orderPlus setIntegerValue:sprite.order];
+    
+    [self.faceIndex selectItemAtIndex:sprite.faceIndex];
     
     [self.trigerTypeOff selectItemAtIndex:[self setTriggerWithEnum:sprite.triggerOffType]];
     [self.trigerTypeOn  selectItemAtIndex:[self setTriggerWithEnum:sprite.triggerOnType]];
@@ -212,15 +237,17 @@
     [self setLayoutState];
     
     
+    
     self.trigerEnumIndexArray = @[@(0),@(4),@(8),@(2),@(32)];
     
     self.anchorTypeDict = @{@"静态":@[@"静态"],
-                            @"脸":@[@"全脸",@"头顶",@"额头",@"脖子",@"脸颊",@"下巴"],
+                            @"脸":@[@"全脸",@"头顶",@"额头",@"脖子",@"脸颊",@"下巴",@"左脸颊",@"右脸颊"],
                             @"耳朵":@[@"双耳",@"左耳",@"右耳"],
                             @"眉毛":@[@"双眉",@"左眉",@"右眉"],
                             @"眼睛":@[@"双眼",@"左眼",@"右眼",],
                             @"鼻子":@[@"全鼻",@"鼻孔"],
                             @"嘴巴":@[@"全嘴",@"上嘴唇",@"下嘴唇",@"左嘴角",@"右嘴角"]};
+    
     self.trigerTypeArray = @[@"N/A",@"张嘴",@"闭嘴",@"挑眉",@"摆头"];
     self.spriteTypeArray = @[@"静态",@"伴随面部",@"条件触发"];
     self.anchorTypeArray = @[@"静态",
@@ -262,7 +289,18 @@
         [self.detectType removeAllItems];
         [self.detectType addItemsWithTitles:self.detectTypeArray];
     }
+    
+    if (self.faceIndex) {
+        [self.faceIndex removeAllItems];
+        [self.faceIndex addItemsWithTitles:@[@"第一张脸",@"第二张脸"]];
+    }
 }
+
+
+
+
+
+
 
 #pragma mark - action
 
@@ -318,22 +356,41 @@
 - (void)setLayoutState{
     NSInteger n = self.spriteType.indexOfSelectedItem;
     if (n == 0) {
+        
         self.posView.hidden = NO;
         self.anchorView.hidden = !self.posView.hidden;
         self.triggerView.hidden = YES;
+        self.widthLabel.hidden = NO;
+        self.heightLabel.hidden = NO;
     }else if(n == 1){
         self.posView.hidden = YES;
         self.anchorView.hidden = !self.posView.hidden;
         self.triggerView.hidden = YES;
+        self.widthLabel.hidden = YES;
+        self.heightLabel.hidden = YES;
     }else if(n == 2){
         self.posView.hidden = YES;
         self.anchorView.hidden = !self.posView.hidden;
         self.triggerView.hidden = NO;
+        self.widthLabel.hidden = YES;
+        self.heightLabel.hidden = YES;
+    }
+ 
+    if (self.sprite.spriteType != SpriteTypeStatic &&
+        self.isMultiPeople) {
+        self.faceIndexView.hidden = NO;
+    }else{
+        self.faceIndexView.hidden = YES;
+        [self.faceIndex selectItemAtIndex:0];
     }
 }
 
-#pragma mark - picker
 
+
+#pragma mark - picker
+- (IBAction)onFaceIndex:(NSPopUpButton *)sender {
+    [self checkValue];
+}
 - (IBAction)onDetectTypeSelect:(NSPopUpButton *)sender {
      [self checkValue];
 }
@@ -343,8 +400,10 @@
     if (n == 0) {
         [self.anchorType selectItemAtIndex:0];
         [self.anchorSubType selectItemAtIndex:0];
-       
+        [self.faceIndex selectItemAtIndex:0];
     }
+    
+    
     [self setLayoutState];
     [self checkValue];
 }
@@ -392,6 +451,11 @@
     if ([self.loopCount.stringValue isEqualToString:@"0"]) {
         self.loopCount.stringValue = @"1";
     }
+    
+    if (self.faceIndexView.hidden) {
+        [self.faceIndex selectItemAtIndex:0];
+    }
+    
     [self receiveData];
 }
 
@@ -469,6 +533,14 @@
     self.sprite.loopIndex = self.loopIndex.stringValue.integerValue;
     self.sprite.loopCount = self.loopCount.stringValue.integerValue;
     
+    // v3
+    if(self.faceIndexView.hidden){
+        self.sprite.faceIndex = 0;
+    }else{
+        self.sprite.faceIndex = self.faceIndex.indexOfSelectedItem;
+    }
+    
+    
     if (self.RefreshBlock) {
         self.RefreshBlock(self.sprite);
     }
@@ -512,5 +584,11 @@
    [self checkValue];
 }
 
+- (void)refreshFaceIndex{
+    [self setLayoutState];
+    if (self.faceIndexView.hidden) {
+        [self.faceIndex selectItemAtIndex:0];
+    }
+}
 
 @end

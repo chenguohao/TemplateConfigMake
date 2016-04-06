@@ -36,6 +36,8 @@
     self.detectType = 0;
     self.loopCount = 1;
     self.loopIndex = 0;
+    // v3
+    self.faceIndex = 0;
     return self;
 }
 
@@ -72,6 +74,9 @@
     self.detectType = [dict[@"detectType"] integerValue];
     self.loopIndex = [dict[@"loopIndex"] integerValue];
     self.loopCount = [dict[@"loopCount"] integerValue];
+    
+    // v3
+    self.faceIndex = [dict[@"faceIndex"] integerValue];
     
     return self;
 }
@@ -139,6 +144,8 @@
     [mdic setObject:[@(self.triggerOffType) stringValue] forKey:@"triggerOffType"];
     [mdic setObject:[@(self.loopCount) stringValue] forKey:@"loopCount"];
     [mdic setObject:[@(self.loopIndex) stringValue] forKey:@"loopIndex"];
+    // v3
+    [mdic setObject:[@(self.faceIndex) stringValue] forKey:@"faceIndex"];
     return mdic;
 }
 

@@ -16,8 +16,11 @@
                 <outlet property="animationCount" destination="JXq-kD-Y2d" id="vfk-mc-Uwz"/>
                 <outlet property="animationDuration" destination="qqn-3t-UG2" id="4Xl-65-gBb"/>
                 <outlet property="detectType" destination="iE0-Sg-wSq" id="BHM-WH-Dog"/>
+                <outlet property="faceIndex" destination="4Jf-vL-KXg" id="QAe-dJ-U5o"/>
+                <outlet property="faceIndexView" destination="2TY-Gi-UcB" id="Ohl-OR-BI6"/>
                 <outlet property="hasBgMusic" destination="Y79-jS-Wky" id="4nK-Zr-5gY"/>
                 <outlet property="height" destination="4PI-CP-ywe" id="wUU-Ax-vyc"/>
+                <outlet property="heightLabel" destination="5pH-9y-CiY" id="09h-vc-JXj"/>
                 <outlet property="heightStepper" destination="Dgh-av-Pbp" id="EJf-eG-npq"/>
                 <outlet property="isBgMusicLoop" destination="XVC-me-5eP" id="Xpg-Vp-0JA"/>
                 <outlet property="isRotate" destination="mdN-3n-q4E" id="dAd-wv-GB0"/>
@@ -37,6 +40,7 @@
                 <outlet property="triggerView" destination="6IU-hs-24A" id="kxQ-96-cr3"/>
                 <outlet property="view" destination="c22-O7-iKe" id="sim-jS-eAB"/>
                 <outlet property="width" destination="tpX-EC-Upf" id="fya-bM-nr7"/>
+                <outlet property="widthLabel" destination="q9Q-1c-jTZ" id="zNp-Mt-9R0"/>
                 <outlet property="widthStepper" destination="JXc-dQ-h0z" id="NC7-kf-J8S"/>
             </connections>
         </customObject>
@@ -227,7 +231,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f13-9F-Gvo">
-                    <rect key="frame" x="143" y="20" width="82" height="17"/>
+                    <rect key="frame" x="143" y="30" width="82" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="背景音乐循环" id="a8J-dc-RFr">
                         <font key="font" size="13" name="STHeitiSC-Light"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -313,14 +317,14 @@
                         </textField>
                         <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="frm-db-8dO">
                             <rect key="frame" x="199" y="25" width="19" height="27"/>
-                            <stepperCell key="cell" continuous="YES" alignment="left" maxValue="100" id="1jC-HR-SdB"/>
+                            <stepperCell key="cell" continuous="YES" alignment="left" minValue="-200" maxValue="200" id="1jC-HR-SdB"/>
                             <connections>
                                 <action selector="onAnchorYPlus:" target="-2" id="6uv-uO-02E"/>
                             </connections>
                         </stepper>
                         <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eHP-82-Es3">
                             <rect key="frame" x="113" y="25" width="19" height="27"/>
-                            <stepperCell key="cell" continuous="YES" alignment="left" maxValue="100" id="mCp-KA-2Bo"/>
+                            <stepperCell key="cell" continuous="YES" alignment="left" minValue="-200" maxValue="200" id="mCp-KA-2Bo"/>
                             <connections>
                                 <action selector="onAnchorXPlus:" target="-2" id="SaE-HY-uqP"/>
                             </connections>
@@ -364,7 +368,7 @@
                     </subviews>
                 </customView>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bN7-Tb-ySw">
-                    <rect key="frame" x="19" y="21" width="82" height="17"/>
+                    <rect key="frame" x="19" y="31" width="82" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="道具背景音乐" id="8nc-Nu-gJu">
                         <font key="font" size="13" name="STHeitiSC-Light"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -372,7 +376,7 @@
                     </textFieldCell>
                 </textField>
                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Y79-jS-Wky">
-                    <rect key="frame" x="117" y="19" width="22" height="18"/>
+                    <rect key="frame" x="117" y="29" width="22" height="18"/>
                     <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="0Z3-0b-Ndh">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
@@ -382,7 +386,7 @@
                     </connections>
                 </button>
                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XVC-me-5eP">
-                    <rect key="frame" x="229" y="18" width="22" height="18"/>
+                    <rect key="frame" x="229" y="28" width="22" height="18"/>
                     <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="BeG-nn-2je">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
@@ -549,13 +553,43 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F49-UO-1UG">
-                    <rect key="frame" x="134" y="56" width="74" height="22"/>
+                    <rect key="frame" x="134" y="56" width="38" height="22"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="boc-pz-lkp">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2TY-Gi-UcB">
+                    <rect key="frame" x="1" y="2" width="248" height="21"/>
+                    <subviews>
+                        <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Jf-vL-KXg">
+                            <rect key="frame" x="109" y="-3" width="130" height="26"/>
+                            <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="1IM-gz-PTO" id="V6m-hT-Meu">
+                                <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="menu"/>
+                                <menu key="menu" id="DQ4-A7-6Pi">
+                                    <items>
+                                        <menuItem title="Item 1" state="on" id="1IM-gz-PTO"/>
+                                        <menuItem title="Item 2" id="xMK-7T-z4b"/>
+                                        <menuItem title="Item 3" id="Pbm-nI-e30"/>
+                                    </items>
+                                </menu>
+                            </popUpButtonCell>
+                            <connections>
+                                <action selector="onFaceIndex:" target="-2" id="4F1-Pq-PGD"/>
+                            </connections>
+                        </popUpButton>
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="15U-ab-60y">
+                            <rect key="frame" x="18" y="4" width="62" height="17"/>
+                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="所属人脸" id="fbs-mQ-LCX">
+                                <font key="font" size="13" name="STHeitiSC-Light"/>
+                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                    </subviews>
+                </customView>
             </subviews>
             <connections>
                 <outlet property="nextKeyView" destination="-2" id="7O7-Or-Pk5"/>

@@ -11,10 +11,14 @@
 @interface SpriteConfigInputView : NSView{
     LEOSprite* _sprite;
 }
+@property (assign,nonatomic) BOOL isMultiPeople;
 @property (strong) IBOutlet NSView *view;
 @property (assign,nonatomic) CGFloat sizeRate;
 @property (strong, nonatomic) LEOSprite* sprite;
 + (CGFloat)getSizeRateWithType:(SpriteType)type;
 - (void)setRefreshBlock:(void(^)(LEOSprite* sprite))block;
 - (void)setBasePointsSwitchBlock:(void(^)(BOOL isOpen))block;
+- (void)setFaceIndexHidden:(BOOL)isHidden;
+- (void)setTempVersion:(NSInteger)tempV;
+- (void)refreshFaceIndex;
 @end

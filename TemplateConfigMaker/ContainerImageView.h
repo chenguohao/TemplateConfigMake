@@ -17,4 +17,5 @@
 - (void)updateSprite:(LEOSprite*)sprite;
 - (void)removeSprite:(LEOSprite*)sprite;
 + (CGFloat)getFaceLenth;
+- (void)selectSprite:(LEOSprite*)sprite;
 @end

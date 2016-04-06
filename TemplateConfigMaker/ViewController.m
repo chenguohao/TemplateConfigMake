@@ -14,7 +14,7 @@
 #import "ContainerImageView.h"
 #import "LEOConfigTextView.h"
 
-#define tempVer @"2"
+#define tempVer @"3"
 
 @interface ViewController()<NSTableViewDataSource,NSTableViewDelegate>
 @property (strong) NSString* str1;
@@ -31,7 +31,11 @@
 
 @property (weak) IBOutlet ContainerImageView *photoImage;
 @property (nonatomic, strong) NSMutableArray* spritesArray;
-@property (weak) IBOutlet NSTextField *templateVersion;
+@property (weak) IBOutlet NSPopUpButton *templateVersion;
+@property (strong) NSArray* tempVersionArray;
+@property (weak) IBOutlet NSPopUpButton *peopleCount;
+@property (weak) IBOutlet NSView *supportPeople;
+
 @end
 
 NSString* cellID = @"CellID";
@@ -46,7 +50,6 @@ NSString* cellID = @"CellID";
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     self.curEditSprite = nil;
-    self.hasBgMusic = NO;
     self.templateVersion.stringValue = tempVer;
     [self.configInputView setRefreshBlock:^(LEOSprite *sprite) {
         self.curEditSprite = sprite;
@@ -80,6 +83,10 @@ NSString* cellID = @"CellID";
             [self readConfigWithPath:str];
         }
     }];
+    
+    [self initUI];
+    self.hasBgMusic = self.bgMusic.state;
+  
 }
 
 - (void)readConfigWithPath:(NSString*)path{
@@ -88,6 +95,31 @@ NSString* cellID = @"CellID";
     self.textView.string = str;
     NSDictionary* dic = [self dictionaryWithJsonString:str];
     if (dic) {
+        if ([[dic allKeys] containsObject:@"tempViersion"]) {
+            if (![dic[@"tempViersion"] isEqualToString:tempVer]) {
+                NSAlert *alert = [[NSAlert alloc] init];
+                
+                [alert addButtonWithTitle:@"确定"];
+                
+                [alert setMessageText:@"版本不一致"];
+                
+                [alert setInformativeText:[NSString stringWithFormat:@"当前工具版本v%@, 配置文件版本号v%@",tempVer,dic[@"tempViersion"]]];
+                
+                [alert setAlertStyle:NSWarningAlertStyle];
+                [alert beginSheetModalForWindow:[[[NSApplication sharedApplication] windows] firstObject] modalDelegate:self didEndSelector:nil contextInfo:nil];
+                return;
+            }
+        }
+        
+        if ([[dic allKeys] containsObject:@"peopleCount"]) {
+            NSInteger count = [dic[@"peopleCount"] integerValue];
+            [self.peopleCount selectItemAtIndex:count-1];
+            if (count > 1) {
+                self.configInputView.isMultiPeople = YES;
+                [self.configInputView refreshFaceIndex];
+            }
+        }
+        
         if ([[dic allKeys] containsObject:@"sprites"]) {
             NSArray* array = dic[@"sprites"];
             NSMutableArray* spritesArray = [NSMutableArray new];
@@ -102,6 +134,8 @@ NSString* cellID = @"CellID";
             self.hasBgMusic = [dic[@"hasBgMusic"] boolValue];
             self.bgMusic.state = self.hasBgMusic;
         }
+        
+        
     }
 }
 
@@ -251,6 +285,7 @@ NSString* cellID = @"CellID";
 - (BOOL)tableView:(NSTableView *)tableView shouldSelectRow:(NSInteger)row{
     NSLog(@"ROW:%ld",row);
     [self selectRow:row];
+    [self.photoImage selectSprite:self.spritesArray[row]];
     return YES;
 }
 
@@ -286,11 +321,7 @@ NSString* cellID = @"CellID";
                 [alert beginSheetModalForWindow:[[[NSApplication sharedApplication] windows] firstObject] modalDelegate:self didEndSelector:nil contextInfo:nil];
             }
         }
-        
     }];
-    
-    
-   
 }
 
 - (void)onDrag:(NSArray*)files{
@@ -308,7 +339,6 @@ NSString* cellID = @"CellID";
         LEOSprite* sprite = [[LEOSprite alloc] initWithName:[self getNewNameWithName:file]];
         sprite.imagePath = path;
        
-        
         NSImage* img = [[NSImage alloc] initWithContentsOfFile:path];
         CGFloat rate = [SpriteConfigInputView getSizeRateWithType:sprite.spriteType];
         sprite.width = img.size.width/rate;
@@ -316,24 +346,67 @@ NSString* cellID = @"CellID";
         
         [self.spritesArray addObject:sprite];
         if (self.spritesArray.count == 1) {
-            
             self.configInputView.sprite = sprite;
-            
         }
         [self.photoImage addSprite:sprite];
         [self.tableView reloadData];
         [self produceSpriteConfig];
     }
+}
+
+- (void)initUI{
+    [self initPeopleCount];
+}
+
+
+#pragma  mark - peopleCount
+- (void)initPeopleCount{
+    if (self.peopleCount) {
+        [self.peopleCount removeAllItems];
+        [self.peopleCount addItemsWithTitles:@[@"1",@"2"]];
+    }
     
-    
-   
+    [self setConfigInputPeopleCount];
+}
+
+- (void)setPCount:(NSInteger)index{
+    [self.peopleCount selectItemAtIndex:index];
+    [self setConfigInputPeopleCount];
+}
+
+- (IBAction)onPeopleCount:(NSPopUpButton *)sender {
+    [self setConfigInputPeopleCount];
+    [self produceSpriteConfig];
+}
+
+- (void)setConfigInputPeopleCount{
+    if (self.peopleCount) {
+        self.configInputView.isMultiPeople = self.peopleCount.indexOfSelectedItem != 0;
+        
+    }
+    [self.configInputView refreshFaceIndex];
 }
 
 #pragma mark - sprite data
 - (void)produceSpriteConfig{
-    self.textView.string = [self DataTOjsonString:@{
-                                                    @"sprites":[self getDicArrayFromSpriteArray:self.spritesArray],
-                                                    @"hasBgMusic":@(self.hasBgMusic),@"tempViersion":self.templateVersion.stringValue}];
+   
+    NSDictionary* dic;
+    NSInteger count = self.peopleCount.indexOfSelectedItem+1;
+    dic = @{@"sprites":[self getDicArrayFromSpriteArray:self.spritesArray],
+            @"hasBgMusic":@(self.hasBgMusic),
+            @"tempViersion":tempVer,
+            @"peopleCount":[NSString stringWithFormat:@"%ld",count]};
+    self.textView.string = [self DataTOjsonString:dic];
+    
+}
+
+#pragma mark - UI&Version
+- (void)onUIControlWithVersion:(NSInteger)tempV{
+    if ( tempV == 2) {
+        self.supportPeople.hidden = YES;
+    }else if (tempV == 3){
+        self.supportPeople.hidden = NO;
+    }
 }
 
 @end

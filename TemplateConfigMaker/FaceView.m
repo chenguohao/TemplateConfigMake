@@ -50,7 +50,7 @@
                            
                            [NSValue valueWithPoint:NSMakePoint(106, 92+n)],  //19
                            [NSValue valueWithPoint:NSMakePoint(154, 45)],  //20
-                           [NSValue valueWithPoint:NSMakePoint(60, 45)]   //21
+                           [NSValue valueWithPoint:NSMakePoint(60, 45)],   //21
                         ];
         
         NSMutableArray* marray = [NSMutableArray new];
@@ -234,7 +234,16 @@
             
         }
             break;
-            
+        case SpriteAnchorTypeLeftCheek: // 左脸颊
+        {
+            facePoint = NSMakePoint([_base21Points[9] pointValue].x, [_base21Points[18] pointValue].y);
+        }
+            break;
+        case SpriteAnchorTypeRightCheek: //右脸颊
+        {
+            facePoint = NSMakePoint([_base21Points[6] pointValue].x, [_base21Points[18] pointValue].y);
+        }
+            break;
     }
     return facePoint;
     
@@ -257,24 +266,25 @@
     
     CGFloat w = dirtyRect.size.width;
     //L top
+    NSColor* lineColor = [NSColor purpleColor];
     rect = NSRectFromCGRect(CGRectMake(0, 0, w, 1));
-    [[NSColor redColor] set]; //设置颜色
+    [lineColor set]; //设置颜色
     NSRectFill(rect);
     
     
     // bottom
     rect = NSRectFromCGRect(CGRectMake(0, w-1, w, 1));
-    [[NSColor redColor] set]; //设置颜色
+    [lineColor set]; //设置颜色
     NSRectFill(rect);
     
     // left
     // left
     rect = NSRectFromCGRect(CGRectMake(0, 0, 1, w));
-    [[NSColor redColor] set]; //设置颜色
+    [lineColor set]; //设置颜色
     NSRectFill(rect);
     
     rect = NSRectFromCGRect(CGRectMake(w-1, 0, 1, w));
-    [[NSColor redColor] set]; //设置颜色
+    [lineColor set]; //设置颜色
     NSRectFill(rect);
     
     if (self.isShowBasePoints) {

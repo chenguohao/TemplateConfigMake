@@ -163,4 +163,25 @@ NSComparisonResult viewcmp( NSView * view1, NSView * view2, void * context )
     return faceLen;
 }
 
+- (void)selectSprite:(LEOSprite*)sprite{
+    
+    
+    for (NSView* subv in self.subviews) {
+        NSLog(@"subview %@",subv.description);
+    }
+    
+    for (LEOSprite* sp in self.spriteArray) {
+        NSLog(@"imageView %@",sp.imageView.description);
+        if ([sp.spriteName isEqualToString:sprite.spriteName]) {
+          
+            NSLog(@"red %@",sprite.spriteName);
+            sp.imageView.layer.borderColor = [NSColor redColor].CGColor;
+            
+        }else{
+           NSLog(@"blue %@",sprite.spriteName);
+            sp.imageView.layer.borderColor = [NSColor blueColor].CGColor;
+        }
+    }
+}
+
 @end

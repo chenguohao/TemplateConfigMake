@@ -14,6 +14,10 @@
 		<integer>15</integer>
 		<key>fms</key>
 		<integer>14</integer>
+		<key>fmsl</key>
+		<integer>28</integer>
+		<key>fmsr</key>
+		<integer>29</integer>
 		<key>fear</key>
 		<integer>16</integer>
 		<key>fearl</key>
@@ -75,7 +79,8 @@
 			<string>hb</string>
 			<string>fms</string>
 			<string>fmb</string>
-			<string>hb</string>
+			<string>fmsl</string>
+			<string>fmsr</string>
 		</array>
 		<key>ear</key>
 		<array>

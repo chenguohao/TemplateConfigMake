@@ -70,6 +70,9 @@ typedef NS_ENUM(NSUInteger, SpriteAnchorType) {
     SpriteAnchorTypeUpMouth = 25,//上嘴唇
     SpriteAnchorTypeDownMouth = 26,//下嘴唇
     SpriteAnchorTypeLowerJaw = 27,//下巴
+    
+    SpriteAnchorTypeLeftCheek = 28,//左脸颊
+    SpriteAnchorTypeRightCheek = 29,//右脸颊
 };
 
 @interface LEOSprite : NSObject
@@ -106,12 +109,15 @@ typedef NS_ENUM(NSUInteger, SpriteAnchorType) {
 // CG UI
 @property (nonatomic, assign) CGRect spriteRect;
 
-// 新增属性
+// 新增属性 v2
 @property (nonatomic,assign) NSInteger loopCount;
 @property (nonatomic,assign) NSInteger loopIndex;
 @property (nonatomic,assign) DetectType detectType;
 @property (nonatomic, assign) SpriteTriggerType triggerOnType;
 @property (nonatomic, assign) SpriteTriggerType triggerOffType;
+
+// 新增属性 v3
+@property (nonatomic,assign) NSInteger faceIndex;
 
 - (instancetype)initWithName:(NSString*)spriteName;
 - (instancetype)initWithDict:(NSDictionary*)dict;
