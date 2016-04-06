@@ -57,11 +57,16 @@ NSString* cellID = @"CellID";
         [self.photoImage.faceView setAnchorPointWithType:sprite.anchorType];
         if (self.spritesArray.count) {
             NSInteger selectRow = self.tableView.selectedRow;
-            [self.spritesArray replaceObjectAtIndex:self.tableView.selectedRow withObject:self.curEditSprite];
-            [self.tableView reloadData];
-            NSIndexSet *indexSet = [NSIndexSet indexSetWithIndex:selectRow];
-            [self.tableView selectRowIndexes:indexSet byExtendingSelection:NO];
-            [self selectRow:selectRow];
+            if (self.spritesArray.count) {
+                [self.spritesArray replaceObjectAtIndex:self.tableView.selectedRow withObject:self.curEditSprite];
+                [self.tableView reloadData];
+                NSIndexSet *indexSet = [NSIndexSet indexSetWithIndex:selectRow];
+                [self.tableView selectRowIndexes:indexSet byExtendingSelection:NO];
+                [self selectRow:selectRow];
+            }else{
+                assert(@"spriteArray empty");
+            }
+            
         }
         [self.photoImage updateSprite:sprite];
         [self produceSpriteConfig];
@@ -340,7 +345,7 @@ NSString* cellID = @"CellID";
         sprite.imagePath = path;
        
         NSImage* img = [[NSImage alloc] initWithContentsOfFile:path];
-        CGFloat rate = [SpriteConfigInputView getSizeRateWithType:sprite.spriteType];
+        CGFloat rate = [SpriteConfigInputView getSizeRateWithSprite:sprite];
         sprite.width = img.size.width/rate;
         sprite.height = img.size.height/rate;
         

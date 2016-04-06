@@ -50,7 +50,8 @@
     self.animationCount = [dict[@"animationCount"] integerValue];
     self.duration = [dict[@"animationDuration"] integerValue];
     self.order = [dict[@"order"] integerValue];
-    if (self.spriteType == SpriteTypeStatic) {
+    if (self.spriteType == SpriteTypeStatic ||
+        (self.spriteType == SpriteTypeCondition && self.anchorType == SpriteAnchorTypeStatic)) {
         self.pos_x = [dict[@"pos_x"] floatValue];
         self.pos_y = [dict[@"pos_y"] floatValue];
         self.anchor_x = 0.5;
@@ -124,9 +125,13 @@
         [mdic setObject:[self getStringFromFloat:self.anchor_x] forKey:@"pos_x"];
         [mdic setObject:[self getStringFromFloat:self.anchor_y] forKey:@"pos_y"];
     }else if (self.spriteType == SpriteTypeCondition){
-        
-        [mdic setObject:[self getStringFromFloat:self.anchor_x] forKey:@"pos_x"];
-        [mdic setObject:[self getStringFromFloat:self.anchor_y] forKey:@"pos_y"];
+        if (self.anchorType == SpriteAnchorTypeStatic) {
+            [mdic setObject:[self getStringFromFloat:self.pos_x] forKey:@"pos_x"];
+            [mdic setObject:[self getStringFromFloat:self.pos_y] forKey:@"pos_y"];
+        }else{
+            [mdic setObject:[self getStringFromFloat:self.anchor_x] forKey:@"pos_x"];
+            [mdic setObject:[self getStringFromFloat:self.anchor_y] forKey:@"pos_y"];
+        }
     }
    
     [mdic setObject:[self getStringFromFloat:self.width] forKey:@"width"];

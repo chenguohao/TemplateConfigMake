@@ -86,7 +86,8 @@
         CGFloat y;
         CGFloat w;
         CGFloat h;
-        if (sprite.spriteType == SpriteTypeStatic) {
+        if (sprite.spriteType == SpriteTypeStatic ||
+            (sprite.spriteType == SpriteTypeCondition && sprite.anchorType == SpriteAnchorTypeStatic)) {
             x = (sprite.pos_x - sprite.width/2)* l;
             y = l- (sprite.pos_y + sprite.height/2)* l;
             w = sprite.width * l;

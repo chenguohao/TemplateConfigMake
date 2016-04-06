@@ -60,6 +60,7 @@
 @property (weak) IBOutlet NSTextField *loopIndex;
 @property (weak) IBOutlet NSPopUpButton *faceIndex;
 @property (weak) IBOutlet NSView *faceIndexView;
+@property (weak) IBOutlet NSView *anchorTypeSubView;
 
 
 @property (strong) NSArray* trigerEnumIndexArray;
@@ -106,19 +107,24 @@
 }
 
 
-+ (CGFloat)getSizeRateWithType:(SpriteType)type{
++ (CGFloat)getSizeRateWithSprite:(LEOSprite*)sprite{
+    SpriteType type = sprite.spriteType;
+    SpriteAnchorType atype = sprite.anchorType;
     if (type == SpriteTypeStatic) {
         return 480;
     }
+    
+    if (type == SpriteTypeCondition &&
+        atype == SpriteAnchorTypeStatic) {
+        return 480;
+    }
+    
     return [ContainerImageView getFaceLenth];
 }
 
 - (CGFloat)sizeRate
 {
-    if (self.sprite.spriteType == SpriteTypeStatic) {
-        return 480;
-    }
-    return [ContainerImageView getFaceLenth];
+    return [SpriteConfigInputView getSizeRateWithSprite:self.sprite];
 }
 
 - (void)setSprite:(LEOSprite *)sprite{
@@ -359,21 +365,34 @@
         
         self.posView.hidden = NO;
         self.anchorView.hidden = !self.posView.hidden;
+        self.anchorTypeSubView.hidden = self.anchorView.hidden;
         self.triggerView.hidden = YES;
         self.widthLabel.hidden = NO;
         self.heightLabel.hidden = NO;
     }else if(n == 1){
         self.posView.hidden = YES;
         self.anchorView.hidden = !self.posView.hidden;
+        self.anchorTypeSubView.hidden = self.anchorView.hidden;
         self.triggerView.hidden = YES;
         self.widthLabel.hidden = YES;
         self.heightLabel.hidden = YES;
     }else if(n == 2){
-        self.posView.hidden = YES;
-        self.anchorView.hidden = !self.posView.hidden;
-        self.triggerView.hidden = NO;
-        self.widthLabel.hidden = YES;
-        self.heightLabel.hidden = YES;
+        if (self.sprite.anchorType == SpriteAnchorTypeStatic) {
+            self.posView.hidden = NO;
+            self.anchorView.hidden = NO;
+            self.anchorTypeSubView.hidden = YES;
+            self.triggerView.hidden = NO;
+            self.widthLabel.hidden = NO;
+            self.heightLabel.hidden = NO;
+        }else{
+            self.posView.hidden = YES;
+            self.anchorView.hidden = !self.posView.hidden;
+            self.anchorTypeSubView.hidden = self.anchorView.hidden;
+            self.triggerView.hidden = NO;
+            self.widthLabel.hidden = YES;
+            self.heightLabel.hidden = YES;
+        }
+        
     }
  
     if (self.sprite.spriteType != SpriteTypeStatic &&
@@ -570,13 +589,8 @@
             CGFloat r = img.size.width/img.size.height;
             self.height.stringValue = [NSString stringWithFormat:@"%.0f",(f/r)];
         }
-    }else if (sender == self.animationCount){
-        CGFloat f = self.animationCount.stringValue.floatValue;
-        self.animationDuration.stringValue = [NSString stringWithFormat:@"%.2f",f/8];
-    }else if (sender == self.animationDuration){
-        CGFloat f = self.animationDuration.stringValue.floatValue;
-        self.animationCount.stringValue = [NSString stringWithFormat:@"%.0f",f*8];
     }
+    
     //[self checkValue];
 }
 
