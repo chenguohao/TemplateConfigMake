@@ -48,7 +48,8 @@
     self.spriteName = dict[@"spriteName"];
     self.spriteType = [dict[@"spriteType"] integerValue];
     self.animationCount = [dict[@"animationCount"] integerValue];
-    self.duration = [dict[@"animationDuration"] integerValue];
+    self.duration = [dict[@"animationDuration"] floatValue];
+    self.anchorType = [dict[@"anchorType"] integerValue];
     self.order = [dict[@"order"] integerValue];
     if (self.spriteType == SpriteTypeStatic ||
         (self.spriteType == SpriteTypeCondition && self.anchorType == SpriteAnchorTypeStatic)) {
@@ -68,7 +69,6 @@
     self.isBgMusicLoop = [dict[@"isBgMusicLoop"] boolValue];
     self.isRotate = [dict[@"isRotate"] boolValue];
     self.hasBgMusic = [dict[@"hasBgMusic"] boolValue];
-    self.anchorType = [dict[@"anchorType"] integerValue];
     
     self.triggerOffType = [dict[@"triggerOffType"] integerValue];
     self.triggerOnType  = [dict[@"triggerOnType"] integerValue];
