@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1713" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9531"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10116"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="SpriteConfigInputView">
@@ -420,23 +420,6 @@
                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
                         </textField>
-                        <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aus-e6-a5T">
-                            <rect key="frame" x="84" y="1" width="73" height="26"/>
-                            <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="99S-oc-uyi" id="X33-6t-UyD">
-                                <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                <font key="font" metaFont="menu"/>
-                                <menu key="menu" id="lfK-jg-kM8">
-                                    <items>
-                                        <menuItem title="Item 1" state="on" id="99S-oc-uyi"/>
-                                        <menuItem title="Item 2" id="jMj-Uh-Un7"/>
-                                        <menuItem title="Item 3" id="bMB-sO-5nK"/>
-                                    </items>
-                                </menu>
-                            </popUpButtonCell>
-                            <connections>
-                                <action selector="onTriggerType:" target="-2" id="QyN-xZ-saK"/>
-                            </connections>
-                        </popUpButton>
                         <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zcs-ql-u4d">
                             <rect key="frame" x="220" y="0.0" width="73" height="26"/>
                             <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="eC9-aC-S19" id="5n5-8L-Xf2">
@@ -463,7 +446,7 @@
                             </textFieldCell>
                         </textField>
                         <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iE0-Sg-wSq">
-                            <rect key="frame" x="84" y="25" width="133" height="26"/>
+                            <rect key="frame" x="73" y="25" width="144" height="26"/>
                             <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="q3i-aZ-f0M" id="AHX-Va-yvn">
                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="menu"/>
@@ -477,6 +460,23 @@
                             </popUpButtonCell>
                             <connections>
                                 <action selector="onDetectTypeSelect:" target="-2" id="FZ2-eE-oxS"/>
+                            </connections>
+                        </popUpButton>
+                        <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aus-e6-a5T">
+                            <rect key="frame" x="73" y="0.0" width="84" height="26"/>
+                            <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="99S-oc-uyi" id="X33-6t-UyD">
+                                <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="menu"/>
+                                <menu key="menu" id="lfK-jg-kM8">
+                                    <items>
+                                        <menuItem title="Item 1" state="on" id="99S-oc-uyi"/>
+                                        <menuItem title="Item 2" id="jMj-Uh-Un7"/>
+                                        <menuItem title="Item 3" id="bMB-sO-5nK"/>
+                                    </items>
+                                </menu>
+                            </popUpButtonCell>
+                            <connections>
+                                <action selector="onTriggerType:" target="-2" id="QyN-xZ-saK"/>
                             </connections>
                         </popUpButton>
                     </subviews>
