@@ -28,10 +28,10 @@
 @property (strong) NSString* str0;
 @property (weak) IBOutlet NSButton *btSave;
 @property (weak) IBOutlet NSView *containerView;
+@property (weak) IBOutlet NSTextField *tempVersionLabel;
 
 @property (weak) IBOutlet ContainerImageView *photoImage;
 @property (nonatomic, strong) NSMutableArray* spritesArray;
-@property (weak) IBOutlet NSPopUpButton *templateVersion;
 @property (strong) NSArray* tempVersionArray;
 @property (weak) IBOutlet NSPopUpButton *peopleCount;
 @property (weak) IBOutlet NSView *supportPeople;
@@ -44,13 +44,13 @@ NSString* cellID = @"CellID";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-  
+
     
     self.tableView.allowsEmptySelection = NO;
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     self.curEditSprite = nil;
-    self.templateVersion.stringValue = tempVer;
+    self.tempVersionLabel.stringValue = [NSString stringWithFormat:@"模板版本:v%@",tempVer];
     [self.configInputView setRefreshBlock:^(LEOSprite *sprite) {
         self.curEditSprite = sprite;
         self.photoImage.faceView.hidden = sprite.spriteType == SpriteTypeStatic;
@@ -91,8 +91,9 @@ NSString* cellID = @"CellID";
     
     [self initUI];
     self.hasBgMusic = self.bgMusic.state;
-  
+    
 }
+
 
 - (void)readConfigWithPath:(NSString*)path{
     

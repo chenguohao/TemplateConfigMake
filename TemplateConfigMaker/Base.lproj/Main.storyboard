@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1713" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9531"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10116"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -706,11 +706,11 @@
                                     <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="70" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="72o-Aw-1Yp">
                                         <rect key="frame" x="26" y="489" width="303" height="373"/>
                                         <clipView key="contentView" ambiguous="YES" id="iRp-tt-Y0Y">
-                                            <rect key="frame" x="1" y="17" width="301" height="355"/>
+                                            <rect key="frame" x="1" y="0.0" width="301" height="372"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <tableView identifier="CellID" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="hSn-p7-fsU" viewBased="YES" id="6UR-eC-NiR" customClass="LEOTableView">
-                                                    <rect key="frame" x="0.0" y="0.0" width="301" height="355"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="301" height="349"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <size key="intercellSpacing" width="3" height="2"/>
                                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -754,7 +754,7 @@
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </clipView>
                                         <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="9IJ-PN-UiU">
-                                            <rect key="frame" x="1" y="2" width="0.0" height="15"/>
+                                            <rect key="frame" x="1" y="8" width="0.0" height="15"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                         <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="32e-4f-RDw">
@@ -762,7 +762,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                         <tableHeaderView key="headerView" id="hSn-p7-fsU">
-                                            <rect key="frame" x="0.0" y="0.0" width="301" height="17"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="301" height="23"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableHeaderView>
                                     </scrollView>
@@ -865,6 +865,7 @@
                         <outlet property="photoImage" destination="YUJ-j3-pqn" id="3On-vl-xOy"/>
                         <outlet property="supportPeople" destination="OaL-Ya-iUb" id="xYU-iP-Hfz"/>
                         <outlet property="tableView" destination="6UR-eC-NiR" id="T5g-d9-1R0"/>
+                        <outlet property="tempVersionLabel" destination="dgh-Qn-oPd" id="CiE-mE-rWo"/>
                         <outlet property="textView" destination="k7c-4A-5ZI" id="Bm9-HY-yhj"/>
                     </connections>
                 </viewController>
