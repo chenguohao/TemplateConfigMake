@@ -14,7 +14,7 @@
 #import "ContainerImageView.h"
 #import "LEOConfigTextView.h"
 
-#define tempVer @"3"
+#define tempVer @"4"
 
 @interface ViewController()<NSTableViewDataSource,NSTableViewDelegate>
 @property (strong) NSString* str1;
@@ -399,7 +399,7 @@ NSString* cellID = @"CellID";
     NSInteger count = self.peopleCount.indexOfSelectedItem+1;
     dic = @{@"sprites":[self getDicArrayFromSpriteArray:self.spritesArray],
             @"hasBgMusic":@(self.hasBgMusic),
-            @"tempViersion":tempVer,
+            @"tempVersion":tempVer,
             @"peopleCount":[NSString stringWithFormat:@"%ld",count]};
     self.textView.string = [self DataTOjsonString:dic];
     

@@ -58,8 +58,6 @@
 		<integer>13</integer>
 		<key>fbc</key>
 		<integer>5</integer>
-		<key>fb</key>
-		<integer>5</integer>
 		<key>fa</key>
 		<integer>20</integer>
 		<key>fmb</key>
@@ -90,7 +88,7 @@
 		</array>
 		<key>brow</key>
 		<array>
-			<string>fb</string>
+			<string>fbc</string>
 			<string>fbl</string>
 			<string>fbr</string>
 		</array>
