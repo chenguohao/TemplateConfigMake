@@ -390,6 +390,14 @@ NSString* cellID = @"CellID";
         self.configInputView.isMultiPeople = self.peopleCount.indexOfSelectedItem != 0;
         
     }
+    
+    if (self.peopleCount.indexOfSelectedItem == 0) {
+        for (LEOSprite* sprite in self.spritesArray) {
+            sprite.faceIndex = 0;
+        }
+    }
+   
+    
     [self.configInputView refreshFaceIndex];
 }
 

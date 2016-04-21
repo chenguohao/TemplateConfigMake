@@ -181,8 +181,11 @@
     self.isRotate.state = sprite.isRotate;
     self.isBgMusicLoop.state = sprite.isBgMusicLoop;
     [self.orderPlus setIntegerValue:sprite.order];
-    
-    [self.faceIndex selectItemAtIndex:sprite.faceIndex];
+    NSInteger index = sprite.faceIndex;
+    if (index == -1) {
+        index = 2;
+    }
+    [self.faceIndex selectItemAtIndex:index];
     
     [self.trigerTypeOff selectItemAtIndex:[self setTriggerWithEnum:sprite.triggerOffType]];
     [self.trigerTypeOn  selectItemAtIndex:[self setTriggerWithEnum:sprite.triggerOnType]];
@@ -298,7 +301,7 @@
     
     if (self.faceIndex) {
         [self.faceIndex removeAllItems];
-        [self.faceIndex addItemsWithTitles:@[@"第一张脸",@"第二张脸"]];
+        [self.faceIndex addItemsWithTitles:@[@"第一张脸",@"第二张脸",@"二人共用"]];
     }
 }
 
@@ -556,7 +559,11 @@
     if(self.faceIndexView.hidden){
         self.sprite.faceIndex = 0;
     }else{
-        self.sprite.faceIndex = self.faceIndex.indexOfSelectedItem;
+        NSInteger index = self.faceIndex.indexOfSelectedItem;
+        if (index == 2) {
+            index = -1;
+        }
+        self.sprite.faceIndex = index;
     }
     
     
