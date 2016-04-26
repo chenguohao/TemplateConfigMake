@@ -82,7 +82,6 @@ typedef NS_ENUM(NSUInteger, SpriteAnchorType) {
 
 @property (nonatomic, assign) BOOL recycle;
 @property (nonatomic, strong) NSString *spriteName;
-@property (nonatomic, assign) CGFloat startTime;
 @property (nonatomic, assign) CGFloat duration;
 @property (nonatomic, assign) NSInteger animationCount;
 @property (nonatomic, assign) NSInteger animationFrame;
@@ -118,6 +117,9 @@ typedef NS_ENUM(NSUInteger, SpriteAnchorType) {
 
 // 新增属性 v3
 @property (nonatomic,assign) NSInteger faceIndex;
+
+// 新增属性 v5
+@property (nonatomic, assign) CGFloat startTime;
 
 - (instancetype)initWithName:(NSString*)spriteName;
 - (instancetype)initWithDict:(NSDictionary*)dict;

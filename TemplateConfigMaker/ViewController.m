@@ -14,7 +14,7 @@
 #import "ContainerImageView.h"
 #import "LEOConfigTextView.h"
 
-#define tempVer @"4"
+#define tempVer @"5"
 
 @interface ViewController()<NSTableViewDataSource,NSTableViewDelegate>
 @property (strong) NSString* str1;

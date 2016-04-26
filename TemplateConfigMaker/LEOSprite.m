@@ -38,6 +38,9 @@
     self.loopIndex = 0;
     // v3
     self.faceIndex = 0;
+    
+    // v5
+    self.startTime = 0;
     return self;
 }
 
@@ -78,6 +81,9 @@
     
     // v3
     self.faceIndex = [dict[@"faceIndex"] integerValue];
+    
+    // v5
+    self.startTime = [dict[@"startTime"] floatValue];
     
     return self;
 }
@@ -151,6 +157,9 @@
     [mdic setObject:[@(self.loopIndex) stringValue] forKey:@"loopIndex"];
     // v3
     [mdic setObject:[@(self.faceIndex) stringValue] forKey:@"faceIndex"];
+    
+    // v5
+    [mdic setObject:[@(self.startTime) stringValue] forKey:@"startTime"];
     return mdic;
 }
 

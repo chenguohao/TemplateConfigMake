@@ -62,6 +62,7 @@
 @property (weak) IBOutlet NSView *faceIndexView;
 @property (weak) IBOutlet NSView *anchorTypeSubView;
 
+@property (weak) IBOutlet NSTextField *startTime;
 
 @property (strong) NSArray* trigerEnumIndexArray;
 
@@ -94,6 +95,7 @@
         self.animationDuration.delegate = self;
         self.loopCount.delegate = self;
         self.loopIndex.delegate = self;
+        self.startTime.delegate = self;
         [self setUpData];
     }
     return self;
@@ -194,6 +196,12 @@
     [self.detectType selectItemAtIndex:sprite.detectType];
     
     [self setAnchorTypeWithEnum:sprite.anchorType];
+    
+    
+    //v5
+    self.startTime.stringValue = [@(sprite.startTime) stringValue];
+    
+    
     [self setLayoutState];
 }
 
@@ -566,6 +574,13 @@
         self.sprite.faceIndex = index;
     }
     
+    
+    // v5
+    if (self.startTime.hidden ) {
+        self.sprite.startTime = 0;
+    }else{
+        self.sprite.startTime = self.startTime.stringValue.floatValue;
+    }
     
     if (self.RefreshBlock) {
         self.RefreshBlock(self.sprite);

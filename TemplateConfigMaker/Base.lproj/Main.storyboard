@@ -704,19 +704,19 @@
                                         </scroller>
                                     </scrollView>
                                     <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="70" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="72o-Aw-1Yp">
-                                        <rect key="frame" x="26" y="489" width="303" height="373"/>
+                                        <rect key="frame" x="26" y="489" width="315" height="373"/>
                                         <clipView key="contentView" ambiguous="YES" id="iRp-tt-Y0Y">
-                                            <rect key="frame" x="1" y="0.0" width="301" height="372"/>
+                                            <rect key="frame" x="1" y="0.0" width="313" height="372"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <tableView identifier="CellID" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="hSn-p7-fsU" viewBased="YES" id="6UR-eC-NiR" customClass="LEOTableView">
-                                                    <rect key="frame" x="0.0" y="0.0" width="301" height="349"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="313" height="349"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <size key="intercellSpacing" width="3" height="2"/>
                                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                                     <tableColumns>
-                                                        <tableColumn width="298" minWidth="40" maxWidth="1000" id="KH4-Ni-zKX">
+                                                        <tableColumn width="310" minWidth="40" maxWidth="1000" id="KH4-Ni-zKX">
                                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
                                                                 <font key="font" metaFont="smallSystem"/>
                                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -730,7 +730,7 @@
                                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                             <prototypeCellViews>
                                                                 <tableCellView identifier="CellID" id="9lr-pa-nk7">
-                                                                    <rect key="frame" x="1" y="1" width="298" height="17"/>
+                                                                    <rect key="frame" x="1" y="1" width="310" height="17"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                     <subviews>
                                                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cai-QH-tpr">
@@ -762,12 +762,12 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                         <tableHeaderView key="headerView" id="hSn-p7-fsU">
-                                            <rect key="frame" x="0.0" y="0.0" width="301" height="23"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="313" height="23"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableHeaderView>
                                     </scrollView>
                                     <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="N50-Tf-eIz" customClass="SpriteConfigInputView">
-                                        <rect key="frame" x="23" y="41" width="309" height="440"/>
+                                        <rect key="frame" x="23" y="41" width="318" height="440"/>
                                     </customView>
                                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="esM-9X-ozi">
                                         <rect key="frame" x="26" y="868" width="100" height="18"/>

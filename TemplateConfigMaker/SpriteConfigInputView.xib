@@ -36,6 +36,7 @@
                 <outlet property="pos_x" destination="U7t-mi-L5J" id="fth-wM-Kwn"/>
                 <outlet property="pos_y" destination="Tjl-KG-C8J" id="02S-bC-9yI"/>
                 <outlet property="spriteType" destination="8xl-nM-bKO" id="OFk-9x-iGi"/>
+                <outlet property="startTime" destination="oon-IT-3wE" id="Ngw-dl-h9e"/>
                 <outlet property="trigerTypeOff" destination="Zcs-ql-u4d" id="z9r-J9-ahk"/>
                 <outlet property="trigerTypeOn" destination="aus-e6-a5T" id="kPx-dq-BLM"/>
                 <outlet property="triggerView" destination="6IU-hs-24A" id="kxQ-96-cr3"/>
@@ -446,7 +447,7 @@
                             </textFieldCell>
                         </textField>
                         <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iE0-Sg-wSq">
-                            <rect key="frame" x="73" y="25" width="144" height="26"/>
+                            <rect key="frame" x="73" y="25" width="84" height="26"/>
                             <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="q3i-aZ-f0M" id="AHX-Va-yvn">
                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="menu"/>
@@ -479,6 +480,22 @@
                                 <action selector="onTriggerType:" target="-2" id="QyN-xZ-saK"/>
                             </connections>
                         </popUpButton>
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jgU-zg-GKA">
+                            <rect key="frame" x="157" y="32" width="56" height="17"/>
+                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="时间触发" id="YDe-u7-Sge">
+                                <font key="font" size="13" name=".PingFangSC-Regular"/>
+                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                        <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oon-IT-3wE">
+                            <rect key="frame" x="211" y="28" width="75" height="22"/>
+                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="ZS2-Dk-d0g">
+                                <font key="font" metaFont="system"/>
+                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
                     </subviews>
                 </customView>
                 <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qz8-rX-yXd">
