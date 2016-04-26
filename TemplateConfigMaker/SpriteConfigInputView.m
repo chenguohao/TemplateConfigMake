@@ -199,7 +199,7 @@
     
     
     //v5
-    self.startTime.stringValue = [@(sprite.startTime) stringValue];
+    self.startTime.stringValue = [NSString stringWithFormat:@"%.2f",sprite.startTime];
     
     
     [self setLayoutState];
