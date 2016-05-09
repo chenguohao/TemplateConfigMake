@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2345C4981CE036AD005E86C9 /* longface.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2345C4971CE036AD005E86C9 /* longface.jpg */; };
 		235A8B111C7570AB00EAEA50 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 235A8B101C7570AB00EAEA50 /* AppDelegate.m */; };
 		235A8B141C7570AB00EAEA50 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 235A8B131C7570AB00EAEA50 /* main.m */; };
 		235A8B171C7570AB00EAEA50 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 235A8B161C7570AB00EAEA50 /* ViewController.m */; };
@@ -46,6 +47,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2345C4971CE036AD005E86C9 /* longface.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = longface.jpg; path = ../../../../../Downloads/longface.jpg; sourceTree = "<group>"; };
 		235A8B0C1C7570AB00EAEA50 /* TemplateConfigMaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TemplateConfigMaker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		235A8B0F1C7570AB00EAEA50 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		235A8B101C7570AB00EAEA50 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 				23C425A91C7FEE2D00B8F000 /* FaceFeild */,
 				235A8B181C7570AB00EAEA50 /* Assets.xcassets */,
 				23C4259E1C7F28FA00B8F000 /* lbb.jpg */,
+				2345C4971CE036AD005E86C9 /* longface.jpg */,
 				2390E2671C9FDFFA00559B4F /* model.jpg */,
 				2390E2651C9FD41000559B4F /* bg.jpg */,
 				235A8B1A1C7570AB00EAEA50 /* Main.storyboard */,
@@ -324,6 +327,7 @@
 			files = (
 				23C4259F1C7F28FA00B8F000 /* lbb.jpg in Resources */,
 				235A8B191C7570AB00EAEA50 /* Assets.xcassets in Resources */,
+				2345C4981CE036AD005E86C9 /* longface.jpg in Resources */,
 				235A8B541C78158300EAEA50 /* SpriteConfigInputView.xib in Resources */,
 				23C425921C7D585600B8F000 /* FaceCode.plist in Resources */,
 				2390E2681C9FDFFA00559B4F /* model.jpg in Resources */,
