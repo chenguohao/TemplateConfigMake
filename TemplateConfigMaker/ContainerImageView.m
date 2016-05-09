@@ -24,7 +24,7 @@
     
     self.faceView .layer.masksToBounds   = YES;
     
-    //self.faceView.hidden = YES;
+    self.faceView.hidden = YES;
     
     [self addSubview:self.faceView];
     return self;

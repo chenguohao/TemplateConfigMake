@@ -73,7 +73,7 @@
 
 @end
 
-
+#define StandardLen 450
 
 @implementation SpriteConfigInputView
 
@@ -113,12 +113,12 @@
     SpriteType type = sprite.spriteType;
     SpriteAnchorType atype = sprite.anchorType;
     if (type == SpriteTypeStatic) {
-        return 480;
+        return StandardLen;
     }
     
     if (type == SpriteTypeCondition &&
         atype == SpriteAnchorTypeStatic) {
-        return 480;
+        return StandardLen;
     }
     
     return [ContainerImageView getFaceLenth];
