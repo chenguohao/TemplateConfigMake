@@ -779,9 +779,19 @@
                                             <action selector="onBgMusic:" target="XfG-lQ-9wD" id="uUP-XX-Car"/>
                                         </connections>
                                     </button>
+                                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YFu-Ka-52g">
+                                        <rect key="frame" x="797" y="6" width="253" height="19"/>
+                                        <buttonCell key="cell" type="roundRect" title="Save" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="c3t-78-AGz">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="cellTitle"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="onSave:" target="XfG-lQ-9wD" id="fqZ-0P-9DD"/>
+                                        </connections>
+                                    </button>
                                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GWd-Fm-0ZD">
-                                        <rect key="frame" x="448" y="11" width="96" height="19"/>
-                                        <buttonCell key="cell" type="roundRect" title="删除" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="oHt-YX-JP0">
+                                        <rect key="frame" x="335" y="8" width="96" height="19"/>
+                                        <buttonCell key="cell" type="roundRect" title="删除贴纸" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="oHt-YX-JP0">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" size="12" name="STHeitiSC-Light"/>
                                         </buttonCell>
@@ -797,16 +807,6 @@
                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                     </textField>
-                                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5SY-yD-FI7">
-                                        <rect key="frame" x="337" y="11" width="98" height="19"/>
-                                        <buttonCell key="cell" type="roundRect" title="添加新控件" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Wag-f6-yf6">
-                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" size="12" name="STHeitiSC-Light"/>
-                                        </buttonCell>
-                                        <connections>
-                                            <action selector="onNewSprite:" target="XfG-lQ-9wD" id="GqP-JA-EPM"/>
-                                        </connections>
-                                    </button>
                                     <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OaL-Ya-iUb">
                                         <rect key="frame" x="337" y="831" width="166" height="26"/>
                                         <subviews>
@@ -839,16 +839,16 @@
                                     </customView>
                                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YUJ-j3-pqn" customClass="ContainerImageView">
                                         <rect key="frame" x="335" y="33" width="450" height="800"/>
-                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="longface" id="y5C-AT-xY3"/>
+                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="longFace" id="y5C-AT-xY3"/>
                                     </imageView>
-                                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YFu-Ka-52g">
-                                        <rect key="frame" x="797" y="6" width="253" height="19"/>
-                                        <buttonCell key="cell" type="roundRect" title="Save" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="c3t-78-AGz">
+                                    <button hidden="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5SY-yD-FI7">
+                                        <rect key="frame" x="536" y="6" width="98" height="19"/>
+                                        <buttonCell key="cell" type="roundRect" title="添加新控件" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Wag-f6-yf6">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="cellTitle"/>
+                                            <font key="font" size="12" name="STHeitiSC-Light"/>
                                         </buttonCell>
                                         <connections>
-                                            <action selector="onSave:" target="XfG-lQ-9wD" id="fqZ-0P-9DD"/>
+                                            <action selector="onNewSprite:" target="XfG-lQ-9wD" id="GqP-JA-EPM"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -875,6 +875,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="longface" width="450" height="800"/>
+        <image name="longFace" width="540" height="960"/>
     </resources>
 </document>

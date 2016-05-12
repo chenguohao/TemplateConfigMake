@@ -24,7 +24,7 @@
     
     self.faceView .layer.masksToBounds   = YES;
     
-    self.faceView.hidden = YES;
+    //self.faceView.hidden = YES;
     
     [self addSubview:self.faceView];
     return self;
@@ -82,6 +82,7 @@
     if (i != -1) {
         [self.spriteArray replaceObjectAtIndex:i withObject:sprite];
         CGFloat l = self.frame.size.width;
+        CGFloat H = self.frame.size.height;
         CGFloat x;
         CGFloat y;
         CGFloat w;
@@ -89,7 +90,7 @@
         if (sprite.spriteType == SpriteTypeStatic ||
             (sprite.spriteType == SpriteTypeCondition && sprite.anchorType == SpriteAnchorTypeStatic)) {
             x = (sprite.pos_x - sprite.width/2)* l;
-            y = l- (sprite.pos_y + sprite.height/2)* l;
+            y = H -  H *sprite.pos_y -(sprite.height/2)* l;
             w = sprite.width * l;
             h = sprite.height* l;
         }else{

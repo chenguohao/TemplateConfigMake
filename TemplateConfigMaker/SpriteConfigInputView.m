@@ -73,7 +73,9 @@
 
 @end
 
-#define StandardLen 450
+
+#define ScreenWidth  450
+#define ScreenHeight 800
 
 @implementation SpriteConfigInputView
 
@@ -108,23 +110,35 @@
     return _sprite;
 }
 
++ (CGFloat)getScreenHeight{
+    return ScreenHeight;
+}
+
++ (CGFloat)getScreenWidth{
+    return ScreenWidth;
+}
+
++ (CGFloat)getFaceLength{
+    return [ContainerImageView getFaceLenth];
+}
+
 
 + (CGFloat)getSizeRateWithSprite:(LEOSprite*)sprite{
     SpriteType type = sprite.spriteType;
     SpriteAnchorType atype = sprite.anchorType;
     if (type == SpriteTypeStatic) {
-        return StandardLen;
+        return ScreenWidth;
     }
     
     if (type == SpriteTypeCondition &&
         atype == SpriteAnchorTypeStatic) {
-        return StandardLen;
+        return ScreenWidth;
     }
     
     return [ContainerImageView getFaceLenth];
 }
 
-- (CGFloat)sizeRate
+- (CGFloat)FaceLength
 {
     return [SpriteConfigInputView getSizeRateWithSprite:self.sprite];
 }
@@ -133,11 +147,20 @@
     _sprite = sprite;
     self.nameTextField.stringValue = sprite.spriteName;
     [self.spriteType selectItemAtIndex:sprite.spriteType];
-    CGFloat w = sprite.width*self.sizeRate;
-    CGFloat h = sprite.height*self.sizeRate;
-    self.pos_x.stringValue = [NSString stringWithFormat:@"%.0f",sprite.pos_x*self.sizeRate-w/2];
+    CGFloat w = sprite.width*[SpriteConfigInputView getSizeRateWithSprite:sprite];
+    CGFloat h = sprite.height*[SpriteConfigInputView getSizeRateWithSprite:sprite];
+    self.pos_x.stringValue = [NSString stringWithFormat:@"%.0f",sprite.pos_x*ScreenWidth-w/2];
     self.posXStepper.integerValue = self.pos_x.stringValue.integerValue;
-    self.pos_y.stringValue = [NSString stringWithFormat:@"%.0f",sprite.pos_y*self.sizeRate-h/2];
+    
+    
+    if (self.sprite.spriteType == SpriteTypeStatic ||(self.sprite.spriteType == SpriteTypeCondition &&
+                                                      self.sprite.anchorType == SpriteAnchorTypeStatic)) {
+        self.pos_y.stringValue = [NSString stringWithFormat:@"%.0f",sprite.pos_y*ScreenHeight - h/2];
+    }else{
+        self.pos_y.stringValue = [NSString stringWithFormat:@"%.0f",sprite.pos_y*[self FaceLength]-h/2];
+    }
+
+    
     self.posYStepper.integerValue = self.pos_y.stringValue.integerValue;
     self.anchorx.stringValue = [NSString stringWithFormat:@"%.2f",sprite.anchor_x];
     CGFloat f = sprite.anchor_x*100;
@@ -168,9 +191,9 @@
     }
     
     self.anchorPosYStepper.integerValue = anchorY;
-    self.width.stringValue = [NSString stringWithFormat:@"%.0f",(sprite.width*self.sizeRate)];
+    self.width.stringValue = [NSString stringWithFormat:@"%.0f",(sprite.width*[SpriteConfigInputView getSizeRateWithSprite:sprite])];
     self.widthStepper.integerValue = self.width.stringValue.integerValue;
-    self.height.stringValue = [NSString stringWithFormat:@"%.0f",(sprite.height*self.sizeRate)];
+    self.height.stringValue = [NSString stringWithFormat:@"%.0f",(sprite.height*[SpriteConfigInputView getSizeRateWithSprite:sprite])];
     self.heightStepper.integerValue = self.height.stringValue.integerValue;
     
     self.animationCount.stringValue = [NSString stringWithFormat:@"%ld",sprite.animationCount+1];
@@ -529,16 +552,26 @@
     return f;
 }
 
+
+
 - (void)receiveData{
     self.sprite.spriteName = self.nameTextField.stringValue;
     self.sprite.spriteType = self.spriteType.indexOfSelectedItem;
-    CGFloat w = self.width.stringValue.floatValue/self.sizeRate;
-    CGFloat h = self.height.stringValue.floatValue/self.sizeRate;
+    CGFloat w = self.width.stringValue.floatValue/[SpriteConfigInputView getSizeRateWithSprite:self.sprite];
+    CGFloat h = self.height.stringValue.floatValue/[SpriteConfigInputView getSizeRateWithSprite:self.sprite];
     self.sprite.width  = w;
     self.sprite.height = h;
     
-    self.sprite.pos_x = self.pos_x.stringValue.floatValue/self.sizeRate+w/2;
-    self.sprite.pos_y = self.pos_y.stringValue.floatValue/self.sizeRate+h/2;
+    self.sprite.pos_x = self.pos_x.stringValue.floatValue/ScreenWidth+w/2;
+    
+    if (self.sprite.spriteType == SpriteTypeStatic ||(self.sprite.spriteType == SpriteTypeCondition &&
+                                                      self.sprite.anchorType == SpriteAnchorTypeStatic)) {
+        self.sprite.pos_y = (self.pos_y.stringValue.floatValue + self.height.stringValue.floatValue/2)/ScreenHeight;
+    }else{
+        self.sprite.pos_y = self.pos_y.stringValue.floatValue/[self FaceLength]+h/2;
+    }
+    
+    
     
     NSInteger n = self.animationCount.stringValue.integerValue;
     self.sprite.animationCount = n-1;

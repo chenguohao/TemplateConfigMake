@@ -34,36 +34,36 @@
         // 右眼   8, 17, 7
         
         
-        NSArray* array = @[ [NSValue valueWithPoint:NSMakePoint(197, 195)], //1
-                           [NSValue valueWithPoint:NSMakePoint(166, 195)], //2
-                           [NSValue valueWithPoint:NSMakePoint(133, 188)], //3
+        NSArray* array = @[ [NSValue valueWithPoint:NSMakePoint(197, 180)], //1
+                           [NSValue valueWithPoint:NSMakePoint(166, 184)], //2
+                           [NSValue valueWithPoint:NSMakePoint(133, 178)], //3
                             
-                           [NSValue valueWithPoint:NSMakePoint(81, 188)],  //4
-                           [NSValue valueWithPoint:NSMakePoint(46, 195)],  //5
-                           [NSValue valueWithPoint:NSMakePoint(15, 195)],  //6
+                           [NSValue valueWithPoint:NSMakePoint(81, 178)],  //4
+                           [NSValue valueWithPoint:NSMakePoint(46, 184)],  //5
+                           [NSValue valueWithPoint:NSMakePoint(15, 180)],  //6
                             
-                           [NSValue valueWithPoint:NSMakePoint(189, 160)], //7
-                           [NSValue valueWithPoint:NSMakePoint(139, 155)], //8
+                           [NSValue valueWithPoint:NSMakePoint(185, 150)], //7
+                           [NSValue valueWithPoint:NSMakePoint(136, 144)], //8
                             
-                           [NSValue valueWithPoint:NSMakePoint(76, 155)],  //9
-                           [NSValue valueWithPoint:NSMakePoint(26, 160)],  //10
+                           [NSValue valueWithPoint:NSMakePoint(77, 144)],  //9
+                           [NSValue valueWithPoint:NSMakePoint(29, 150)],  //10
                             
-                           [NSValue valueWithPoint:NSMakePoint(142, 91)],  //11
-                           [NSValue valueWithPoint:NSMakePoint(108, 77)],  //12
-                           [NSValue valueWithPoint:NSMakePoint(75, 91)],   //13
+                           [NSValue valueWithPoint:NSMakePoint(140, 89)],  //11
+                           [NSValue valueWithPoint:NSMakePoint(108, 75)],  //12
+                           [NSValue valueWithPoint:NSMakePoint(77, 89)],   //13
                             
-                           [NSValue valueWithPoint:NSMakePoint(107, 58)],  //14
-                           [NSValue valueWithPoint:NSMakePoint(107, 44)],  //15
-                           [NSValue valueWithPoint:NSMakePoint(107, 30)],   //16
+                           [NSValue valueWithPoint:NSMakePoint(108, 54)],  //14
+                           [NSValue valueWithPoint:NSMakePoint(108, 44)],  //15
+                           [NSValue valueWithPoint:NSMakePoint(108, 29)],   //16
                             
-                           [NSValue valueWithPoint:NSMakePoint(161, 160)], //17
+                           [NSValue valueWithPoint:NSMakePoint(157, 150)], //17
                             
-                           [NSValue valueWithPoint:NSMakePoint(55, 160)],  //18
+                           [NSValue valueWithPoint:NSMakePoint(58, 150)],  //18
                            
                            [NSValue valueWithPoint:NSMakePoint(108, 93)],  //19
                             
-                           [NSValue valueWithPoint:NSMakePoint(154, 57)],  //20
-                           [NSValue valueWithPoint:NSMakePoint(60, 57)],   //21
+                           [NSValue valueWithPoint:NSMakePoint(149, 54)],  //20
+                           [NSValue valueWithPoint:NSMakePoint(66, 54)],   //21
                         ];
         
         NSMutableArray* marray = [NSMutableArray new];

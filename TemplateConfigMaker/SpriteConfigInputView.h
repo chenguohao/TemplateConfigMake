@@ -21,4 +21,7 @@
 - (void)setFaceIndexHidden:(BOOL)isHidden;
 - (void)setTempVersion:(NSInteger)tempV;
 - (void)refreshFaceIndex;
+
++ (CGFloat)getScreenHeight;
++ (CGFloat)getScreenWidth;
 @end
