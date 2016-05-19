@@ -151,11 +151,13 @@
     CGFloat h = sprite.height*[SpriteConfigInputView getSizeRateWithSprite:sprite];
     self.pos_x.stringValue = [NSString stringWithFormat:@"%.0f",sprite.pos_x*ScreenWidth-w/2];
     self.posXStepper.integerValue = self.pos_x.stringValue.integerValue;
-    
-    
     if (self.sprite.spriteType == SpriteTypeStatic ||(self.sprite.spriteType == SpriteTypeCondition &&
                                                       self.sprite.anchorType == SpriteAnchorTypeStatic)) {
-        self.pos_y.stringValue = [NSString stringWithFormat:@"%.0f",sprite.pos_y*ScreenHeight - h/2];
+        CGFloat f = sprite.pos_y*ScreenHeight - h/2;
+        if (f > -0.001 && f < 0) {
+            f = 0;
+        }
+        self.pos_y.stringValue = [NSString stringWithFormat:@"%.0f",f];
     }else{
         self.pos_y.stringValue = [NSString stringWithFormat:@"%.0f",sprite.pos_y*[self FaceLength]-h/2];
     }
