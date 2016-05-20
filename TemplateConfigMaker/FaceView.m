@@ -64,6 +64,7 @@
                             
                            [NSValue valueWithPoint:NSMakePoint(149, 54)],  //20
                            [NSValue valueWithPoint:NSMakePoint(66, 54)],   //21
+                           [NSValue valueWithPoint:NSMakePoint(110, -13)]  //22
                         ];
         
         NSMutableArray* marray = [NSMutableArray new];
@@ -223,7 +224,7 @@
             break;
         case SpriteAnchorTypeLowerJaw://下巴
         {
-            facePoint = NSMakePoint(l/2, 0);
+            facePoint = [_base21Points[21] pointValue];
             
         }
             break;
