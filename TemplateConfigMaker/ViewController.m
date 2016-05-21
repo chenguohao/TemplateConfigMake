@@ -53,7 +53,6 @@ NSString* cellID = @"CellID";
     self.tempVersionLabel.stringValue = [NSString stringWithFormat:@"模板版本:v%@",tempVer];
     [self.configInputView setRefreshBlock:^(LEOSprite *sprite) {
         self.curEditSprite = sprite;
-        self.photoImage.faceView.hidden = sprite.spriteType == SpriteTypeStatic;
         [self.photoImage.faceView setAnchorPointWithType:sprite.anchorType];
         if (self.spritesArray.count) {
             NSInteger selectRow = self.tableView.selectedRow;
@@ -68,7 +67,19 @@ NSString* cellID = @"CellID";
             }
             
         }
-        [self.photoImage updateSprite:sprite];
+        faceType ftype = 0;
+        if (self.peopleCount.indexOfSelectedItem == 0) {
+            ftype = faceTypeSingle;
+        }else{
+            if (self.configInputView.curFaceIndex == 0) {
+                ftype = faceTypeMulty0;
+            }else{
+                ftype = faceTypeMulty1;
+            }
+        }
+        
+        
+        [self.photoImage updateSprite:sprite withFaceType:ftype];
         [self produceSpriteConfig];
     }];
     
@@ -371,7 +382,6 @@ NSString* cellID = @"CellID";
         [self.peopleCount removeAllItems];
         [self.peopleCount addItemsWithTitles:@[@"1",@"2"]];
     }
-    
     [self setConfigInputPeopleCount];
 }
 
@@ -383,12 +393,12 @@ NSString* cellID = @"CellID";
 - (IBAction)onPeopleCount:(NSPopUpButton *)sender {
     [self setConfigInputPeopleCount];
     [self produceSpriteConfig];
+    self.photoImage.isMultyPeople =  self.peopleCount.indexOfSelectedItem == 1;
 }
 
 - (void)setConfigInputPeopleCount{
     if (self.peopleCount) {
         self.configInputView.isMultiPeople = self.peopleCount.indexOfSelectedItem != 0;
-        
     }
     
     if (self.peopleCount.indexOfSelectedItem == 0) {

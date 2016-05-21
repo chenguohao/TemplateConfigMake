@@ -7,14 +7,14 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "FaceView.h"
 @class LEOSprite;
-@class FaceView;
 @interface ContainerImageView : NSImageView
 @property (nonatomic,strong)NSMutableArray *spriteArray;
-
+@property (nonatomic) BOOL isMultyPeople;
 @property (nonatomic,strong) FaceView* faceView;
 - (void)addSprite:(LEOSprite*)sprite;
-- (void)updateSprite:(LEOSprite*)sprite;
+- (void)updateSprite:(LEOSprite*)sprite withFaceType:(faceType)fType;
 - (void)removeSprite:(LEOSprite*)sprite;
 + (CGFloat)getFaceLenth;
 - (void)selectSprite:(LEOSprite*)sprite;

@@ -27,6 +27,7 @@
 		23C425A51C7FE17000B8F000 /* LEOTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C425A41C7FE17000B8F000 /* LEOTableView.m */; };
 		23C425A81C7FEDE700B8F000 /* ContainerImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C425A71C7FEDE700B8F000 /* ContainerImageView.m */; };
 		23C426351C85A32E00B8F000 /* LEOConfigTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C426341C85A32E00B8F000 /* LEOConfigTextView.m */; };
+		23D87A5F1CEF0738001AB893 /* dualFace.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 23D87A5E1CEF0738001AB893 /* dualFace.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +83,7 @@
 		23C425A71C7FEDE700B8F000 /* ContainerImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContainerImageView.m; sourceTree = "<group>"; };
 		23C426331C85A32E00B8F000 /* LEOConfigTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEOConfigTextView.h; sourceTree = "<group>"; };
 		23C426341C85A32E00B8F000 /* LEOConfigTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LEOConfigTextView.m; sourceTree = "<group>"; };
+		23D87A5E1CEF0738001AB893 /* dualFace.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = dualFace.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +143,7 @@
 				23C425A91C7FEE2D00B8F000 /* FaceFeild */,
 				235A8B181C7570AB00EAEA50 /* Assets.xcassets */,
 				23C4259E1C7F28FA00B8F000 /* lbb.jpg */,
+				23D87A5E1CEF0738001AB893 /* dualFace.jpg */,
 				2345C4A01CE1A5B6005E86C9 /* longFace.jpg */,
 				2390E2671C9FDFFA00559B4F /* model.jpg */,
 				2390E2651C9FD41000559B4F /* bg.jpg */,
@@ -326,6 +329,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				23C4259F1C7F28FA00B8F000 /* lbb.jpg in Resources */,
+				23D87A5F1CEF0738001AB893 /* dualFace.jpg in Resources */,
 				235A8B191C7570AB00EAEA50 /* Assets.xcassets in Resources */,
 				235A8B541C78158300EAEA50 /* SpriteConfigInputView.xib in Resources */,
 				23C425921C7D585600B8F000 /* FaceCode.plist in Resources */,

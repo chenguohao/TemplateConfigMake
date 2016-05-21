@@ -84,7 +84,7 @@
     if (self) {
         [[NSBundle mainBundle] loadNibNamed:@"SpriteConfigInputView" owner:self topLevelObjects:nil];
         [self addSubview:self.view];
-        
+        self.curFaceIndex = 0;
         self.nameTextField.delegate = self;
         self.pos_x.delegate = self;
         self.pos_y.delegate = self;
@@ -444,6 +444,7 @@
 
 #pragma mark - picker
 - (IBAction)onFaceIndex:(NSPopUpButton *)sender {
+    self.curFaceIndex = sender.indexOfSelectedItem;
     [self checkValue];
 }
 - (IBAction)onDetectTypeSelect:(NSPopUpButton *)sender {

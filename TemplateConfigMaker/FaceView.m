@@ -11,61 +11,77 @@
 
 @interface FaceView()
 @property (nonatomic,strong) NSArray* base21Points;
+
+@property (nonatomic,strong) NSArray* face21Points_s0;
+@property (nonatomic,strong) NSArray* face21Points_m0;
+@property (nonatomic,strong) NSArray* face21Points_m1;
 @property NSPoint anchorPoint;
 @end
 
 @implementation FaceView
 
-- (instancetype)initWithFrame:(NSRect)frameRect{
+- (instancetype)initWithFrame:(NSRect)frameRect FaceType:(faceType)fType{
     self = [super initWithFrame:frameRect];
     self.anchorPoint = NSMakePoint(-1, -1);
-   
     self.isShowBasePoints = YES;
+    
+    switch (fType) {
+        case faceTypeSingle:
+            self.base21Points = self.face21Points_s0;
+            break;
+        case faceTypeMulty0:
+            self.base21Points = self.face21Points_m0;
+            break;
+        case faceTypeMulty1:
+            self.base21Points = self.face21Points_m1;
+            break;
+        default:
+            break;
+    }
     
     return self;
 }
 
-- (NSArray*)base21points{
-    if (_base21Points == nil) {
-        int n = -10;
+
+- (NSArray*)face21Points_s0{
+    if (_face21Points_s0 == nil) {
         // 右眉毛 3, 2, 1
         // 左眉毛 6，5，4
         // 左眼   10,18,9
         // 右眼   8, 17, 7
         
-        
         NSArray* array = @[ [NSValue valueWithPoint:NSMakePoint(197, 180)], //1
-                           [NSValue valueWithPoint:NSMakePoint(166, 184)], //2
-                           [NSValue valueWithPoint:NSMakePoint(133, 178)], //3
+                            [NSValue valueWithPoint:NSMakePoint(166, 184)], //2
+                            [NSValue valueWithPoint:NSMakePoint(133, 178)], //3
                             
-                           [NSValue valueWithPoint:NSMakePoint(81, 178)],  //4
-                           [NSValue valueWithPoint:NSMakePoint(46, 184)],  //5
-                           [NSValue valueWithPoint:NSMakePoint(15, 180)],  //6
+                            [NSValue valueWithPoint:NSMakePoint(81, 178)],  //4
+                            [NSValue valueWithPoint:NSMakePoint(46, 184)],  //5
+                            [NSValue valueWithPoint:NSMakePoint(15, 180)],  //6
                             
-                           [NSValue valueWithPoint:NSMakePoint(185, 150)], //7
-                           [NSValue valueWithPoint:NSMakePoint(136, 144)], //8
+                            [NSValue valueWithPoint:NSMakePoint(185, 150)], //7
+                            [NSValue valueWithPoint:NSMakePoint(136, 144)], //8
                             
-                           [NSValue valueWithPoint:NSMakePoint(77, 144)],  //9
-                           [NSValue valueWithPoint:NSMakePoint(29, 150)],  //10
+                            [NSValue valueWithPoint:NSMakePoint(77, 144)],  //9
+                            [NSValue valueWithPoint:NSMakePoint(29, 150)],  //10
                             
-                           [NSValue valueWithPoint:NSMakePoint(140, 89)],  //11
-                           [NSValue valueWithPoint:NSMakePoint(108, 75)],  //12
-                           [NSValue valueWithPoint:NSMakePoint(77, 89)],   //13
+                            [NSValue valueWithPoint:NSMakePoint(140, 89)],  //11
+                            [NSValue valueWithPoint:NSMakePoint(108, 75)],  //12
+                            [NSValue valueWithPoint:NSMakePoint(77, 89)],   //13
                             
-                           [NSValue valueWithPoint:NSMakePoint(108, 54)],  //14
-                           [NSValue valueWithPoint:NSMakePoint(108, 44)],  //15
-                           [NSValue valueWithPoint:NSMakePoint(108, 29)],   //16
+                            [NSValue valueWithPoint:NSMakePoint(108, 54)],  //14
+                            [NSValue valueWithPoint:NSMakePoint(108, 44)],  //15
+                            [NSValue valueWithPoint:NSMakePoint(108, 29)],  //16
                             
-                           [NSValue valueWithPoint:NSMakePoint(157, 150)], //17
+                            [NSValue valueWithPoint:NSMakePoint(157, 150)], //17
                             
-                           [NSValue valueWithPoint:NSMakePoint(58, 150)],  //18
-                           
-                           [NSValue valueWithPoint:NSMakePoint(108, 93)],  //19
+                            [NSValue valueWithPoint:NSMakePoint(58, 150)],  //18
                             
-                           [NSValue valueWithPoint:NSMakePoint(149, 54)],  //20
-                           [NSValue valueWithPoint:NSMakePoint(66, 54)],   //21
-                           [NSValue valueWithPoint:NSMakePoint(110, -13)]  //22
-                        ];
+                            [NSValue valueWithPoint:NSMakePoint(108, 93)],  //19
+                            
+                            [NSValue valueWithPoint:NSMakePoint(149, 54)],  //20
+                            [NSValue valueWithPoint:NSMakePoint(66, 54)],   //21
+                            [NSValue valueWithPoint:NSMakePoint(110, -13)]  //22
+                            ];
         
         NSMutableArray* marray = [NSMutableArray new];
         CGFloat r = self.frame.size.width/218.f;
@@ -76,12 +92,98 @@
             NSValue* newValue = [NSValue valueWithPoint:point];
             [marray addObject:newValue];
         }
-        _base21Points = marray;
+        _face21Points_s0 = marray;
     }
-    
-    return _base21Points;
+    return _face21Points_s0;
 }
 
+- (NSArray*)face21Points_m0{
+    if (_face21Points_m0 == nil) {
+        // 右眉毛 3, 2, 1
+        // 左眉毛 6，5，4
+        // 左眼   10,18,9
+        // 右眼   8, 17, 7
+        
+        _face21Points_m0 = @[ [NSValue valueWithPoint:NSMakePoint(112, 93)], //1
+                            [NSValue valueWithPoint:NSMakePoint(94, 101)], //2
+                            [NSValue valueWithPoint:NSMakePoint(71, 95)], //3
+                            
+                            [NSValue valueWithPoint:NSMakePoint(46, 95)],  //4
+                            [NSValue valueWithPoint:NSMakePoint(22, 100)],  //5
+                            [NSValue valueWithPoint:NSMakePoint(3, 94)],  //6
+                            
+                            [NSValue valueWithPoint:NSMakePoint(105, 80)], //7
+                            [NSValue valueWithPoint:NSMakePoint(76, 80)], //8
+
+                            [NSValue valueWithPoint:NSMakePoint(41, 80)],  //9
+                            [NSValue valueWithPoint:NSMakePoint(11, 80)],  //10
+
+                            [NSValue valueWithPoint:NSMakePoint(78, 46)],  //11
+                            [NSValue valueWithPoint:NSMakePoint(59, 34)],  //12
+                            [NSValue valueWithPoint:NSMakePoint(36, 46)],   //13
+
+                            [NSValue valueWithPoint:NSMakePoint(59, 24)],  //14
+                            [NSValue valueWithPoint:NSMakePoint(59, 16)],  //15
+                            [NSValue valueWithPoint:NSMakePoint(59, 4)],  //16
+
+                            [NSValue valueWithPoint:NSMakePoint(87, 83)], //17
+
+                            [NSValue valueWithPoint:NSMakePoint(28, 83)],  //18
+//
+                            [NSValue valueWithPoint:NSMakePoint(59, 44)],  //19
+//
+                            [NSValue valueWithPoint:NSMakePoint(89, 27)],  //20
+                            [NSValue valueWithPoint:NSMakePoint(25, 27)],   //21
+                            [NSValue valueWithPoint:NSMakePoint(59, -13)]  //22
+                            ];
+        
+    }
+    return _face21Points_m0;
+}
+
+- (NSArray*)face21Points_m1{
+    if (_face21Points_m1 == nil) {
+        // 右眉毛 3, 2, 1
+        // 左眉毛 6，5，4
+        // 左眼   10,18,9
+        // 右眼   8, 17, 7
+        
+        _face21Points_m1 = @[ [NSValue valueWithPoint:NSMakePoint(130, 119)], //1
+                              [NSValue valueWithPoint:NSMakePoint(103, 129)], //2
+                              [NSValue valueWithPoint:NSMakePoint(74, 120)], //3
+                              
+                              [NSValue valueWithPoint:NSMakePoint(47, 116)],  //4
+                              [NSValue valueWithPoint:NSMakePoint(19, 119)],  //5
+                              [NSValue valueWithPoint:NSMakePoint(0, 102)],  //6
+                              
+                              [NSValue valueWithPoint:NSMakePoint(117, 102)], //7
+                              [NSValue valueWithPoint:NSMakePoint(84, 97)], //8
+                              
+                              [NSValue valueWithPoint:NSMakePoint(46, 94)],  //9
+                              [NSValue valueWithPoint:NSMakePoint(10, 90)],  //10
+//
+                              [NSValue valueWithPoint:NSMakePoint(92, 64)],  //11
+                              [NSValue valueWithPoint:NSMakePoint(69, 51)],  //12
+                              [NSValue valueWithPoint:NSMakePoint(45, 59)],   //13
+//
+                              [NSValue valueWithPoint:NSMakePoint(71, 39)],  //14
+                              [NSValue valueWithPoint:NSMakePoint(73, 28)],  //15
+                              [NSValue valueWithPoint:NSMakePoint(74, 11)],  //16
+//
+                              [NSValue valueWithPoint:NSMakePoint(98, 103)], //17
+//
+                              [NSValue valueWithPoint:NSMakePoint(31, 96)],  //18
+//                              //
+                              [NSValue valueWithPoint:NSMakePoint(67, 64)],  //19
+//                              //
+                              [NSValue valueWithPoint:NSMakePoint(106, 36)],  //20
+                              [NSValue valueWithPoint:NSMakePoint(36, 30)],   //21
+                              [NSValue valueWithPoint:NSMakePoint(74, -13)]  //22
+                              ];
+        
+    }
+    return _face21Points_m1;
+}
 
 - (void)setAnchorPointWithType:(SpriteAnchorType)anchorType{
     self.anchorPoint = [self getPointWithAnchorType:anchorType];
@@ -90,7 +192,7 @@
 
 - (NSPoint)getPointWithAnchorType:(SpriteAnchorType)anchorType{
     NSPoint facePoint;
-  
+    self.base21Points = self.face21Points_s0;
     NSInteger l = self.frame.size.width;
     
     switch (anchorType) {
@@ -305,8 +407,8 @@
         
        
         
-        for (int i = 0; i < self.base21points.count; i++) {
-            NSPoint pt = [self.base21points[i] pointValue];
+        for (int i = 0; i < self.base21Points.count; i++) {
+            NSPoint pt = [self.base21Points[i] pointValue];
             rect = NSRectFromCGRect(CGRectMake(pt.x*r, pt.y*r, l, l));
             
             [[NSColor redColor] set]; //设置颜色

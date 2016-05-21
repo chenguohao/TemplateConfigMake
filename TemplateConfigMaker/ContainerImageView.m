@@ -9,24 +9,40 @@
 #import "ContainerImageView.h"
 #import "LEOSprite.h"
 #import "FaceView.h"
-@interface ContainerImageView()
+@interface ContainerImageView(){
+    FaceView* faceView_s0;
+    FaceView* faceView_m0;
+    FaceView* faceView_m1;
+}
 @end
 
 #define faceLen 213
-
+#define faceLen_m0 119
+#define faceLen_m1 140
 @implementation ContainerImageView
 
 - (instancetype)initWithCoder:(NSCoder *)coder{
     self = [super initWithCoder:coder];
     CGFloat r = 1;//self.frame.size.width/450;
+    
     NSRect rect = NSRectFromCGRect(CGRectMake(115*r, 285*r, faceLen*r, faceLen*r));
-    self.faceView = [[FaceView alloc] initWithFrame:rect];
+    faceView_s0 = [[FaceView alloc] initWithFrame:rect FaceType:faceTypeSingle];
+    faceView_s0.layer.masksToBounds   = YES;
+    faceView_s0.hidden = YES;
+    [self addSubview:faceView_s0];
     
-    self.faceView .layer.masksToBounds   = YES;
+    rect = NSRectFromCGRect(CGRectMake(54, 246, faceLen_m0, faceLen_m0));
+    faceView_m0 = [[FaceView alloc] initWithFrame:rect FaceType:faceTypeMulty0];
+    faceView_m0.layer.masksToBounds   = YES;
+    faceView_m0.hidden = YES;
+    [self addSubview:faceView_m0];
     
-    self.faceView.hidden = YES;
     
-    [self addSubview:self.faceView];
+    rect = NSRectFromCGRect(CGRectMake(246, 295, faceLen_m1, faceLen_m1));
+    faceView_m1 = [[FaceView alloc] initWithFrame:rect FaceType:faceTypeMulty1];
+    faceView_m1.layer.masksToBounds   = YES;
+    [self addSubview:faceView_m1];
+    faceView_m1.hidden = YES;
     return self;
 }
 
@@ -69,7 +85,23 @@
     }
 }
 
-- (void)updateSprite:(LEOSprite*)sprite{
+- (void)updateSprite:(LEOSprite*)sprite withFaceType:(faceType)fType{
+    
+    
+    switch (fType) {
+        case faceTypeSingle:
+            self.faceView = faceView_s0;
+            break;
+        case faceTypeMulty0:
+            self.faceView = faceView_m0;
+            break;
+        case faceTypeMulty1:
+            self.faceView = faceView_m1;
+            break;
+        default:
+            break;
+    }
+
     
     NSInteger i = -1;
     for (LEOSprite* subsprite in self.spriteArray) {
@@ -184,6 +216,24 @@ NSComparisonResult viewcmp( NSView * view1, NSView * view2, void * context )
             sp.imageView.layer.borderColor = [NSColor blueColor].CGColor;
         }
     }
+}
+
+#pragma mark - set MultyPeople
+- (void)setIsMultyPeople:(BOOL)isMultyPeople{
+    _isMultyPeople = isMultyPeople;
+    
+    faceView_s0.hidden = isMultyPeople;
+    faceView_m1.hidden = !faceView_s0.hidden;
+    faceView_m0.hidden = !faceView_s0.hidden;
+
+    
+    NSString* path;
+    if (!isMultyPeople) {
+        path = [[NSBundle mainBundle] pathForResource:@"longFace" ofType:@"jpg"];
+    }else{
+        path = [[NSBundle mainBundle] pathForResource:@"dualFace" ofType:@"jpg"];
+    }
+    self.image = [[NSImage alloc] initWithContentsOfFile:path];
 }
 
 @end

@@ -15,6 +15,7 @@
 @property (strong) IBOutlet NSView *view;
 @property (assign,nonatomic) CGFloat sizeRate;
 @property (strong, nonatomic) LEOSprite* sprite;
+@property (assign,nonatomic) NSInteger curFaceIndex;
 + (CGFloat)getSizeRateWithSprite:(LEOSprite*)sprite;
 - (void)setRefreshBlock:(void(^)(LEOSprite* sprite))block;
 - (void)setBasePointsSwitchBlock:(void(^)(BOOL isOpen))block;
