@@ -236,4 +236,29 @@ NSComparisonResult viewcmp( NSView * view1, NSView * view2, void * context )
     self.image = [[NSImage alloc] initWithContentsOfFile:path];
 }
 
+- (void)setAnchorPointWithType:(SpriteAnchorType)anchorType FaceType:(faceType)fType{
+    FaceView* faceView;
+    switch (fType) {
+        case faceTypeSingle:
+            faceView = faceView_s0;
+            break;
+        case faceTypeMulty0:
+            faceView = faceView_m0;
+            break;
+        case faceTypeMulty1:
+            faceView = faceView_m1;
+            break;
+        default:
+            break;
+    }
+    
+    [faceView setAnchorPointWithType:anchorType];
+}
+
+- (void)setFaceHidden:(BOOL)hidden{
+    faceView_s0.hidden = _isMultyPeople;
+    faceView_m1.hidden = !faceView_s0.hidden;
+    faceView_m0.hidden = !faceView_s0.hidden;
+}
+
 @end

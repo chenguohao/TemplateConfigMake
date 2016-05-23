@@ -35,7 +35,7 @@
 @property (strong) NSArray* tempVersionArray;
 @property (weak) IBOutlet NSPopUpButton *peopleCount;
 @property (weak) IBOutlet NSView *supportPeople;
-
+@property (nonatomic) NSInteger currentFaceIndex;
 @end
 
 NSString* cellID = @"CellID";
@@ -50,10 +50,14 @@ NSString* cellID = @"CellID";
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     self.curEditSprite = nil;
+    [self.photoImage setIsMultyPeople:NO];
     self.tempVersionLabel.stringValue = [NSString stringWithFormat:@"模板版本:v%@",tempVer];
     [self.configInputView setRefreshBlock:^(LEOSprite *sprite) {
         self.curEditSprite = sprite;
-        [self.photoImage.faceView setAnchorPointWithType:sprite.anchorType];
+        
+        
+        faceType fType = [self getCurrentFaceType];
+        [self.photoImage setAnchorPointWithType:sprite.anchorType FaceType:fType];
         if (self.spritesArray.count) {
             NSInteger selectRow = self.tableView.selectedRow;
             if (self.spritesArray.count) {
@@ -67,19 +71,9 @@ NSString* cellID = @"CellID";
             }
             
         }
-        faceType ftype = 0;
-        if (self.peopleCount.indexOfSelectedItem == 0) {
-            ftype = faceTypeSingle;
-        }else{
-            if (self.configInputView.curFaceIndex == 0) {
-                ftype = faceTypeMulty0;
-            }else{
-                ftype = faceTypeMulty1;
-            }
-        }
         
         
-        [self.photoImage updateSprite:sprite withFaceType:ftype];
+        [self.photoImage updateSprite:sprite withFaceType:fType];
         [self produceSpriteConfig];
     }];
     
@@ -105,6 +99,19 @@ NSString* cellID = @"CellID";
     
 }
 
+- (faceType)getCurrentFaceType{
+    faceType ftype = 0;
+    if (self.peopleCount.indexOfSelectedItem == 0) {
+        ftype = faceTypeSingle;
+    }else{
+        if (self.configInputView.curFaceIndex == 0) {
+            ftype = faceTypeMulty0;
+        }else{
+            ftype = faceTypeMulty1;
+        }
+    }
+    return ftype;
+}
 
 - (void)readConfigWithPath:(NSString*)path{
     

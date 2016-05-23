@@ -191,8 +191,7 @@
 }
 
 - (NSPoint)getPointWithAnchorType:(SpriteAnchorType)anchorType{
-    NSPoint facePoint;
-    self.base21Points = self.face21Points_s0;
+    NSPoint facePoint; 
     NSInteger l = self.frame.size.width;
     
     switch (anchorType) {
