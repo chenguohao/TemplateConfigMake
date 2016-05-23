@@ -260,7 +260,7 @@ NSString* cellID = @"CellID";
 
 - (IBAction)onNewSprite:(id)sender{
    
-    LEOSprite* sprite = [[LEOSprite alloc] initWithName:[self getNewNameWithName:@"newSprite"]];
+    LEOSprite* sprite = [[LEOSprite alloc] initWithName:[self getNewNameWithName:@"new"]];
     
     [self.spritesArray addObject:sprite];
     if(self.spritesArray.count == 1){

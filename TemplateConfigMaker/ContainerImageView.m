@@ -55,13 +55,14 @@
 
 - (void)addSprite:(LEOSprite*)sprite{
     CGFloat l = self.frame.size.width;
+    CGFloat h = self.frame.size.height;
     if (sprite.imagePath) {
         [self.spriteArray addObject:sprite];
         CGFloat x;
         CGFloat y;
         if (sprite.spriteType == SpriteTypeStatic) {
             x = (sprite.pos_x - sprite.width*sprite.anchor_x)* l;
-            y = l-(sprite.pos_y + sprite.height*sprite.anchor_y)* l;
+            y = h-sprite.pos_y*h - sprite.height*sprite.anchor_y* l;
         }else{
             
             NSPoint point = [[FaceView new] getPointWithAnchorType:sprite.anchorType];
