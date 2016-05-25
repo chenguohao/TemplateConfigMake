@@ -8,7 +8,6 @@
 
 #import "SpriteConfigInputView.h"
 #import "LEOSprite.h"
-#import "AppManager.h"
 #import "ContainerImageView.h"
 #import <AppKit/NSTextField.h>
 @interface SpriteConfigInputView ()<NSTextFieldDelegate>{
