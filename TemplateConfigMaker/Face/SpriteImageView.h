@@ -9,5 +9,7 @@
 #import <Cocoa/Cocoa.h>
 
 @interface SpriteImageView : NSImageView
+- (void)setEdit:(BOOL)isEdit;
 - (void)setOnDragBlock:(void(^)(CGRect frame))block;
+- (void)setOnSelectBlock:(void(^)())block;
 @end

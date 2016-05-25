@@ -15,6 +15,9 @@
     FaceView* faceView_m0;
     FaceView* faceView_m1;
 }
+
+@property (nonatomic,copy) void (^spriteResizeBlock)(CGRect frame,LEOSprite* sprite);
+@property (nonatomic,copy) void (^spriteSelectBlock)(LEOSprite* sprite);
 @end
 
 #define faceLen 213
@@ -79,14 +82,21 @@
         imv.imageScaling = NSImageScaleAxesIndependently;
         sprite.imageView = imv;
         imv.acceptsTouchEvents = YES;
-        imv.wantsLayer = YES;
-        imv.enabled = YES;
-        imv.layer.masksToBounds = YES;
-        imv.layer.borderColor = [NSColor blueColor].CGColor;
-        imv.layer.borderWidth = 1;
+        
         [imv setOnDragBlock:^(CGRect frame) {
-            
+            NSLog(@"%@",NSStringFromRect(frame));
+            if (self.spriteResizeBlock) {
+                self.spriteResizeBlock(frame,sprite);
+            }
         }];
+        
+        [imv setOnSelectBlock:^{
+            if (self.spriteSelectBlock) {
+                self.spriteSelectBlock(sprite);
+            }
+            [self selectSprite:sprite];
+        }];
+        
         [self addSubview:imv];
        
     }
@@ -213,15 +223,7 @@ NSComparisonResult viewcmp( NSView * view1, NSView * view2, void * context )
     
     for (LEOSprite* sp in self.spriteArray) {
         NSLog(@"imageView %@",sp.imageView.description);
-        if ([sp.spriteName isEqualToString:sprite.spriteName]) {
-          
-            NSLog(@"red %@",sprite.spriteName);
-            sp.imageView.layer.borderColor = [NSColor redColor].CGColor;
-            
-        }else{
-           NSLog(@"blue %@",sprite.spriteName);
-            sp.imageView.layer.borderColor = [NSColor blueColor].CGColor;
-        }
+        [sp.imageView setEdit:[sp.spriteName isEqualToString:sprite.spriteName]];
     }
 }
 
@@ -266,6 +268,14 @@ NSComparisonResult viewcmp( NSView * view1, NSView * view2, void * context )
     faceView_s0.hidden = _isMultyPeople;
     faceView_m1.hidden = !faceView_s0.hidden;
     faceView_m0.hidden = !faceView_s0.hidden;
+}
+
+- (void)setResizeBlock:(void(^)(CGRect frame,LEOSprite *sprite))block{
+    self.spriteResizeBlock = block;
+}
+
+- (void)setSpriteSelectedBlock:(void(^)(LEOSprite* sprite))block{
+    self.spriteSelectBlock = block;
 }
 
 @end

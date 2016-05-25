@@ -17,11 +17,13 @@
 @property (strong, nonatomic) LEOSprite* sprite;
 @property (assign,nonatomic) NSInteger curFaceIndex;
 + (CGFloat)getSizeRateWithSprite:(LEOSprite*)sprite;
-- (void)setRefreshBlock:(void(^)(LEOSprite* sprite))block;
+- (void)setRefreshBlock:(void(^)(LEOSprite* sprite,BOOL needRefreshUI))block;
 - (void)setBasePointsSwitchBlock:(void(^)(BOOL isOpen))block;
 - (void)setFaceIndexHidden:(BOOL)isHidden;
 - (void)setTempVersion:(NSInteger)tempV;
 - (void)refreshFaceIndex;
+
+- (void)changeSpriteWithFrame:(CGRect)frame Sprite:(LEOSprite*)sprite;
 
 + (CGFloat)getScreenHeight;
 + (CGFloat)getScreenWidth;

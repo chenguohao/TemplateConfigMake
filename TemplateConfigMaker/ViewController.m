@@ -51,8 +51,22 @@ NSString* cellID = @"CellID";
     self.tableView.delegate = self;
     self.curEditSprite = nil;
     [self.photoImage setIsMultyPeople:NO];
+    
+    
+    [self.photoImage setResizeBlock:^(CGRect frame, LEOSprite *sprite) {
+        [self.configInputView changeSpriteWithFrame:frame Sprite:sprite];
+    }];
+    
+    [self.photoImage setSpriteSelectedBlock:^(LEOSprite *sprite) {
+        self.configInputView.sprite = sprite;
+        self.curEditSprite = sprite;
+        NSInteger selectRow = [self.spritesArray indexOfObject:sprite];
+        NSIndexSet *indexSet = [NSIndexSet indexSetWithIndex:selectRow];
+        [self.tableView selectRowIndexes:indexSet byExtendingSelection:NO];
+    }];
+    
     self.tempVersionLabel.stringValue = [NSString stringWithFormat:@"模板版本:v%@",tempVer];
-    [self.configInputView setRefreshBlock:^(LEOSprite *sprite) {
+    [self.configInputView setRefreshBlock:^(LEOSprite *sprite,BOOL needRefreshUI) {
         self.curEditSprite = sprite;
         
         
@@ -62,10 +76,12 @@ NSString* cellID = @"CellID";
             NSInteger selectRow = self.tableView.selectedRow;
             if (self.spritesArray.count) {
                 [self.spritesArray replaceObjectAtIndex:self.tableView.selectedRow withObject:self.curEditSprite];
-                [self.tableView reloadData];
-                NSIndexSet *indexSet = [NSIndexSet indexSetWithIndex:selectRow];
-                [self.tableView selectRowIndexes:indexSet byExtendingSelection:NO];
-                [self selectRow:selectRow];
+                if (needRefreshUI) {
+                    [self.tableView reloadData];
+                    NSIndexSet *indexSet = [NSIndexSet indexSetWithIndex:selectRow];
+                    [self.tableView selectRowIndexes:indexSet byExtendingSelection:NO];
+                    [self selectRow:selectRow];
+                }
             }else{
                 assert(@"spriteArray empty");
             }
@@ -306,12 +322,16 @@ NSString* cellID = @"CellID";
     
 }
 
-- (BOOL)tableView:(NSTableView *)tableView shouldSelectRow:(NSInteger)row{
-    NSLog(@"ROW:%ld",row);
+- (void)tableViewSelectionDidChange:(NSNotification *)notification{
+    NSLog(@"selection DID change");
+    NSInteger row = [[notification object] selectedRow];
     [self selectRow:row];
     [self.photoImage selectSprite:self.spritesArray[row]];
-    return YES;
 }
+
+ 
+
+
 
 - (void)selectRow:(NSInteger)row{
     LEOSprite *sprite = [self.spritesArray objectAtIndex:row];

@@ -8,6 +8,7 @@
 
 #import "SpriteConfigInputView.h"
 #import "LEOSprite.h"
+#import "AppManager.h"
 #import "ContainerImageView.h"
 #import <AppKit/NSTextField.h>
 @interface SpriteConfigInputView ()<NSTextFieldDelegate>{
@@ -67,7 +68,7 @@
 @property (strong) NSArray* trigerEnumIndexArray;
 
 @property (strong) NSDictionary* anchorTypeDict;
-@property (copy,nonatomic) void (^RefreshBlock) (LEOSprite* sprite);
+@property (copy,nonatomic) void (^RefreshBlock) (LEOSprite* sprite, BOOL needRefreshUI);
 @property (copy,nonatomic) void (^switchBasePointsBlock) (BOOL isOpen);
 
 
@@ -512,7 +513,7 @@
         [self.faceIndex selectItemAtIndex:0];
     }
     
-    [self receiveData];
+    [self receiveDataWithRefresh:NO];
 }
 
 - (NSString*)getFaceCode{
@@ -557,7 +558,7 @@
 
 
 
-- (void)receiveData{
+- (void)receiveDataWithRefresh:(BOOL)needRefreshUI{
     self.sprite.spriteName = self.nameTextField.stringValue;
     self.sprite.spriteType = self.spriteType.indexOfSelectedItem;
     CGFloat w = self.width.stringValue.floatValue/[SpriteConfigInputView getSizeRateWithSprite:self.sprite];
@@ -619,7 +620,7 @@
     }
     
     if (self.RefreshBlock) {
-        self.RefreshBlock(self.sprite);
+        self.RefreshBlock(self.sprite,needRefreshUI);
     }
 }
 - (IBAction)onSwitchBasePoints:(NSButton *)sender {
@@ -629,7 +630,7 @@
     }
 }
 
-- (void)setRefreshBlock:(void(^)(LEOSprite* sprite))block{
+- (void)setRefreshBlock:(void(^)(LEOSprite* sprite,BOOL needRefreshUI))block{
     _RefreshBlock = block;
 }
 
@@ -661,6 +662,23 @@
     if (self.faceIndexView.hidden) {
         [self.faceIndex selectItemAtIndex:0];
     }
+}
+
+- (void)changeSpriteWithFrame:(CGRect)frame Sprite:(LEOSprite*)sprite{
+    
+    if (sprite.spriteType == SpriteTypeStatic ||
+        (sprite.spriteType == SpriteTypeCondition && sprite.anchorType == SpriteAnchorTypeStatic)){
+        self.pos_x.stringValue = [NSString stringWithFormat:@"%ld",(NSInteger)frame.origin.x];
+        NSInteger y = ScreenHeight - (NSInteger)frame.origin.y - frame.size.height;
+        self.pos_y.stringValue = [NSString stringWithFormat:@"%ld",y];
+    }else{
+        SpriteAnchorType atype = sprite.anchorType;
+        
+        
+    }
+
+    
+    [self receiveDataWithRefresh:NO];
 }
 
 @end

@@ -20,4 +20,6 @@
 - (void)selectSprite:(LEOSprite*)sprite;
 - (void)setAnchorPointWithType:(SpriteAnchorType)anchorType FaceType:(faceType)fType;
 - (void)setFaceHidden:(BOOL)hidden;
+- (void)setResizeBlock:(void(^)(CGRect frame,LEOSprite *sprite))block;
+- (void)setSpriteSelectedBlock:(void(^)(LEOSprite* sprite))block;
 @end
