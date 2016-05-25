@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		234156431CF2E29E00CC276E /* SpriteImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 234156421CF2E29E00CC276E /* SpriteImageView.m */; };
+		234156461CF2FD4100CC276E /* dot.png in Resources */ = {isa = PBXBuildFile; fileRef = 234156451CF2FD4100CC276E /* dot.png */; };
+		234156491CF2FEDC00CC276E /* CornerImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 234156481CF2FEDC00CC276E /* CornerImageView.m */; };
+		2341564C1CF3005B00CC276E /* ltrb.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 2341564A1CF3005B00CC276E /* ltrb.tiff */; };
+		2341564D1CF3005B00CC276E /* ResizeDiagonallyUphill@2x.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 2341564B1CF3005B00CC276E /* ResizeDiagonallyUphill@2x.tiff */; };
 		2345C4A11CE1A5B6005E86C9 /* longFace.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2345C4A01CE1A5B6005E86C9 /* longFace.jpg */; };
 		235A8B111C7570AB00EAEA50 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 235A8B101C7570AB00EAEA50 /* AppDelegate.m */; };
 		235A8B141C7570AB00EAEA50 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 235A8B131C7570AB00EAEA50 /* main.m */; };
@@ -48,6 +53,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		234156411CF2E29E00CC276E /* SpriteImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpriteImageView.h; path = Face/SpriteImageView.h; sourceTree = "<group>"; };
+		234156421CF2E29E00CC276E /* SpriteImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpriteImageView.m; path = Face/SpriteImageView.m; sourceTree = "<group>"; };
+		234156451CF2FD4100CC276E /* dot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dot.png; sourceTree = "<group>"; };
+		234156471CF2FEDC00CC276E /* CornerImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CornerImageView.h; path = Face/CornerImageView.h; sourceTree = "<group>"; };
+		234156481CF2FEDC00CC276E /* CornerImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CornerImageView.m; path = Face/CornerImageView.m; sourceTree = "<group>"; };
+		2341564A1CF3005B00CC276E /* ltrb.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = ltrb.tiff; sourceTree = "<group>"; };
+		2341564B1CF3005B00CC276E /* ResizeDiagonallyUphill@2x.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = "ResizeDiagonallyUphill@2x.tiff"; sourceTree = "<group>"; };
 		2345C4A01CE1A5B6005E86C9 /* longFace.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = longFace.jpg; sourceTree = "<group>"; };
 		235A8B0C1C7570AB00EAEA50 /* TemplateConfigMaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TemplateConfigMaker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		235A8B0F1C7570AB00EAEA50 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -111,6 +123,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		234156441CF2FD3300CC276E /* ResizeImageView */ = {
+			isa = PBXGroup;
+			children = (
+				2341564A1CF3005B00CC276E /* ltrb.tiff */,
+				2341564B1CF3005B00CC276E /* ResizeDiagonallyUphill@2x.tiff */,
+				234156451CF2FD4100CC276E /* dot.png */,
+				234156411CF2E29E00CC276E /* SpriteImageView.h */,
+				234156421CF2E29E00CC276E /* SpriteImageView.m */,
+				234156471CF2FEDC00CC276E /* CornerImageView.h */,
+				234156481CF2FEDC00CC276E /* CornerImageView.m */,
+			);
+			name = ResizeImageView;
+			sourceTree = "<group>";
+		};
 		235A8B031C7570AB00EAEA50 = {
 			isa = PBXGroup;
 			children = (
@@ -197,6 +223,7 @@
 				23C425A71C7FEDE700B8F000 /* ContainerImageView.m */,
 				23C425A01C7F2C6100B8F000 /* FaceView.h */,
 				23C425A11C7F2C6100B8F000 /* FaceView.m */,
+				234156441CF2FD3300CC276E /* ResizeImageView */,
 			);
 			name = FaceFeild;
 			sourceTree = "<group>";
@@ -330,7 +357,10 @@
 			files = (
 				23C4259F1C7F28FA00B8F000 /* lbb.jpg in Resources */,
 				23D87A5F1CEF0738001AB893 /* dualFace.jpg in Resources */,
+				2341564C1CF3005B00CC276E /* ltrb.tiff in Resources */,
+				2341564D1CF3005B00CC276E /* ResizeDiagonallyUphill@2x.tiff in Resources */,
 				235A8B191C7570AB00EAEA50 /* Assets.xcassets in Resources */,
+				234156461CF2FD4100CC276E /* dot.png in Resources */,
 				235A8B541C78158300EAEA50 /* SpriteConfigInputView.xib in Resources */,
 				23C425921C7D585600B8F000 /* FaceCode.plist in Resources */,
 				2390E2681C9FDFFA00559B4F /* model.jpg in Resources */,
@@ -363,6 +393,8 @@
 			files = (
 				23C425A81C7FEDE700B8F000 /* ContainerImageView.m in Sources */,
 				23C426351C85A32E00B8F000 /* LEOConfigTextView.m in Sources */,
+				234156431CF2E29E00CC276E /* SpriteImageView.m in Sources */,
+				234156491CF2FEDC00CC276E /* CornerImageView.m in Sources */,
 				235A8B171C7570AB00EAEA50 /* ViewController.m in Sources */,
 				236ABFE41CA6579000E90D58 /* AnimationImageView.swift in Sources */,
 				235A8B141C7570AB00EAEA50 /* main.m in Sources */,

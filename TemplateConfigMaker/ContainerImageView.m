@@ -9,6 +9,7 @@
 #import "ContainerImageView.h"
 #import "LEOSprite.h"
 #import "FaceView.h"
+#import "SpriteImageView.h"
 @interface ContainerImageView(){
     FaceView* faceView_s0;
     FaceView* faceView_m0;
@@ -73,14 +74,19 @@
         
         CGFloat w = sprite.width * l;
         CGFloat h = sprite.height* l;
-        NSImageView* imv = [[NSImageView alloc] initWithFrame:NSMakeRect(x, y, w, h)];
+        SpriteImageView* imv = [[SpriteImageView alloc] initWithFrame:NSMakeRect(x, y, w, h)];
         imv.image = [[NSImage alloc] initWithContentsOfFile:sprite.imagePath];
         imv.imageScaling = NSImageScaleAxesIndependently;
         sprite.imageView = imv;
+        imv.acceptsTouchEvents = YES;
         imv.wantsLayer = YES;
+        imv.enabled = YES;
         imv.layer.masksToBounds = YES;
         imv.layer.borderColor = [NSColor blueColor].CGColor;
         imv.layer.borderWidth = 1;
+        [imv setOnDragBlock:^(CGRect frame) {
+            
+        }];
         [self addSubview:imv];
        
     }

@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <AppKit/AppKit.h>
-
+#import "SpriteImageView.h"
 
 
 typedef NS_ENUM(NSUInteger, SpriteType) {
@@ -76,7 +76,7 @@ typedef NS_ENUM(NSUInteger, SpriteAnchorType) {
 };
 
 @interface LEOSprite : NSObject
-@property (nonatomic, strong) NSImageView* imageView;
+@property (nonatomic, strong) SpriteImageView* imageView;
 @property (nonatomic, assign) SpriteType spriteType;
 @property (nonatomic, assign) NSInteger order;
 
