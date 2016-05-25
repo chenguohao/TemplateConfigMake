@@ -13,7 +13,7 @@
 #import "SpriteConfigInputView.h"
 #import "ContainerImageView.h"
 #import "LEOConfigTextView.h"
-
+#import "AppManager.h"
 #define tempVer @"5"
 
 @interface ViewController()<NSTableViewDataSource,NSTableViewDelegate>
@@ -44,7 +44,8 @@ NSString* cellID = @"CellID";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+ 
+    [AppManager sharedInstance].viewController = self;
     
     self.tableView.allowsEmptySelection = NO;
     self.tableView.dataSource = self;

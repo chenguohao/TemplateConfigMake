@@ -210,7 +210,23 @@ NSComparisonResult viewcmp( NSView * view1, NSView * view2, void * context )
     }
 }
 
-+ (CGFloat)getFaceLenth{
++ (CGFloat)getFaceLenthWithFaceType:(faceType)fType{
+    
+    
+    switch (fType) {
+        case faceTypeSingle:
+            return faceLen;
+            break;
+        case faceTypeMulty0:
+            return faceLen_m0;
+            break;
+        case faceTypeMulty1:
+            return faceLen_m1;
+            break;
+        default:
+            break;
+    }
+    
     return faceLen;
 }
 

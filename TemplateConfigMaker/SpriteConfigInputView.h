@@ -18,6 +18,7 @@
 @property (assign,nonatomic) NSInteger curFaceIndex;
 + (CGFloat)getSizeRateWithSprite:(LEOSprite*)sprite;
 - (void)setRefreshBlock:(void(^)(LEOSprite* sprite,BOOL needRefreshUI))block;
+
 - (void)setBasePointsSwitchBlock:(void(^)(BOOL isOpen))block;
 - (void)setFaceIndexHidden:(BOOL)isHidden;
 - (void)setTempVersion:(NSInteger)tempV;
