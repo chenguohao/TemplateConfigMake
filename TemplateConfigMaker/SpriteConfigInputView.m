@@ -8,6 +8,7 @@
 
 #import "SpriteConfigInputView.h"
 #import "LEOSprite.h"
+#import "AppManager.h"
 #import "ContainerImageView.h"
 #import <AppKit/NSTextField.h>
 @interface SpriteConfigInputView ()<NSTextFieldDelegate>{
@@ -118,8 +119,8 @@
     return ScreenWidth;
 }
 
-+ (CGFloat)getFaceLength{
-    return [ContainerImageView getFaceLenth];
++ (CGFloat)getFaceLengthWithFaceType:(faceType)fType{
+    return [ContainerImageView getFaceLenthWithFaceType:fType];
 }
 
 
@@ -134,12 +135,13 @@
         atype == SpriteAnchorTypeStatic) {
         return ScreenWidth;
     }
-    
-    return [ContainerImageView getFaceLenth];
+    faceType faceType = [[AppManager sharedInstance] getCurrentFaceType];
+    return [ContainerImageView getFaceLenthWithFaceType:faceType];
 }
 
-- (CGFloat)FaceLength
-{
+
+
+- (CGFloat)FaceLength{
     return [SpriteConfigInputView getSizeRateWithSprite:self.sprite];
 }
 
@@ -662,5 +664,7 @@
         [self.faceIndex selectItemAtIndex:0];
     }
 }
+
+#pragma mark - multyFace
 
 @end

@@ -17,6 +17,7 @@
 @property (strong, nonatomic) LEOSprite* sprite;
 @property (assign,nonatomic) NSInteger curFaceIndex;
 + (CGFloat)getSizeRateWithSprite:(LEOSprite*)sprite;
+
 - (void)setRefreshBlock:(void(^)(LEOSprite* sprite))block;
 - (void)setBasePointsSwitchBlock:(void(^)(BOOL isOpen))block;
 - (void)setFaceIndexHidden:(BOOL)isHidden;

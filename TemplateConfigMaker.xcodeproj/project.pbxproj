@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		234156511CF5526900CC276E /* AppManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 234156501CF5526900CC276E /* AppManager.m */; };
 		2345C4A11CE1A5B6005E86C9 /* longFace.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2345C4A01CE1A5B6005E86C9 /* longFace.jpg */; };
 		235A8B111C7570AB00EAEA50 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 235A8B101C7570AB00EAEA50 /* AppDelegate.m */; };
 		235A8B141C7570AB00EAEA50 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 235A8B131C7570AB00EAEA50 /* main.m */; };
@@ -48,6 +49,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2341564F1CF5526900CC276E /* AppManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppManager.h; sourceTree = "<group>"; };
+		234156501CF5526900CC276E /* AppManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppManager.m; sourceTree = "<group>"; };
 		2345C4A01CE1A5B6005E86C9 /* longFace.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = longFace.jpg; sourceTree = "<group>"; };
 		235A8B0C1C7570AB00EAEA50 /* TemplateConfigMaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TemplateConfigMaker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		235A8B0F1C7570AB00EAEA50 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -138,6 +141,8 @@
 				235A8B101C7570AB00EAEA50 /* AppDelegate.m */,
 				235A8B151C7570AB00EAEA50 /* ViewController.h */,
 				235A8B161C7570AB00EAEA50 /* ViewController.m */,
+				2341564F1CF5526900CC276E /* AppManager.h */,
+				234156501CF5526900CC276E /* AppManager.m */,
 				23C426321C85A30100B8F000 /* UI */,
 				23C425AA1C7FEE5600B8F000 /* Data */,
 				23C425A91C7FEE2D00B8F000 /* FaceFeild */,
@@ -369,6 +374,7 @@
 				235A8B521C78156900EAEA50 /* SpriteConfigInputView.m in Sources */,
 				23C425A21C7F2C6100B8F000 /* FaceView.m in Sources */,
 				235A8B111C7570AB00EAEA50 /* AppDelegate.m in Sources */,
+				234156511CF5526900CC276E /* AppManager.m in Sources */,
 				23C425A51C7FE17000B8F000 /* LEOTableView.m in Sources */,
 				235A8BA01C785FD500EAEA50 /* LEOSprite.m in Sources */,
 			);

@@ -16,7 +16,7 @@
 - (void)addSprite:(LEOSprite*)sprite;
 - (void)updateSprite:(LEOSprite*)sprite withFaceType:(faceType)fType;
 - (void)removeSprite:(LEOSprite*)sprite;
-+ (CGFloat)getFaceLenth;
++ (CGFloat)getFaceLenthWithFaceType:(faceType)fType;
 - (void)selectSprite:(LEOSprite*)sprite;
 - (void)setAnchorPointWithType:(SpriteAnchorType)anchorType FaceType:(faceType)fType;
 - (void)setFaceHidden:(BOOL)hidden;

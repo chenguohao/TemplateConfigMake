@@ -7,9 +7,9 @@
 //
 
 #import <Cocoa/Cocoa.h>
-
+#import "ContainerImageView.h"
 @interface ViewController : NSViewController
-
+- (faceType)getCurrentFaceType;
 
 @end
 
