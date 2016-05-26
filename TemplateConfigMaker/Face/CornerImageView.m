@@ -8,6 +8,11 @@
 
 #import "CornerImageView.h"
 
+@interface CornerImageView ()
+@property (nonatomic,copy) void (^onEnterBlock)();
+@property (nonatomic,copy) void (^onExitBlock)();
+@end
+
 @implementation CornerImageView
 
 - (instancetype)initWithFrame:(NSRect)frameRect{
@@ -33,12 +38,18 @@
     NSCursor *cursor = [[NSCursor alloc] initWithImage:image hotSpot:NSZeroPoint];
     [cursor set];
     [self setNeedsDisplay:YES];
+    if (self.onEnterBlock) {
+        self.onEnterBlock();
+    }
 }
 
 - (void)mouseExited:(NSEvent *)theEvent{
     NSCursor *cursor = [NSCursor arrowCursor];
     [cursor set];
     [self setNeedsDisplay:YES];
+    if (self.onExitBlock) {
+        self.onExitBlock();
+    }
 }
 
 
@@ -50,5 +61,13 @@
     [self addCursorRect:self.bounds cursor:cursor];
     
     
+}
+
+- (void)setEnterBlock:(void(^)())block{
+    self.onEnterBlock = block;
+}
+
+- (void)setExitBlock:(void(^)())block{
+    self.onExitBlock = block;
 }
 @end

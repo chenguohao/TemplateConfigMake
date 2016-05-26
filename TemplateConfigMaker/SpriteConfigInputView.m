@@ -668,6 +668,10 @@
 #pragma mark - multyFace
 - (void)changeSpriteWithFrame:(CGRect)frame Sprite:(LEOSprite*)sprite{
     
+    NSInteger w = frame.size.width;
+    NSInteger h = frame.size.height;
+    self.width.stringValue = [NSString stringWithFormat:@"%d",w];
+    self.height.stringValue = [NSString stringWithFormat:@"%d",h];
     if (sprite.spriteType == SpriteTypeStatic ||
         (sprite.spriteType == SpriteTypeCondition && sprite.anchorType == SpriteAnchorTypeStatic)){
         self.pos_x.stringValue = [NSString stringWithFormat:@"%ld",(NSInteger)frame.origin.x];

@@ -8,13 +8,25 @@
 
 #import "SpriteImageView.h"
 #import "CornerImageView.h"
+
+
+typedef enum {
+    dragTypeNone = 0,
+    dragTypeCornerLeftTop,
+    dragTypeCornerRightTop,
+    dragTypeCornerRightBottom,
+    dragTypeCornerLeftBottom
+}DragType;
+
 @interface SpriteImageView (){
-    
+    DragType preDragType;
+    DragType currentDragType;
+    CGFloat  cornerLen;
 }
-@property (nonatomic,strong) CornerImageView* cimv0;
-@property (nonatomic,strong) CornerImageView* cimv1;
-@property (nonatomic,strong) CornerImageView* cimv2;
-@property (nonatomic,strong) CornerImageView* cimv3;
+@property (nonatomic,strong) CornerImageView* cimvLT;
+@property (nonatomic,strong) CornerImageView* cimvRT;
+@property (nonatomic,strong) CornerImageView* cimvRB;
+@property (nonatomic,strong) CornerImageView* cimvLB;
 @property (nonatomic,copy) void (^onDragBlock)(CGRect frame);
 @property (nonatomic,copy) void (^onSelectBlock)();
 @end
@@ -24,19 +36,48 @@
 
 - (instancetype)initWithFrame:(NSRect)frameRect{
     self  = [super initWithFrame:frameRect];
-    CGFloat l = 40;
-    
+    cornerLen = 15;
+    int l = cornerLen;
     CGFloat w = frameRect.size.width;
     CGFloat h = frameRect.size.height;
+    currentDragType = dragTypeNone;
     
-    self.cimv0 = [[CornerImageView alloc] initWithFrame:CGRectMake(-l/2, -l/2, l, l)];
-    [self addSubview:self.cimv0];
-    self.cimv1 = [[CornerImageView alloc] initWithFrame:CGRectMake(w-l/2, -l/2, l, l)];
-    [self addSubview:self.cimv1];
-    self.cimv2 = [[CornerImageView alloc] initWithFrame:CGRectMake(w-l/2, h-l/2, l, l)];
-    [self addSubview:self.cimv2];
-    self.cimv3 = [[CornerImageView alloc] initWithFrame:CGRectMake(-l/2, h-l/2, l, l)];
-    [self addSubview:self.cimv3];
+    self.cimvLB = [[CornerImageView alloc] initWithFrame:CGRectMake(0, 0, l, l)];
+    [self addSubview:self.cimvLB];
+    [self.cimvLB setEnterBlock:^{
+        preDragType = dragTypeCornerLeftBottom;
+    }];
+    [self.cimvLT setExitBlock:^{
+        preDragType = dragTypeNone;
+    }];
+    
+    
+    self.cimvRB = [[CornerImageView alloc] initWithFrame:CGRectMake(w-l, 0, l, l)];
+    [self addSubview:self.cimvRB];
+    [self.cimvRB setEnterBlock:^{
+        preDragType = dragTypeCornerRightBottom;
+    }];
+    [self.cimvRT setExitBlock:^{
+        preDragType = dragTypeNone;
+    }];
+    
+    self.cimvRT = [[CornerImageView alloc] initWithFrame:CGRectMake(w - l, h - l, l, l)];
+    [self addSubview:self.cimvRT];
+    [self.cimvRT setEnterBlock:^{
+        preDragType = dragTypeCornerRightTop;
+    }];
+    [self.cimvRB setExitBlock:^{
+        preDragType = dragTypeNone;
+    }];
+    
+    self.cimvLT = [[CornerImageView alloc] initWithFrame:CGRectMake(0, h, l, l)];
+    [self addSubview:self.cimvLT];
+    [self.cimvLT setEnterBlock:^{
+        preDragType = dragTypeCornerLeftTop;
+    }];
+    [self.cimvLB setExitBlock:^{
+        preDragType = dragTypeNone;
+    }];
     
     self.wantsLayer = YES;
     self.enabled = YES;
@@ -53,11 +94,11 @@
     CGRect frameRect = self.frame;
     CGFloat w = frameRect.size.width;
     CGFloat h = frameRect.size.height;
-    CGFloat l = 40;
-    self.cimv0.frame = CGRectMake(-l/2, -l/2, l, l);
-    self.cimv1.frame = CGRectMake(w-l/2, -l/2, l, l);
-    self.cimv2.frame = CGRectMake(w-l/2, h-l/2, l, l);
-    self.cimv3.frame = CGRectMake(-l/2, h-l/2, l, l); 
+    int l = cornerLen;
+    self.cimvLB.frame = CGRectMake(0, 0, l, l);
+    self.cimvRB.frame = CGRectMake(w-l, 0, l, l);
+    self.cimvRT.frame = CGRectMake(w - l, h - l, l, l);
+    self.cimvLT.frame = CGRectMake(0, h - l, l, l);
     
     NSLog(@"layout");
 }
@@ -69,31 +110,84 @@
         self.layer.borderColor = [NSColor clearColor].CGColor;
     }
     
-    self.cimv0.hidden = !isEdit;
-    self.cimv1.hidden = self.cimv0.hidden;
-    self.cimv2.hidden = self.cimv0.hidden;
-    self.cimv3.hidden = self.cimv0.hidden;
+    self.cimvLT.hidden = !isEdit;
+    self.cimvRT.hidden = self.cimvLT.hidden;
+    self.cimvRB.hidden = self.cimvLT.hidden;
+    self.cimvLB.hidden = self.cimvLT.hidden;
 }
 
 - (void)mouseDown:(NSEvent *)theEvent{
     NSLog(@"selected ");
+    currentDragType = preDragType;
     if (self.onSelectBlock) {
         self.onSelectBlock();
     }
 }
 
+- (void)mouseUp:(NSEvent *)theEvent{
+    currentDragType = dragTypeNone;
+    preDragType = dragTypeNone;
+}
+
 - (void)mouseDragged:(NSEvent *)event {
-   
-    
     CGFloat deltax = event.deltaX;
     CGFloat deltay = event.deltaY;
     
+    NSLog(@"delta x %lf y %lf",deltax,deltay);
     CGRect rect = self.frame;
-    self.frame = CGRectMake(rect.origin.x + deltax, rect.origin.y - deltay, rect.size.width, rect.size.height);
-    NSLog(@"drag");
-    if (self.onDragBlock) {
-        self.onDragBlock(self.frame);
+    
+    if (currentDragType == dragTypeNone ) {
+        self.frame = CGRectMake(rect.origin.x + deltax, rect.origin.y - deltay, rect.size.width, rect.size.height);
+        NSLog(@"drag");
+        if (self.onDragBlock) {
+            self.onDragBlock(self.frame);
+        }
+    }else{
+        CGFloat w;
+        CGFloat h;
+        CGFloat x = rect.origin.x;
+        CGFloat y = rect.origin.y;
+        
+        switch (currentDragType) {
+            case dragTypeCornerLeftTop:
+            {
+                w = rect.size.width - deltax;
+                h = rect.size.height - deltay;
+                rect = CGRectMake(x + deltax, y, w, h);
+            }
+                break;
+            case dragTypeCornerRightTop:
+            {
+                w = rect.size.width + deltax;
+                h = rect.size.height - deltay;
+                rect = CGRectMake(x, y , w, h);
+            }
+                break;
+            case dragTypeCornerRightBottom:
+            {
+                w = rect.size.width + deltax;
+                h = rect.size.height + deltay;
+                rect = CGRectMake(x, y - deltay, w, h);
+            }
+                break;
+            case dragTypeCornerLeftBottom:
+            {
+                w = rect.size.width - deltax;
+                h = rect.size.height + deltay;
+                rect = CGRectMake(x + deltax, y - deltay, w, h);
+            }
+                break;
+                
+            default:
+                break;
+        }
+        self.frame = rect;
+        if (self.onDragBlock) {
+            self.onDragBlock(self.frame);
+        }
     }
+    
+   
 }
 
 - (void)setOnDragBlock:(void(^)(CGRect frame))block{
