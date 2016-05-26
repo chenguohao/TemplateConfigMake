@@ -16,6 +16,7 @@ typedef enum {
 }cornerType;
 
 @interface CornerImageView : NSImageView
+- (instancetype)initWithFrame:(NSRect)frameRect cornerType:(cornerType)cType;
 - (void)setEnterBlock:(void(^)())block;
 - (void)setExitBlock:(void(^)())block;
 @end

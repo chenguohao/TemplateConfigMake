@@ -42,40 +42,40 @@ typedef enum {
     CGFloat h = frameRect.size.height;
     currentDragType = dragTypeNone;
     
-    self.cimvLB = [[CornerImageView alloc] initWithFrame:CGRectMake(0, 0, l, l)];
+    self.cimvLB = [[CornerImageView alloc] initWithFrame:CGRectMake(0, 0, l, l) cornerType:cornerTypeLeftBottom];
     [self addSubview:self.cimvLB];
     [self.cimvLB setEnterBlock:^{
         preDragType = dragTypeCornerLeftBottom;
     }];
-    [self.cimvLT setExitBlock:^{
+    [self.cimvLB setExitBlock:^{
         preDragType = dragTypeNone;
     }];
     
     
-    self.cimvRB = [[CornerImageView alloc] initWithFrame:CGRectMake(w-l, 0, l, l)];
+    self.cimvRB = [[CornerImageView alloc] initWithFrame:CGRectMake(w-l, 0, l, l) cornerType:cornerTypeRightBottom];
     [self addSubview:self.cimvRB];
     [self.cimvRB setEnterBlock:^{
         preDragType = dragTypeCornerRightBottom;
-    }];
-    [self.cimvRT setExitBlock:^{
-        preDragType = dragTypeNone;
-    }];
-    
-    self.cimvRT = [[CornerImageView alloc] initWithFrame:CGRectMake(w - l, h - l, l, l)];
-    [self addSubview:self.cimvRT];
-    [self.cimvRT setEnterBlock:^{
-        preDragType = dragTypeCornerRightTop;
     }];
     [self.cimvRB setExitBlock:^{
         preDragType = dragTypeNone;
     }];
     
-    self.cimvLT = [[CornerImageView alloc] initWithFrame:CGRectMake(0, h, l, l)];
+    self.cimvRT = [[CornerImageView alloc] initWithFrame:CGRectMake(w - l, h - l, l, l) cornerType:cornerTypeRightTop];
+    [self addSubview:self.cimvRT];
+    [self.cimvRT setEnterBlock:^{
+        preDragType = dragTypeCornerRightTop;
+    }];
+    [self.cimvRT setExitBlock:^{
+        preDragType = dragTypeNone;
+    }];
+    
+    self.cimvLT = [[CornerImageView alloc] initWithFrame:CGRectMake(0, h, l, l) cornerType:cornerTypeLeftTop];
     [self addSubview:self.cimvLT];
     [self.cimvLT setEnterBlock:^{
         preDragType = dragTypeCornerLeftTop;
     }];
-    [self.cimvLB setExitBlock:^{
+    [self.cimvLT setExitBlock:^{
         preDragType = dragTypeNone;
     }];
     

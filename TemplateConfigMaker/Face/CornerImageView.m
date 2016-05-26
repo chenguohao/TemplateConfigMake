@@ -8,16 +8,20 @@
 
 #import "CornerImageView.h"
 
-@interface CornerImageView ()
+@interface CornerImageView (){
+    cornerType cornType;
+}
 @property (nonatomic,copy) void (^onEnterBlock)();
 @property (nonatomic,copy) void (^onExitBlock)();
 @end
 
 @implementation CornerImageView
 
-- (instancetype)initWithFrame:(NSRect)frameRect{
+- (instancetype)initWithFrame:(NSRect)frameRect
+                   cornerType:(cornerType)cType{
     self = [super initWithFrame: frameRect];
-    
+    cornType = cType;
+   
     NSString* path = [[NSBundle mainBundle] pathForResource:@"dot" ofType:@"png"];
     self.image = [[NSImage alloc] initWithContentsOfFile:path];
     
@@ -33,7 +37,14 @@
 
 - (void)mouseEntered:(NSEvent *)theEvent
 {
-    NSString* path = [[NSBundle mainBundle] pathForResource:@"ltrb" ofType:@"tiff"];
+    NSString* resName ;
+    if (cornType == cornerTypeLeftTop ||
+        cornType == cornerTypeRightBottom) {
+        resName = @"ltrb@2x";
+    }else{
+        resName = @"lbrt@2x";
+    }
+    NSString* path = [[NSBundle mainBundle] pathForResource:resName ofType:@"png"];
     NSImage* image = [[NSImage alloc] initWithContentsOfFile:path];
     NSCursor *cursor = [[NSCursor alloc] initWithImage:image hotSpot:NSZeroPoint];
     [cursor set];
@@ -55,7 +66,14 @@
 
 -(void)resetCursorRects
 {
-    NSString* path = [[NSBundle mainBundle] pathForResource:@"ltrb" ofType:@"tiff"];
+    NSString* resName ;
+    if (cornType == cornerTypeLeftTop ||
+        cornType == cornerTypeRightBottom) {
+        resName = @"ltrb@2x";
+    }else{
+        resName = @"lbrt@2x";
+    }
+    NSString* path = [[NSBundle mainBundle] pathForResource:resName ofType:@"png"];
     NSImage* image = [[NSImage alloc] initWithContentsOfFile:path];
     NSCursor *cursor = [[NSCursor alloc] initWithImage:image hotSpot:NSZeroPoint];
     [self addCursorRect:self.bounds cursor:cursor];
