@@ -461,4 +461,12 @@ NSString* cellID = @"CellID";
     }
 }
 
+- (CGPoint)getPointByAnchorType:(SpriteAnchorType)aType
+                       FaceType:(faceType)fType{
+    
+    CGPoint anchorPt = [self.photoImage getFullScreenPointWithFaceType:fType AnchorType:aType];
+    
+    return anchorPt;
+}
+
 @end

@@ -10,6 +10,7 @@
 #import "ContainerImageView.h"
 @interface ViewController : NSViewController
 - (faceType)getCurrentFaceType;
-
+- (CGPoint)getPointByAnchorType:(SpriteAnchorType)aType
+                       FaceType:(faceType)fType;
 @end
 

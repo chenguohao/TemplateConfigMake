@@ -22,4 +22,6 @@
 - (void)setFaceHidden:(BOOL)hidden;
 - (void)setResizeBlock:(void(^)(CGRect frame,LEOSprite *sprite))block;
 - (void)setSpriteSelectedBlock:(void(^)(LEOSprite* sprite))block;
+- (CGPoint)getFullScreenPointWithFaceType:(faceType)fType
+                     AnchorType:(SpriteAnchorType)anchorTYpe;
 @end

@@ -49,6 +49,16 @@
 
 - (void)layout{
     [super layout];
+    
+    CGRect frameRect = self.frame;
+    CGFloat w = frameRect.size.width;
+    CGFloat h = frameRect.size.height;
+    CGFloat l = 40;
+    self.cimv0.frame = CGRectMake(-l/2, -l/2, l, l);
+    self.cimv1.frame = CGRectMake(w-l/2, -l/2, l, l);
+    self.cimv2.frame = CGRectMake(w-l/2, h-l/2, l, l);
+    self.cimv3.frame = CGRectMake(-l/2, h-l/2, l, l); 
+    
     NSLog(@"layout");
 }
 

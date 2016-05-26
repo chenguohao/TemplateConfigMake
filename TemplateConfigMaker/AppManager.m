@@ -21,4 +21,9 @@ static AppManager* sharedManager;
 - (faceType)getCurrentFaceType{
     return [self.viewController getCurrentFaceType];
 }
+
+- (CGPoint)getPointByAnchorType:(SpriteAnchorType)aType
+                       FaceType:(faceType)fType{
+    return [self.viewController getPointByAnchorType:aType FaceType:fType];
+}
 @end

@@ -673,14 +673,24 @@
         self.pos_x.stringValue = [NSString stringWithFormat:@"%ld",(NSInteger)frame.origin.x];
         NSInteger y = ScreenHeight - (NSInteger)frame.origin.y - frame.size.height;
         self.pos_y.stringValue = [NSString stringWithFormat:@"%ld",y];
+        [self receiveDataWithRefresh:NO];
     }else{
         SpriteAnchorType atype = sprite.anchorType;
+        faceType fType = [[AppManager sharedInstance] getCurrentFaceType];
         
+        CGPoint pt = [[AppManager sharedInstance] getPointByAnchorType:atype FaceType:fType];
         
+        CGFloat x = (pt.x - frame.origin.x)/frame.size.width;
+        CGFloat y =  1 - (pt.y - frame.origin.y)/frame.size.height;
+        NSLog(@"anchor_x %lf,anchor_y %lf",x,y);
+        
+        self.anchorx.stringValue = [NSString stringWithFormat:@"%.3lf",x];
+        self.anchory.stringValue = [NSString stringWithFormat:@"%.3lf",y];
+        [self receiveDataWithRefresh:NO];
     }
 
     
-    [self receiveDataWithRefresh:NO];
+    
 }
 
 

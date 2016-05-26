@@ -12,7 +12,7 @@
 @interface AppManager : NSObject
 @property (nonatomic,strong) ViewController* viewController;
 + (instancetype)sharedInstance;
-
-
 - (faceType)getCurrentFaceType;
+- (CGPoint)getPointByAnchorType:(SpriteAnchorType)aType
+                       FaceType:(faceType)fType;
 @end

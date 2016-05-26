@@ -294,4 +294,24 @@ NSComparisonResult viewcmp( NSView * view1, NSView * view2, void * context )
     self.spriteSelectBlock = block;
 }
 
+- (CGPoint)getFullScreenPointWithFaceType:(faceType)fType
+                     AnchorType:(SpriteAnchorType)anchorTYpe{
+    FaceView* faceView;
+    switch (fType) {
+        case faceTypeSingle:
+            faceView = faceView_s0;
+            break;
+        case faceTypeMulty0:
+            faceView = faceView_m0;
+            break;
+        case faceTypeMulty1:
+            faceView = faceView_m1;
+            break;
+        default:
+            break;
+    }
+    CGPoint relativePoint = [faceView getPointWithAnchorType:anchorTYpe];
+    
+    return CGPointMake(faceView.frame.origin.x + relativePoint.x, faceView.frame.origin.y + relativePoint.y);
+}
 @end
