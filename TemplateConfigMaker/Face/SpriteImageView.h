@@ -8,7 +8,9 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface SpriteImageView : NSImageView
+@interface SpriteImageView : NSView
+@property (nonatomic,strong) NSImage* image;
+@property (nonatomic,assign) NSInteger imageTag;
 - (void)setEdit:(BOOL)isEdit;
 - (void)setOnDragBlock:(void(^)(CGRect frame))block;
 - (void)setOnSelectBlock:(void(^)())block;

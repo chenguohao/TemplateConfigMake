@@ -79,7 +79,7 @@
         CGFloat h = sprite.height* l;
         SpriteImageView* imv = [[SpriteImageView alloc] initWithFrame:NSMakeRect(x, y, w, h)];
         imv.image = [[NSImage alloc] initWithContentsOfFile:sprite.imagePath];
-        imv.imageScaling = NSImageScaleAxesIndependently;
+        
         sprite.imageView = imv;
         imv.acceptsTouchEvents = YES;
         
@@ -160,11 +160,26 @@
 
 NSComparisonResult viewcmp( NSView * view1, NSView * view2, void * context )
 {
-    if (view1.tag > view2.tag) {
+    NSInteger tag1,tag2;
+    if ([view1 isKindOfClass:[FaceView class]]) {
+        tag1 = 0;
+    }else if([view1 isKindOfClass:[SpriteImageView class]]){
+        SpriteImageView* imv = (SpriteImageView*)view1;
+        tag1 = imv.imageTag;
+    }
+    
+    if ([view2 isKindOfClass:[FaceView class]]) {
+        tag2 = 0;
+    }else if([view2 isKindOfClass:[SpriteImageView class]]){
+        SpriteImageView* imv = (SpriteImageView*)view2;
+        tag2 = imv.imageTag;
+    }
+    
+    if (tag1 > tag2) {
         return (NSComparisonResult)NSOrderedDescending;
     }
     
-    if (view1.tag < view2.tag) {
+    if (tag1 < tag2) {
         return (NSComparisonResult)NSOrderedAscending;
     }
     return (NSComparisonResult)NSOrderedSame;
@@ -186,11 +201,14 @@ NSComparisonResult viewcmp( NSView * view1, NSView * view2, void * context )
      [self.spriteArray sortUsingComparator:cmptr];
     
     for (LEOSprite* sprite in self.spriteArray) {
-        sprite.imageView.tag = [self.spriteArray indexOfObject:sprite];
+        sprite.imageView.imageTag = [self.spriteArray indexOfObject:sprite];
     }
 
+    NSArray* array = self.subviews;
+    NSLog(@"before %@",array.description);
     [self sortSubviewsUsingFunction:viewcmp context:nil];
-    
+    NSLog(@"after %@",array.description);
+    [self setNeedsDisplay];
 }
 
 - (void)removeSprite:(LEOSprite*)sprite{

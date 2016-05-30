@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TemplateConfigMaker/Face/SpriteImageView.m"
-            timestampString = "485939622.731761"
+            timestampString = "486293365.92109"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "154"
-            endingLineNumber = "154"
+            startingLineNumber = "174"
+            endingLineNumber = "174"
             landmarkName = "-mouseDragged:"
             landmarkType = "5">
          </BreakpointContent>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TemplateConfigMaker/Face/SpriteImageView.m"
-            timestampString = "485939622.731761"
+            timestampString = "486293365.92109"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "146"
-            endingLineNumber = "146"
+            startingLineNumber = "166"
+            endingLineNumber = "166"
             landmarkName = "-mouseDragged:"
             landmarkType = "5">
          </BreakpointContent>
@@ -42,12 +42,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TemplateConfigMaker/Face/SpriteImageView.m"
-            timestampString = "485939622.731761"
+            timestampString = "486293365.92109"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "186"
-            endingLineNumber = "186"
-            landmarkName = "-mouseDragged:"
+            startingLineNumber = "206"
+            endingLineNumber = "206"
+            landmarkName = "-setOnDragBlock:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

@@ -23,6 +23,7 @@ typedef enum {
     DragType currentDragType;
     CGFloat  cornerLen;
 }
+@property (nonatomic,strong) NSImageView* imageView;
 @property (nonatomic,strong) CornerImageView* cimvLT;
 @property (nonatomic,strong) CornerImageView* cimvRT;
 @property (nonatomic,strong) CornerImageView* cimvRB;
@@ -41,6 +42,10 @@ typedef enum {
     CGFloat w = frameRect.size.width;
     CGFloat h = frameRect.size.height;
     currentDragType = dragTypeNone;
+    
+    self.imageView = [[NSImageView alloc] initWithFrame:self.bounds];
+    self.imageView.imageScaling = NSImageScaleAxesIndependently;
+    [self addSubview:self.imageView];
     
     self.cimvLB = [[CornerImageView alloc] initWithFrame:CGRectMake(0, 0, l, l) cornerType:cornerTypeLeftBottom];
     [self addSubview:self.cimvLB];
@@ -80,7 +85,6 @@ typedef enum {
     }];
     
     self.wantsLayer = YES;
-    self.enabled = YES;
     self.layer.masksToBounds = YES;
     self.layer.borderColor = [NSColor lightGrayColor].CGColor;
     self.layer.borderWidth = 1;
@@ -95,12 +99,20 @@ typedef enum {
     CGFloat w = frameRect.size.width;
     CGFloat h = frameRect.size.height;
     int l = cornerLen;
+    
+    self.imageView.frame = self.bounds;
     self.cimvLB.frame = CGRectMake(0, 0, l, l);
     self.cimvRB.frame = CGRectMake(w-l, 0, l, l);
     self.cimvRT.frame = CGRectMake(w - l, h - l, l, l);
     self.cimvLT.frame = CGRectMake(0, h - l, l, l);
     
     NSLog(@"layout");
+}
+
+- (void)setImage:(NSImage *)image{
+    _image = image;
+    self.imageView.image = image;
+    [self.imageView setNeedsDisplay];
 }
 
 - (void)setEdit:(BOOL)isEdit{
