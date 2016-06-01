@@ -433,7 +433,12 @@
         
     }
  
-    if (self.sprite.spriteType != SpriteTypeStatic &&
+    BOOL isStatic = NO;
+    if (self.sprite.spriteType == SpriteTypeStatic || (self.sprite.spriteType == SpriteTypeCondition &&
+                                                       self.sprite.anchorType == SpriteAnchorTypeStatic)) {
+        isStatic = YES;
+    }
+    if ( !isStatic &&
         self.isMultiPeople) {
         self.faceIndexView.hidden = NO;
     }else{
@@ -461,12 +466,13 @@
         [self.faceIndex selectItemAtIndex:0];
     }
     
-    
-    [self setLayoutState];
     [self checkValue];
+    [self setLayoutState];
+    
 }
 - (IBAction)onSpriteAnchorSubtype:(NSPopUpButton *)sender {
     [self checkValue];
+    [self setLayoutState];
 }
 
 - (IBAction)onTriggerType:(NSPopUpButton *)sender {
@@ -487,6 +493,7 @@
         [self.anchorSubType addItemsWithTitles:self.anchorTypeDict[title]];
     }
     [self checkValue];
+    [self setLayoutState];
     
 }
 
@@ -602,15 +609,43 @@
     self.sprite.loopCount = self.loopCount.stringValue.integerValue;
     
     // v3
-    if(self.faceIndexView.hidden){
-        self.sprite.faceIndex = 0;
+    NSInteger faceIndex;
+    
+    if (!self.isMultiPeople) {
+        faceIndex = 0;
     }else{
-        NSInteger index = self.faceIndex.indexOfSelectedItem;
-        if (index == 2) {
-            index = -1;
+        if (self.sprite.spriteType == SpriteTypeStatic) {
+            faceIndex = 0;
+        }else if (self.sprite.spriteType == SpriteTypeDynamic){
+            NSInteger index = self.faceIndex.indexOfSelectedItem;
+            if (index == 2) {
+                faceIndex = -1;
+            }else{
+                faceIndex = index + 1;
+            }
+        }else if (self.sprite.spriteType == SpriteTypeCondition){
+            if (self.sprite.anchorType == SpriteAnchorTypeStatic) {
+                faceIndex = 0;
+            }else{
+                NSInteger index = self.faceIndex.indexOfSelectedItem;
+                if (index == 2) {
+                    faceIndex = -1;
+                }else{
+                    faceIndex = index + 1;
+                }
+            }
         }
-        self.sprite.faceIndex = index;
     }
+    self.sprite.faceIndex = faceIndex;
+//    if(self.faceIndexView.hidden){
+//        self.sprite.faceIndex = 0;
+//    }else{
+//        NSInteger index = self.faceIndex.indexOfSelectedItem;
+//        if (index == 2) {
+//            index = -1;
+//        }
+//        self.sprite.faceIndex = index;
+//    }
     
     
     // v5
