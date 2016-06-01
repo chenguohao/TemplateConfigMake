@@ -201,7 +201,7 @@
     self.heightStepper.integerValue = self.height.stringValue.integerValue;
     
     self.animationCount.stringValue = [NSString stringWithFormat:@"%ld",sprite.animationCount+1];
-    self.animationDuration.stringValue = [NSString stringWithFormat:@"%.2f",sprite.duration];
+    self.animationDuration.stringValue = [NSString stringWithFormat:@"%.3f",sprite.duration];
     
     self.order.stringValue = [NSString stringWithFormat:@"%ld",sprite.order];
    

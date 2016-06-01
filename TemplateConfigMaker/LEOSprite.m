@@ -117,7 +117,9 @@
     return [NSString stringWithFormat:@"%.2f",floatnumber];
 }
 
-
+- (NSString*)getStringFrom3Float:(CGFloat)floatnumber{
+    return [NSString stringWithFormat:@"%.3f",floatnumber];
+}
 
 - (NSDictionary*)getDictFromSprite{
     NSMutableDictionary* mdic = [NSMutableDictionary new];
@@ -143,7 +145,7 @@
     [mdic setObject:[self getStringFromFloat:self.width] forKey:@"width"];
     [mdic setObject:[self getStringFromFloat:self.height] forKey:@"height"];
     [mdic setObject:[@(self.animationCount) stringValue] forKey:@"animationCount"];
-    [mdic setObject:[self getStringFromFloat:self.duration] forKey:@"animationDuration"];
+    [mdic setObject:[self getStringFrom3Float:self.duration] forKey:@"animationDuration"];
     [mdic setObject:[@(self.order) stringValue] forKey:@"order"];
     [mdic setObject:[@(self.anchorType) stringValue] forKey:@"anchorType"];
     [mdic setObject:@(self.hasBgMusic)forKey:@"hasBgMusic"];
