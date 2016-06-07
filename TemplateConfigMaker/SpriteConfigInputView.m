@@ -213,6 +213,8 @@
     NSInteger index = sprite.faceIndex;
     if (index == -1) {
         index = 2;
+    }else if(index != 0){
+        index -= 1;
     }
     [self.faceIndex selectItemAtIndex:index];
     
@@ -598,6 +600,7 @@
         CGFloat f = [self getAccurateFloatFromStr:self.anchorx.stringValue];
         self.sprite.anchor_x = f;
     }
+    
     if(!self.anchory.hidden){
       self.sprite.anchor_y = self.anchory.stringValue.floatValue;  
     }
@@ -612,7 +615,11 @@
     NSInteger faceIndex;
     
     if (!self.isMultiPeople) {
-        faceIndex = 0;
+        if (self.sprite.spriteType == SpriteTypeStatic) {
+            faceIndex = 0;
+        }else if (self.sprite.spriteType == SpriteTypeDynamic){
+            faceIndex = 1;
+        }
     }else{
         if (self.sprite.spriteType == SpriteTypeStatic) {
             faceIndex = 0;
