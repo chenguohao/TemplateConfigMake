@@ -75,6 +75,11 @@ typedef NS_ENUM(NSUInteger, SpriteAnchorType) {
     SpriteAnchorTypeRightCheek = 29,//右脸颊
 };
 
+typedef enum {
+  attachType2DFlat = 0, // 平面挂载
+  attachType3DCover = 1,    // 面部贴合
+}AttachType;
+
 @interface LEOSprite : NSObject
 @property (nonatomic, strong) SpriteImageView* imageView;
 @property (nonatomic, assign) SpriteType spriteType;
@@ -120,6 +125,8 @@ typedef NS_ENUM(NSUInteger, SpriteAnchorType) {
 
 // 新增属性 v5
 @property (nonatomic, assign) CGFloat startTime;
+
+@property (nonatomic, assign) AttachType attachType;
 
 - (instancetype)initWithName:(NSString*)spriteName;
 - (instancetype)initWithDict:(NSDictionary*)dict;

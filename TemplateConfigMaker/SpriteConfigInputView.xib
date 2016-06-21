@@ -16,6 +16,7 @@
                 <outlet property="anchory" destination="aus-lG-KSE" id="VlA-o0-bgR"/>
                 <outlet property="animationCount" destination="JXq-kD-Y2d" id="vfk-mc-Uwz"/>
                 <outlet property="animationDuration" destination="qqn-3t-UG2" id="4Xl-65-gBb"/>
+                <outlet property="attachStyle" destination="l53-pF-CZS" id="a1j-b4-NsG"/>
                 <outlet property="detectType" destination="iE0-Sg-wSq" id="BHM-WH-Dog"/>
                 <outlet property="faceIndex" destination="4Jf-vL-KXg" id="QAe-dJ-U5o"/>
                 <outlet property="faceIndexView" destination="2TY-Gi-UcB" id="Ohl-OR-BI6"/>
@@ -157,7 +158,7 @@
                             </connections>
                         </button>
                         <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="H1m-u9-z2B">
-                            <rect key="frame" x="-1" y="0.0" width="297" height="56"/>
+                            <rect key="frame" x="0.0" y="-1" width="297" height="56"/>
                             <subviews>
                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yjn-qG-cxt">
                                     <rect key="frame" x="18" y="30" width="30" height="17"/>
@@ -215,6 +216,31 @@
                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
                                 </textField>
+                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ypv-km-OSU">
+                                    <rect key="frame" x="146" y="5" width="56" height="17"/>
+                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="贴脸方式" id="5qJ-G7-tdf">
+                                        <font key="font" size="13" name="STHeitiSC-Light"/>
+                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                                <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="l53-pF-CZS">
+                                    <rect key="frame" x="204" y="-1" width="96" height="26"/>
+                                    <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="mYM-4e-LNz" id="F7P-WP-Y09">
+                                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                        <font key="font" metaFont="menu"/>
+                                        <menu key="menu" id="MVZ-Ug-VXa">
+                                            <items>
+                                                <menuItem title="Item 1" state="on" id="mYM-4e-LNz"/>
+                                                <menuItem title="Item 2" id="GaQ-cR-BBt"/>
+                                                <menuItem title="Item 3" id="QBh-5W-7uz"/>
+                                            </items>
+                                        </menu>
+                                    </popUpButtonCell>
+                                    <connections>
+                                        <action selector="onAttachStyleSelected:" target="-2" id="gX3-WW-aca"/>
+                                    </connections>
+                                </popUpButton>
                             </subviews>
                         </customView>
                     </subviews>

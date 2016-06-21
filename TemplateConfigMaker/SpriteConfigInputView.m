@@ -52,10 +52,14 @@
 @property (weak) IBOutlet NSStepper *anchorPosXStepper;
 @property (weak) IBOutlet NSStepper *anchorPosYStepper;
 
+
+@property (weak) IBOutlet NSPopUpButton *attachStyle;
+
 @property (strong) NSArray* spriteTypeArray;
 @property (strong) NSArray* anchorTypeArray;
 @property (strong) NSArray* trigerTypeArray;
 @property (strong) NSArray* detectTypeArray;
+@property (strong) NSArray* attachTypeArray;
 
 @property (weak) IBOutlet NSTextField *loopCount;
 @property (weak) IBOutlet NSTextField *loopIndex;
@@ -229,7 +233,7 @@
     
     //v5
     self.startTime.stringValue = [NSString stringWithFormat:@"%.2f",sprite.startTime];
-    
+    [self.attachStyle selectItemAtIndex:sprite.attachType];
     
     [self setLayoutState];
 }
@@ -305,7 +309,7 @@
                              @"嘴巴"];
     
     self.detectTypeArray = @[@"变化触发",@"状态触发"];
-    
+    self.attachTypeArray = @[@"平面挂载",@"3D贴合"];
     if (self.spriteType) {
         [self.spriteType removeAllItems];
         [self.spriteType addItemsWithTitles:self.spriteTypeArray];
@@ -340,6 +344,12 @@
         [self.faceIndex removeAllItems];
         [self.faceIndex addItemsWithTitles:@[@"第一张脸",@"第二张脸",@"二人共用"]];
     }
+    
+    if (self.attachStyle) {
+        [self.attachStyle removeAllItems];
+        [self.attachStyle addItemsWithTitles:self.attachTypeArray];
+    }
+  
 }
 
 
@@ -459,6 +469,9 @@
 - (IBAction)onDetectTypeSelect:(NSPopUpButton *)sender {
      [self checkValue];
 }
+- (IBAction)onAttachStyleSelected:(id)sender {
+     [self checkValue];
+}
 
 - (IBAction)onSpriteTypeSelect:(NSPopUpButton *)sender {
     NSInteger n = sender.indexOfSelectedItem;
@@ -466,6 +479,7 @@
         [self.anchorType selectItemAtIndex:0];
         [self.anchorSubType selectItemAtIndex:0];
         [self.faceIndex selectItemAtIndex:0];
+        [self.attachStyle selectItemAtIndex:0];
     }
     
     [self checkValue];
@@ -661,6 +675,8 @@
     }else{
         self.sprite.startTime = self.startTime.stringValue.floatValue;
     }
+    
+    self.sprite.attachType = (AttachType)self.attachStyle.indexOfSelectedItem;
     
     if (self.RefreshBlock) {
         self.RefreshBlock(self.sprite,needRefreshUI);

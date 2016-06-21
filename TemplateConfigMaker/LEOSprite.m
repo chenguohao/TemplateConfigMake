@@ -41,6 +41,7 @@
     
     // v5
     self.startTime = 0;
+    self.attachType = 0;
     return self;
 }
 
@@ -84,7 +85,7 @@
     
     // v5
     self.startTime = [dict[@"startTime"] floatValue];
-    
+    self.attachType = (AttachType)[dict[@"attchType"] integerValue];
     return self;
 }
 
@@ -162,6 +163,7 @@
     
     // v5
     [mdic setObject:[@(self.startTime) stringValue] forKey:@"startTime"];
+    [mdic setObject:[@(self.attachType) stringValue] forKey:@"attachType"];
     return mdic;
 }
 
