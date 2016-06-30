@@ -80,6 +80,13 @@ typedef enum {
   attachType3DCover = 1,    // 面部贴合
 }AttachType;
 
+typedef enum {
+    rotateTypeNone = 0    ,//不旋转
+    rotateTypeX    = 4    ,//绕X轴旋转
+    rotateTypeY    = 2    ,//绕Y轴旋转
+    rotateTypeZ    = 1   //绕Z轴旋转
+}RotateType;
+
 @interface LEOSprite : NSObject
 @property (nonatomic, strong) SpriteImageView* imageView;
 @property (nonatomic, assign) SpriteType spriteType;
@@ -101,11 +108,11 @@ typedef enum {
 @property (nonatomic, assign) CGFloat height;
 
 
-
+@property (nonatomic, assign) RotateType rotateType;
 @property (nonatomic, assign) SpriteAnchorType anchorType;
 
 
-@property (nonatomic, assign) BOOL isRotate;
+
 @property (nonatomic, assign) BOOL hasBgMusic;
 @property (nonatomic, assign) BOOL isBgMusicLoop;
 @property (nonatomic, strong) NSString *imagePath;

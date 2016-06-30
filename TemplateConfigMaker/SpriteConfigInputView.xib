@@ -25,7 +25,6 @@
                 <outlet property="heightLabel" destination="5pH-9y-CiY" id="09h-vc-JXj"/>
                 <outlet property="heightStepper" destination="Dgh-av-Pbp" id="EJf-eG-npq"/>
                 <outlet property="isBgMusicLoop" destination="XVC-me-5eP" id="Xpg-Vp-0JA"/>
-                <outlet property="isRotate" destination="mdN-3n-q4E" id="dAd-wv-GB0"/>
                 <outlet property="loopCount" destination="TBS-L2-mIe" id="hYt-w1-shO"/>
                 <outlet property="loopIndex" destination="F7M-N1-B5s" id="I0Q-bo-knA"/>
                 <outlet property="nameTextField" destination="c8w-to-Xrg" id="vzD-ah-4sP"/>
@@ -36,6 +35,7 @@
                 <outlet property="posYStepper" destination="oBm-cm-SS7" id="zt8-Gy-HaQ"/>
                 <outlet property="pos_x" destination="U7t-mi-L5J" id="fth-wM-Kwn"/>
                 <outlet property="pos_y" destination="Tjl-KG-C8J" id="02S-bC-9yI"/>
+                <outlet property="rotateType" destination="fSu-x4-AAe" id="XTd-bI-1It"/>
                 <outlet property="spriteType" destination="8xl-nM-bKO" id="OFk-9x-iGi"/>
                 <outlet property="startTime" destination="oon-IT-3wE" id="Ngw-dl-h9e"/>
                 <outlet property="trigerTypeOff" destination="Zcs-ql-u4d" id="z9r-J9-ahk"/>
@@ -176,23 +176,13 @@
                                     </connections>
                                 </stepper>
                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="maj-6J-YZP">
-                                    <rect key="frame" x="18" y="5" width="56" height="17"/>
-                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="随脸旋转" id="GBh-Bw-1l9">
+                                    <rect key="frame" x="13" y="5" width="56" height="17"/>
+                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="旋转类型" id="GBh-Bw-1l9">
                                         <font key="font" size="13" name="STHeitiSC-Light"/>
                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
                                 </textField>
-                                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mdN-3n-q4E">
-                                    <rect key="frame" x="115" y="3" width="22" height="18"/>
-                                    <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="iCU-h4-6bw">
-                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                        <font key="font" metaFont="system"/>
-                                    </buttonCell>
-                                    <connections>
-                                        <action selector="onCheckBox:" target="-2" id="g8D-Nk-DQb"/>
-                                    </connections>
-                                </button>
                                 <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ttG-rj-6XI">
                                     <rect key="frame" x="136" y="28" width="45" height="22"/>
                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="NCy-bg-VoT">
@@ -217,7 +207,7 @@
                                     </textFieldCell>
                                 </textField>
                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ypv-km-OSU">
-                                    <rect key="frame" x="146" y="5" width="56" height="17"/>
+                                    <rect key="frame" x="149" y="5" width="56" height="17"/>
                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="贴脸方式" id="5qJ-G7-tdf">
                                         <font key="font" size="13" name="STHeitiSC-Light"/>
                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -241,12 +231,29 @@
                                         <action selector="onAttachStyleSelected:" target="-2" id="gX3-WW-aca"/>
                                     </connections>
                                 </popUpButton>
+                                <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fSu-x4-AAe">
+                                    <rect key="frame" x="70" y="-2" width="83" height="26"/>
+                                    <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="ua1-GV-rGa" id="UzC-Be-la8">
+                                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                        <font key="font" metaFont="menu"/>
+                                        <menu key="menu" id="ybl-AZ-Oyg">
+                                            <items>
+                                                <menuItem title="Item 1" state="on" id="ua1-GV-rGa"/>
+                                                <menuItem title="Item 2" id="vaG-sW-n1E"/>
+                                                <menuItem title="Item 3" id="fNK-cN-VPb"/>
+                                            </items>
+                                        </menu>
+                                    </popUpButtonCell>
+                                    <connections>
+                                        <action selector="onRotateType:" target="-2" id="GeM-cD-82w"/>
+                                    </connections>
+                                </popUpButton>
                             </subviews>
                         </customView>
                     </subviews>
                 </customView>
                 <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qX6-q2-Obr">
-                    <rect key="frame" x="1" y="288" width="254" height="67"/>
+                    <rect key="frame" x="-1000" y="288" width="254" height="67"/>
                     <subviews>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Y7R-Fi-B5k">
                             <rect key="frame" x="18" y="35" width="68" height="17"/>

@@ -29,7 +29,7 @@
     self.order = 0;
     self.hasBgMusic = NO;
     self.isBgMusicLoop = NO;
-    self.isRotate = NO;
+    self.rotateType = 0;
     self.anchorType = [self getEnumFromFaceCode:@"static"];
     self.triggerOffType = 0;
     self.triggerOnType  = 0;
@@ -71,7 +71,7 @@
     self.width = [dict[@"width"] floatValue];
     self.height= [dict[@"height"] floatValue];
     self.isBgMusicLoop = [dict[@"isBgMusicLoop"] boolValue];
-    self.isRotate = [dict[@"isRotate"] boolValue];
+    self.rotateType = (RotateType)[dict[@"rotateType"] integerValue];
     self.hasBgMusic = [dict[@"hasBgMusic"] boolValue];
     
     self.triggerOffType = [dict[@"triggerOffType"] integerValue];
@@ -151,7 +151,7 @@
     [mdic setObject:[@(self.anchorType) stringValue] forKey:@"anchorType"];
     [mdic setObject:@(self.hasBgMusic)forKey:@"hasBgMusic"];
     [mdic setObject:@(self.isBgMusicLoop) forKey:@"isBgMusicLoop"];
-    [mdic setObject:@(self.isRotate) forKey:@"isRotate"];
+    [mdic setObject:@(self.rotateType) forKey:@"rotateType"];
     
     [mdic setObject:[@(self.detectType) stringValue] forKey:@"detectType"];
     [mdic setObject:[@(self.triggerOnType) stringValue] forKey:@"triggerOnType"];

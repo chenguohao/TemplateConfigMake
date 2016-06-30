@@ -38,7 +38,8 @@
 @property (weak) IBOutlet NSStepper *orderPlus;
 @property (weak) IBOutlet NSTextField *anchorx;
 @property (weak) IBOutlet NSTextField *anchory;
-@property (weak) IBOutlet NSButton *isRotate;
+
+@property (weak) IBOutlet NSPopUpButton *rotateType;
 
 @property (weak) IBOutlet NSPopUpButton *trigerTypeOn;
 @property (weak) IBOutlet NSPopUpButton *trigerTypeOff;
@@ -60,6 +61,7 @@
 @property (strong) NSArray* trigerTypeArray;
 @property (strong) NSArray* detectTypeArray;
 @property (strong) NSArray* attachTypeArray;
+@property (strong) NSArray* rotateTypeArray;
 
 @property (weak) IBOutlet NSTextField *loopCount;
 @property (weak) IBOutlet NSTextField *loopIndex;
@@ -211,7 +213,7 @@
    
     
     self.hasBgMusic.state = sprite.hasBgMusic;
-    self.isRotate.state = sprite.isRotate;
+    [self.rotateType selectItemAtIndex:sprite.rotateType];
     self.isBgMusicLoop.state = sprite.isBgMusicLoop;
     [self.orderPlus setIntegerValue:sprite.order];
     NSInteger index = sprite.faceIndex;
@@ -310,6 +312,9 @@
     
     self.detectTypeArray = @[@"变化触发",@"状态触发"];
     self.attachTypeArray = @[@"平面挂载",@"3D贴合"];
+    self.rotateTypeArray = @[@"不随脸",@"z轴",@"y轴",@"z+y"];
+    
+    
     if (self.spriteType) {
         [self.spriteType removeAllItems];
         [self.spriteType addItemsWithTitles:self.spriteTypeArray];
@@ -348,6 +353,11 @@
     if (self.attachStyle) {
         [self.attachStyle removeAllItems];
         [self.attachStyle addItemsWithTitles:self.attachTypeArray];
+    }
+    
+    if (self.rotateType) {
+        [self.rotateType removeAllItems];
+        [self.rotateType addItemsWithTitles:self.rotateTypeArray];
     }
   
 }
@@ -464,6 +474,9 @@
 #pragma mark - picker
 - (IBAction)onFaceIndex:(NSPopUpButton *)sender {
     self.curFaceIndex = sender.indexOfSelectedItem;
+    [self checkValue];
+}
+- (IBAction)onRotateType:(id)sender {
     [self checkValue];
 }
 - (IBAction)onDetectTypeSelect:(NSPopUpButton *)sender {
@@ -607,7 +620,7 @@
     [self.sprite setAnchorTypeWithFaceCode:[self getFaceCode]];
     self.sprite.hasBgMusic = self.hasBgMusic.state;
     self.sprite.isBgMusicLoop = self.isBgMusicLoop.state;
-    self.sprite.isRotate = self.isRotate.state;
+    self.sprite.rotateType = (RotateType)self.rotateType.indexOfSelectedItem;
     self.sprite.duration = self.animationDuration.stringValue.floatValue;
     
     if(!self.anchorx.hidden){
