@@ -85,7 +85,8 @@
     
     // v5
     self.startTime = [dict[@"startTime"] floatValue];
-    self.attachType = (AttachType)[dict[@"attchType"] integerValue];
+    NSInteger n = [dict[@"attachType"] integerValue];
+    self.attachType = (AttachType)n;
     return self;
 }
 
