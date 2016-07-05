@@ -229,9 +229,7 @@
     self.loopCount.stringValue = [NSString stringWithFormat:@"%ld",sprite.loopCount];
     self.loopIndex.stringValue = [NSString stringWithFormat:@"%ld",sprite.loopIndex];
     [self.detectType selectItemAtIndex:sprite.detectType];
-    
     [self setAnchorTypeWithEnum:sprite.anchorType];
-    
     
     //v5
     self.startTime.stringValue = [NSString stringWithFormat:@"%.2f",sprite.startTime];
