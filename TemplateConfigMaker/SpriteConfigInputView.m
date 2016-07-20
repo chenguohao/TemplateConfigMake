@@ -153,6 +153,15 @@
 
 - (void)setSprite:(LEOSprite *)sprite{
     _sprite = sprite;
+    
+    NSInteger index = sprite.faceIndex;
+    if (index == -1) {
+        index = 2;
+    }else if(index != 0){
+        index -= 1;
+    }
+    [self.faceIndex selectItemAtIndex:index];
+    
     self.nameTextField.stringValue = sprite.spriteName;
     [self.spriteType selectItemAtIndex:sprite.spriteType];
     CGFloat w = sprite.width*[SpriteConfigInputView getSizeRateWithSprite:sprite];
@@ -216,13 +225,7 @@
     [self.rotateType selectItemAtIndex:sprite.rotateType];
     self.isBgMusicLoop.state = sprite.isBgMusicLoop;
     [self.orderPlus setIntegerValue:sprite.order];
-    NSInteger index = sprite.faceIndex;
-    if (index == -1) {
-        index = 2;
-    }else if(index != 0){
-        index -= 1;
-    }
-    [self.faceIndex selectItemAtIndex:index];
+    
     
     [self.trigerTypeOff selectItemAtIndex:[self setTriggerWithEnum:sprite.triggerOffType]];
     [self.trigerTypeOn  selectItemAtIndex:[self setTriggerWithEnum:sprite.triggerOnType]];
@@ -237,6 +240,8 @@
     
     [self setLayoutState];
 }
+
+
 
 - (NSInteger)setTriggerWithEnum:(SpriteTriggerType)type{
     
@@ -467,11 +472,22 @@
     }
 }
 
-
+- (NSInteger)curFaceIndex{
+    if (self.faceIndex.indexOfSelectedItem == 2) {
+        return  -1;
+    }else{
+        return  self.faceIndex.indexOfSelectedItem +1;
+    }
+}
 
 #pragma mark - picker
 - (IBAction)onFaceIndex:(NSPopUpButton *)sender {
-    self.curFaceIndex = sender.indexOfSelectedItem;
+    if (sender.indexOfSelectedItem == 2) {
+        self.curFaceIndex = -1;
+    }else{
+        self.curFaceIndex = sender.indexOfSelectedItem +1;
+    }
+    
     [self checkValue];
 }
 - (IBAction)onRotateType:(id)sender {
@@ -639,45 +655,41 @@
     // v3
     NSInteger faceIndex;
     
-    if (!self.isMultiPeople) {
-        if (self.sprite.spriteType == SpriteTypeStatic) {
-            faceIndex = 0;
-        }else if (self.sprite.spriteType == SpriteTypeDynamic){
-            faceIndex = 1;
-        }
+    
+    if(self.faceIndexView.hidden){
+        self.sprite.faceIndex = 0;
     }else{
-        if (self.sprite.spriteType == SpriteTypeStatic) {
-            faceIndex = 0;
-        }else if (self.sprite.spriteType == SpriteTypeDynamic){
-            NSInteger index = self.faceIndex.indexOfSelectedItem;
-            if (index == 2) {
-                faceIndex = -1;
-            }else{
-                faceIndex = index + 1;
-            }
-        }else if (self.sprite.spriteType == SpriteTypeCondition){
-            if (self.sprite.anchorType == SpriteAnchorTypeStatic) {
+        if (!self.isMultiPeople) {
+            if (self.sprite.spriteType == SpriteTypeStatic) {
                 faceIndex = 0;
-            }else{
+            }else if (self.sprite.spriteType == SpriteTypeDynamic){
+                faceIndex = 1;
+            }
+        }else{
+            if (self.sprite.spriteType == SpriteTypeStatic) {
+                faceIndex = 0;
+            }else if (self.sprite.spriteType == SpriteTypeDynamic){
                 NSInteger index = self.faceIndex.indexOfSelectedItem;
                 if (index == 2) {
                     faceIndex = -1;
                 }else{
                     faceIndex = index + 1;
                 }
+            }else if (self.sprite.spriteType == SpriteTypeCondition){
+                if (self.sprite.anchorType == SpriteAnchorTypeStatic) {
+                    faceIndex = 0;
+                }else{
+                    NSInteger index = self.faceIndex.indexOfSelectedItem;
+                    if (index == 2) {
+                        faceIndex = -1;
+                    }else{
+                        faceIndex = index + 1;
+                    }
+                }
             }
         }
+        self.sprite.faceIndex = faceIndex;
     }
-    self.sprite.faceIndex = faceIndex;
-//    if(self.faceIndexView.hidden){
-//        self.sprite.faceIndex = 0;
-//    }else{
-//        NSInteger index = self.faceIndex.indexOfSelectedItem;
-//        if (index == 2) {
-//            index = -1;
-//        }
-//        self.sprite.faceIndex = index;
-//    }
     
     
     // v5

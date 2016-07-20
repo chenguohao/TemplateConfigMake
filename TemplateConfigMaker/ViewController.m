@@ -121,7 +121,7 @@ NSString* cellID = @"CellID";
     if (self.peopleCount.indexOfSelectedItem == 0) {
         ftype = faceTypeSingle;
     }else{
-        if (self.configInputView.curFaceIndex == 0) {
+        if (self.configInputView.curFaceIndex == 1) {
             ftype = faceTypeMulty0;
         }else{
             ftype = faceTypeMulty1;
@@ -422,6 +422,7 @@ NSString* cellID = @"CellID";
     [self setConfigInputPeopleCount];
     [self produceSpriteConfig];
     self.photoImage.isMultyPeople =  self.peopleCount.indexOfSelectedItem == 1;
+
 }
 
 - (void)setConfigInputPeopleCount{
