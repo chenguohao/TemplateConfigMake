@@ -24,6 +24,7 @@
 		235A8B521C78156900EAEA50 /* SpriteConfigInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 235A8B511C78156900EAEA50 /* SpriteConfigInputView.m */; };
 		235A8B541C78158300EAEA50 /* SpriteConfigInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 235A8B531C78158300EAEA50 /* SpriteConfigInputView.xib */; };
 		235A8BA01C785FD500EAEA50 /* LEOSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = 235A8B9F1C785FD500EAEA50 /* LEOSprite.m */; };
+		236791671D48573B0076B220 /* dualSameFace.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 236791661D48573B0076B220 /* dualSameFace.jpg */; };
 		236ABFE41CA6579000E90D58 /* AnimationImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236ABFE31CA6579000E90D58 /* AnimationImageView.swift */; };
 		2390E2661C9FD41000559B4F /* bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2390E2651C9FD41000559B4F /* bg.jpg */; };
 		2390E2681C9FDFFA00559B4F /* model.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2390E2671C9FDFFA00559B4F /* model.jpg */; };
@@ -84,6 +85,7 @@
 		235A8B531C78158300EAEA50 /* SpriteConfigInputView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpriteConfigInputView.xib; sourceTree = "<group>"; };
 		235A8B9E1C785FD500EAEA50 /* LEOSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEOSprite.h; sourceTree = "<group>"; };
 		235A8B9F1C785FD500EAEA50 /* LEOSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LEOSprite.m; sourceTree = "<group>"; };
+		236791661D48573B0076B220 /* dualSameFace.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = dualSameFace.jpg; sourceTree = "<group>"; };
 		236ABFE21CA6578F00E90D58 /* TemplateConfigMaker-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TemplateConfigMaker-Bridging-Header.h"; sourceTree = "<group>"; };
 		236ABFE31CA6579000E90D58 /* AnimationImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationImageView.swift; sourceTree = "<group>"; };
 		2390E2651C9FD41000559B4F /* bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bg.jpg; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 				235A8B181C7570AB00EAEA50 /* Assets.xcassets */,
 				23C4259E1C7F28FA00B8F000 /* lbb.jpg */,
 				23D87A5E1CEF0738001AB893 /* dualFace.jpg */,
+				236791661D48573B0076B220 /* dualSameFace.jpg */,
 				2345C4A01CE1A5B6005E86C9 /* longFace.jpg */,
 				2390E2671C9FDFFA00559B4F /* model.jpg */,
 				2390E2651C9FD41000559B4F /* bg.jpg */,
@@ -364,6 +367,7 @@
 				23D87A5F1CEF0738001AB893 /* dualFace.jpg in Resources */,
 				2341564C1CF3005B00CC276E /* ltrb@2x.png in Resources */,
 				2341564D1CF3005B00CC276E /* lbrt@2x.png in Resources */,
+				236791671D48573B0076B220 /* dualSameFace.jpg in Resources */,
 				235A8B191C7570AB00EAEA50 /* Assets.xcassets in Resources */,
 				234156461CF2FD4100CC276E /* dot.png in Resources */,
 				235A8B541C78158300EAEA50 /* SpriteConfigInputView.xib in Resources */,

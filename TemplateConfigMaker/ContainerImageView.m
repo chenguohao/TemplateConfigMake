@@ -21,8 +21,8 @@
 @end
 
 #define faceLen 213
-#define faceLen_m0 119
-#define faceLen_m1 140
+#define faceLen_m0 155
+#define faceLen_m1 155
 @implementation ContainerImageView
 
 - (instancetype)initWithCoder:(NSCoder *)coder{
@@ -35,14 +35,14 @@
     faceView_s0.hidden = YES;
     [self addSubview:faceView_s0];
     
-    rect = NSRectFromCGRect(CGRectMake(54, 246, faceLen_m0, faceLen_m0));
+    rect = NSRectFromCGRect(CGRectMake(38, 204, faceLen_m0, faceLen_m0));
     faceView_m0 = [[FaceView alloc] initWithFrame:rect FaceType:faceTypeMulty0];
     faceView_m0.layer.masksToBounds   = YES;
     faceView_m0.hidden = YES;
     [self addSubview:faceView_m0];
     
     
-    rect = NSRectFromCGRect(CGRectMake(246, 295, faceLen_m1, faceLen_m1));
+    rect = NSRectFromCGRect(CGRectMake(246, 288, faceLen_m1, faceLen_m1));
     faceView_m1 = [[FaceView alloc] initWithFrame:rect FaceType:faceTypeMulty1];
     faceView_m1.layer.masksToBounds   = YES;
     [self addSubview:faceView_m1];
@@ -271,7 +271,7 @@ NSComparisonResult viewcmp( NSView * view1, NSView * view2, void * context )
     if (!isMultyPeople) {
         path = [[NSBundle mainBundle] pathForResource:@"longFace" ofType:@"jpg"];
     }else{
-        path = [[NSBundle mainBundle] pathForResource:@"dualFace" ofType:@"jpg"];
+        path = [[NSBundle mainBundle] pathForResource:@"dualSameFace" ofType:@"jpg"];
     }
     self.image = [[NSImage alloc] initWithContentsOfFile:path];
 }

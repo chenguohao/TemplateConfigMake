@@ -98,91 +98,70 @@
 }
 
 - (NSArray*)face21Points_m0{
-    if (_face21Points_m0 == nil) {
-        // 右眉毛 3, 2, 1
-        // 左眉毛 6，5，4
-        // 左眼   10,18,9
-        // 右眼   8, 17, 7
-        
-        _face21Points_m0 = @[ [NSValue valueWithPoint:NSMakePoint(112, 93)], //1
-                            [NSValue valueWithPoint:NSMakePoint(94, 101)], //2
-                            [NSValue valueWithPoint:NSMakePoint(71, 95)], //3
-                            
-                            [NSValue valueWithPoint:NSMakePoint(46, 95)],  //4
-                            [NSValue valueWithPoint:NSMakePoint(22, 100)],  //5
-                            [NSValue valueWithPoint:NSMakePoint(3, 94)],  //6
-                            
-                            [NSValue valueWithPoint:NSMakePoint(105, 80)], //7
-                            [NSValue valueWithPoint:NSMakePoint(76, 80)], //8
-
-                            [NSValue valueWithPoint:NSMakePoint(41, 80)],  //9
-                            [NSValue valueWithPoint:NSMakePoint(11, 80)],  //10
-
-                            [NSValue valueWithPoint:NSMakePoint(78, 46)],  //11
-                            [NSValue valueWithPoint:NSMakePoint(59, 34)],  //12
-                            [NSValue valueWithPoint:NSMakePoint(36, 46)],   //13
-
-                            [NSValue valueWithPoint:NSMakePoint(59, 24)],  //14
-                            [NSValue valueWithPoint:NSMakePoint(59, 16)],  //15
-                            [NSValue valueWithPoint:NSMakePoint(59, 4)],  //16
-
-                            [NSValue valueWithPoint:NSMakePoint(87, 83)], //17
-
-                            [NSValue valueWithPoint:NSMakePoint(28, 83)],  //18
-//
-                            [NSValue valueWithPoint:NSMakePoint(59, 44)],  //19
-//
-                            [NSValue valueWithPoint:NSMakePoint(89, 27)],  //20
-                            [NSValue valueWithPoint:NSMakePoint(25, 27)],   //21
-                            [NSValue valueWithPoint:NSMakePoint(59, -13)]  //22
-                            ];
-        
-    }
-    return _face21Points_m0;
+//    if (_face21Points_m0 == nil) {
+//        // 右眉毛 3, 2, 1
+//        // 左眉毛 6，5，4
+//        // 左眼   10,18,9
+//        // 右眼   8, 17, 7
+//        CGFloat r =  1;//150/213.f;
+//        
+//        
+//        NSMutableArray* marry = [NSMutableArray new];
+//        
+//        for (NSValue *value in self.face21Points_s0) {
+//            NSPoint pt = [value pointValue];
+//            [marry addObject:[NSValue valueWithPoint:NSMakePoint(pt.x, pt.y + 6)]];
+//        }
+//        
+//        _face21Points_m0 = _face21Points_s0;
+//        
+//    }
+    return self.face21Points_s0;
 }
 
 - (NSArray*)face21Points_m1{
-    if (_face21Points_m1 == nil) {
-        // 右眉毛 3, 2, 1
-        // 左眉毛 6，5，4
-        // 左眼   10,18,9
-        // 右眼   8, 17, 7
-        
-        _face21Points_m1 = @[ [NSValue valueWithPoint:NSMakePoint(130, 119)], //1
-                              [NSValue valueWithPoint:NSMakePoint(103, 129)], //2
-                              [NSValue valueWithPoint:NSMakePoint(74, 120)], //3
-                              
-                              [NSValue valueWithPoint:NSMakePoint(47, 116)],  //4
-                              [NSValue valueWithPoint:NSMakePoint(19, 119)],  //5
-                              [NSValue valueWithPoint:NSMakePoint(0, 102)],  //6
-                              
-                              [NSValue valueWithPoint:NSMakePoint(117, 102)], //7
-                              [NSValue valueWithPoint:NSMakePoint(84, 97)], //8
-                              
-                              [NSValue valueWithPoint:NSMakePoint(46, 94)],  //9
-                              [NSValue valueWithPoint:NSMakePoint(10, 90)],  //10
-//
-                              [NSValue valueWithPoint:NSMakePoint(92, 64)],  //11
-                              [NSValue valueWithPoint:NSMakePoint(69, 51)],  //12
-                              [NSValue valueWithPoint:NSMakePoint(45, 59)],   //13
-//
-                              [NSValue valueWithPoint:NSMakePoint(71, 39)],  //14
-                              [NSValue valueWithPoint:NSMakePoint(73, 28)],  //15
-                              [NSValue valueWithPoint:NSMakePoint(74, 11)],  //16
-//
-                              [NSValue valueWithPoint:NSMakePoint(98, 103)], //17
-//
-                              [NSValue valueWithPoint:NSMakePoint(31, 96)],  //18
-//                              //
-                              [NSValue valueWithPoint:NSMakePoint(67, 64)],  //19
-//                              //
-                              [NSValue valueWithPoint:NSMakePoint(106, 36)],  //20
-                              [NSValue valueWithPoint:NSMakePoint(36, 30)],   //21
-                              [NSValue valueWithPoint:NSMakePoint(74, -13)]  //22
-                              ];
-        
-    }
-    return _face21Points_m1;
+//    if (_face21Points_m1 == nil) {
+//        // 右眉毛 3, 2, 1
+//        // 左眉毛 6，5，4
+//        // 左眼   10,18,9
+//        // 右眼   8, 17, 7
+//        
+//        _face21Points_m1 = @[ [NSValue valueWithPoint:NSMakePoint(130, 119)], //1
+//                              [NSValue valueWithPoint:NSMakePoint(103, 129)], //2
+//                              [NSValue valueWithPoint:NSMakePoint(74, 120)], //3
+//                              
+//                              [NSValue valueWithPoint:NSMakePoint(47, 116)],  //4
+//                              [NSValue valueWithPoint:NSMakePoint(19, 119)],  //5
+//                              [NSValue valueWithPoint:NSMakePoint(0, 102)],  //6
+//                              
+//                              [NSValue valueWithPoint:NSMakePoint(117, 102)], //7
+//                              [NSValue valueWithPoint:NSMakePoint(84, 97)], //8
+//                              
+//                              [NSValue valueWithPoint:NSMakePoint(46, 94)],  //9
+//                              [NSValue valueWithPoint:NSMakePoint(10, 90)],  //10
+////
+//                              [NSValue valueWithPoint:NSMakePoint(92, 64)],  //11
+//                              [NSValue valueWithPoint:NSMakePoint(69, 51)],  //12
+//                              [NSValue valueWithPoint:NSMakePoint(45, 59)],   //13
+////
+//                              [NSValue valueWithPoint:NSMakePoint(71, 39)],  //14
+//                              [NSValue valueWithPoint:NSMakePoint(73, 28)],  //15
+//                              [NSValue valueWithPoint:NSMakePoint(74, 11)],  //16
+////
+//                              [NSValue valueWithPoint:NSMakePoint(98, 103)], //17
+////
+//                              [NSValue valueWithPoint:NSMakePoint(31, 96)],  //18
+////                              //
+//                              [NSValue valueWithPoint:NSMakePoint(67, 64)],  //19
+////                              //
+//                              [NSValue valueWithPoint:NSMakePoint(106, 36)],  //20
+//                              [NSValue valueWithPoint:NSMakePoint(36, 30)],   //21
+//                              [NSValue valueWithPoint:NSMakePoint(74, -13)]  //22
+//                              ];
+//        
+//    }
+//    _face21Points_m1 = self.face21Points_s0;
+    return self.face21Points_s0;
 }
 
 - (void)setAnchorPointWithType:(SpriteAnchorType)anchorType{
